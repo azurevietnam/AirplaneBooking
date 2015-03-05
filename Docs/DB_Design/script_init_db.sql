@@ -1,4 +1,8 @@
 -- Create database
+CREATE DATABASE `airlinebooking` CHARACTER SET utf8 COLLATE utf8_general_ci;
+GRANT ALL ON `airlinebooking`.* TO `mysqluser`@localhost IDENTIFIED BY 'mysqluser123';
+FLUSH PRIVILEGES;
+use airlinebooking;
 
 -- Create Table
 CREATE TABLE account (
