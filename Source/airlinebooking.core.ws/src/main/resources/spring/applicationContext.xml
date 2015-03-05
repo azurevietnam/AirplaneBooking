@@ -12,7 +12,7 @@
 	
 	<context:annotation-config />
 
-	<bean id="customer" class="airlinebooking.core.ws.entities.Customer"/>
-	<bean id="account" class="airlinebooking.core.ws.entities.Account"/>	
+	<bean id="customer" class="airlinebooking.core.ws.model.Customer"/>
+	<bean id="account" class="airlinebooking.core.ws.model.Account"/>	
 </beans>
 

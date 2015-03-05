@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import airlinebooking.core.ws.entities.Account;
-import airlinebooking.core.ws.entities.Customer;
+import airlinebooking.core.ws.model.Account;
+import airlinebooking.core.ws.model.Customer;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:applicationContext.xml" })
+@ContextConfiguration(locations = { "classpath:spring/applicationContext.xml" })
 public class AccountTest {
 	@Autowired
 	Account acc;

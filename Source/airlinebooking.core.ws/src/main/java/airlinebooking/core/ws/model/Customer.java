@@ -1,4 +1,4 @@
-package airlinebooking.core.ws.entities;
+package airlinebooking.core.ws.model;
 
 import java.util.Date;
 
