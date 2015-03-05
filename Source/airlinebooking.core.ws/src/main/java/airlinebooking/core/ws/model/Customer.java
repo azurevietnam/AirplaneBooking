@@ -1,6 +1,4 @@
-// default package
-// Generated Mar 6, 2015 1:43:13 AM by Hibernate Tools 4.3.1
-
+package airlinebooking.core.ws.model;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +15,10 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "customer", catalog = "airlinebooking")
 public class Customer implements java.io.Serializable {
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String title;
 	private String firstName;

@@ -21,7 +21,6 @@ public class AccountTest {
 	@Test
 	public void test(){
 		try {
-			acc.Show();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
