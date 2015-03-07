@@ -18,7 +18,7 @@ public class Customer implements java.io.Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -7306131183584196848L;
 	private Integer id;
 	private String title;
 	private String firstName;
