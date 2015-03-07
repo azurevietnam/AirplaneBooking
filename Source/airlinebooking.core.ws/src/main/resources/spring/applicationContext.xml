@@ -12,7 +12,13 @@
 	
 	<context:annotation-config />
 
+	<!-- Database Configuration -->
+	<import resource="../database/datasource.xml"/>
+	<import resource="../database/hibernate.xml"/>
+	
 	<bean id="customer" class="airlinebooking.core.ws.model.Customer"/>
-	<bean id="account" class="airlinebooking.core.ws.model.Account"/>	
+	<bean id="account" class="airlinebooking.core.ws.model.Account"/>
+	<bean id="accountBo" class="airlinebooking.core.ws.bo.AccountBoImpl"/>
+	<bean id="accountDao" class="airlinebooking.core.ws.dao.AccountDaoImpl"/>
 </beans>
 

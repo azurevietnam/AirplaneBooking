@@ -6,21 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import airlinebooking.core.ws.bo.AccountBo;
 import airlinebooking.core.ws.model.Account;
-import airlinebooking.core.ws.model.Customer;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring/applicationContext.xml" })
 public class AccountTest {
 	@Autowired
-	Account acc;
-	
-	@Autowired
-	Customer cus;
+	AccountBo accountBo;
 	
 	@Test
 	public void test(){
 		try {
+			Account acc = accountBo.findByUsername("ledona1509");
+			System.out.println(acc.getCustomer().getFirstName());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

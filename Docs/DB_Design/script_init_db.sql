@@ -119,3 +119,9 @@ create_date DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'ngay tao',
 update_user VARCHAR(100) COMMENT 'nguoi cap nhat',
 update_date DATETIME ON UPDATE CURRENT_TIMESTAMP COMMENT 'ngay cap nhat'
 );
+
+-- Fake data
+insert into customer(title, first_name, last_name, mobilephone, email, birth_date)
+	values ('Ông', 'Lê', 'Đô Na', '01689163690', 'ledona1509@gmail.com', '1991-09-15');
+insert into account(user_name, password, customer_id, status)
+	values('ledona1509', 'pss123', 1, 1);	

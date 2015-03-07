@@ -1,10 +1,15 @@
 package airlinebooking.core.ws.model;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+
 import static javax.persistence.GenerationType.IDENTITY;
+
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,7 +27,7 @@ public class Account implements java.io.Serializable {
 	private Integer id;
 	private String userName;
 	private String password;
-	private int customerId;
+	private Customer customer;
 	private Integer status;
 	private String createUser;
 	private Date createDate;
@@ -32,18 +37,18 @@ public class Account implements java.io.Serializable {
 	public Account() {
 	}
 
-	public Account(String userName, String password, int customerId) {
+	public Account(String userName, String password, Customer customer) {
 		this.userName = userName;
 		this.password = password;
-		this.customerId = customerId;
+		this.customer = customer;
 	}
 
-	public Account(String userName, String password, int customerId,
+	public Account(String userName, String password, Customer customer,
 			Integer status, String createUser, Date createDate,
 			String updateUser, Date updateDate) {
 		this.userName = userName;
 		this.password = password;
-		this.customerId = customerId;
+		this.customer = customer;
 		this.status = status;
 		this.createUser = createUser;
 		this.createDate = createDate;
@@ -80,13 +85,14 @@ public class Account implements java.io.Serializable {
 		this.password = password;
 	}
 
-	@Column(name = "customer_id", nullable = false)
-	public int getCustomerId() {
-		return this.customerId;
+	@ManyToOne(targetEntity = Customer.class)
+	@JoinColumn(name = "customer_id", referencedColumnName = "id")
+	public Customer getCustomer() {
+		return this.customer;
 	}
 
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
 	@Column(name = "status")
