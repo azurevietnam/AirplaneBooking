@@ -96,7 +96,7 @@ public class CustomerBooking implements java.io.Serializable {
 		return this.customer;
 	}
 
-	public void setCustomerId(Customer customer) {
+	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
 

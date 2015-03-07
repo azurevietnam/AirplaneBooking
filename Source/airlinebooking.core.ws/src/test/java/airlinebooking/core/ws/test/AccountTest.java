@@ -29,8 +29,8 @@ public class AccountTest {
 	public void updateAccount(){
 		try {
 			Account acc = accountBo.getAccountById(1);
-			acc.setStatus(ActiveType.INACTIVE);
-			acc.getCustomer().setFirstName("Trang");
+			acc.setStatus(ActiveType.ACTIVE);
+			acc.getCustomer().setFirstName("Lê");
 			accountBo.updateAccount(acc);
 			acc = accountBo.getAccountById(1);
 			System.out.println(acc.getCustomer().getFirstName() + " " + acc.getCustomer().getLastName() + " account is " + acc.getStatus());
