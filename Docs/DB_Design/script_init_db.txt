@@ -42,7 +42,6 @@ code_type VARCHAR(100) NOT NULL COMMENT 'ma phan biet tung loai: dia diem, thoi 
 value TEXT COMMENT 'gia tri',
 description TEXT COMMENT 'mo ta',
 status INT(1) COMMENT 'trang thai: 0: inactive, 1: active',
-telephone VARCHAR(20) COMMENT 'dien thoai ban',
 attr1 VARCHAR(100) COMMENT 'thuoc tinh du phong 1',
 attr2 VARCHAR(100) COMMENT 'thuoc tinh du phong 2',
 attr3 VARCHAR(100) COMMENT 'thuoc tinh du phong 3',
@@ -120,8 +119,21 @@ update_user VARCHAR(100) COMMENT 'nguoi cap nhat',
 update_date DATETIME ON UPDATE CURRENT_TIMESTAMP COMMENT 'ngay cap nhat'
 );
 
+-- app_param master data
+---- VNAirline Parser path
+insert into app_param(code_type, value, attr1, description, status)
+values('VNA_PARSER_PATH', 'a.translate[title=\"Xem chi tiết chuyến bay\"]', 'flight\_code', 'Mã chuyến bay', 1);
+insert into app_param(code_type, value, attr1, description, status)
+values('VNA_PARSER_PATH', 'tr.yui-dt-even > td:nth-child(3) > span.translate.wasTranslated, tr.yui-dt-odd > td:nth-child(3) > span.translate.wasTranslated', 'from\_time', 'Giờ đi', 1);
+insert into app_param(code_type, value, attr1, description, status)
+values('VNA_PARSER_PATH', 'tr.yui-dt-even > td:nth-child(4) > span.translate.wasTranslated, tr.yui-dt-odd > td:nth-child(4) > span.translate.wasTranslated', 'to\_time', 'Giờ đến', 1);
+insert into app_param(code_type, value, attr1, description, status)
+values('VNA_PARSER_PATH', '', 'ticket\_type', 'Loại vé', 1);
+insert into app_param(code_type, value, attr1, description, status)
+values('VNA_PARSER_PATH', '', 'amount', 'Giá vé', 1);
+
 -- Fake data
 insert into customer(title, first_name, last_name, mobilephone, email, birth_date)
-	values ('Ông', 'Lê', 'Đô Na', '01689163690', 'ledona1509@gmail.com', '1991-09-15');
+values ('Ông', 'Lê', 'Đô Na', '01689163690', 'ledona1509@gmail.com', '1991-09-15');
 insert into account(user_name, password, customer_id, status)
-	values('ledona1509', 'pss123', 1, 1);	
+values('ledona1509', 'pss123', 1, 1);	
