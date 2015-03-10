@@ -7,10 +7,7 @@ import javax.persistence.GeneratedValue;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -38,10 +35,6 @@ public class TicketStorage implements java.io.Serializable {
 	private Date fromTime;
 	private Date toTime;
 	private Integer durationTime;
-	private String ticketType;
-	private AppParam originParamId;
-	private AppParam destinationParamId;
-	private Integer amount;
 	private String createUser;
 	private Date createDate;
 	private String updateUser;
@@ -52,9 +45,7 @@ public class TicketStorage implements java.io.Serializable {
 
 	public TicketStorage(String flightCode,
 			String originCode, String destinationCode, Date fromDate,
-			Date toDate, Date fromTime, Date toTime, Integer durationTime,
-			String ticketType, AppParam originParamId,
-			AppParam destinationParamId, Integer amount, String createUser,
+			Date toDate, Date fromTime, Date toTime, Integer durationTime, String createUser,
 			Date createDate, String updateUser, Date updateDate) {
 		this.flightCode = flightCode;
 		this.originCode = originCode;
@@ -64,10 +55,6 @@ public class TicketStorage implements java.io.Serializable {
 		this.fromTime = fromTime;
 		this.toTime = toTime;
 		this.durationTime = durationTime;
-		this.ticketType = ticketType;
-		this.originParamId = originParamId;
-		this.destinationParamId = destinationParamId;
-		this.amount = amount;
 		this.createUser = createUser;
 		this.createDate = createDate;
 		this.updateUser = updateUser;
@@ -168,44 +155,6 @@ public class TicketStorage implements java.io.Serializable {
 
 	public void setDurationTime(Integer durationTime) {
 		this.durationTime = durationTime;
-	}
-
-	@Column(name = "ticket_type", length = 100)
-	public String getTicketType() {
-		return this.ticketType;
-	}
-
-	public void setTicketType(String ticketType) {
-		this.ticketType = ticketType;
-	}
-
-	@ManyToOne(targetEntity = AppParam.class, cascade=CascadeType.ALL)
-	@JoinColumn(name = "origin_param_id", referencedColumnName = "id")
-	public AppParam getOriginParamId() {
-		return this.originParamId;
-	}
-
-	public void setOriginParamId(AppParam originParamId) {
-		this.originParamId = originParamId;
-	}
-
-	@ManyToOne(targetEntity = AppParam.class, cascade=CascadeType.ALL)
-	@JoinColumn(name = "destination_param_id", referencedColumnName = "id")
-	public AppParam getDestinationParamId() {
-		return this.destinationParamId;
-	}
-
-	public void setDestinationParamId(AppParam destinationParamId) {
-		this.destinationParamId = destinationParamId;
-	}
-
-	@Column(name = "amount")
-	public Integer getAmount() {
-		return this.amount;
-	}
-
-	public void setAmount(Integer amount) {
-		this.amount = amount;
 	}
 
 	@Column(name = "create_user", length = 100)

@@ -41,11 +41,12 @@ id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT 'unique id',
 code_type VARCHAR(100) NOT NULL COMMENT 'ma phan biet tung loai: dia diem, thoi gian crawler dinh ky, parser output config, trang thai don hang',
 value TEXT COMMENT 'gia tri',
 description TEXT COMMENT 'mo ta',
-status INT(1) COMMENT 'trang thai: 0: inactive, 1: active',
+code_place VARCHAR(100) COMMENT 'luu ma dia diem bay (dung chung trong he thong AirlineBooking)',
 attr1 VARCHAR(100) COMMENT 'thuoc tinh du phong 1',
 attr2 VARCHAR(100) COMMENT 'thuoc tinh du phong 2',
 attr3 VARCHAR(100) COMMENT 'thuoc tinh du phong 3',
 attr4 VARCHAR(100) COMMENT 'thuoc tinh du phong 4',
+status INT(1) COMMENT 'trang thai: 0: inactive, 1: active',
 create_user VARCHAR(100) COMMENT 'nguoi tao',
 create_date DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'ngay tao',
 update_user VARCHAR(100) COMMENT 'nguoi cap nhat',
@@ -63,14 +64,18 @@ to_date Date COMMENT 'ngay den',
 from_time DATETIME COMMENT 'gio di',
 to_time DATETIME COMMENT 'gio den',
 duration_time INT(10) COMMENT 'thoi gian bay',
-ticket_type VARCHAR(100) COMMENT 'loai ve',
-origin_param_id INT(10) COMMENT 'diem di - link den bang app_param',
-destination_param_id INT(10) COMMENT 'diem den - link den bang app_param',
-amount int(10) COMMENT 'gia ve',
 create_user VARCHAR(100) COMMENT 'nguoi tao',
 create_date DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'ngay tao',
 update_user VARCHAR(100) COMMENT 'nguoi cap nhat',
 update_date DATETIME ON UPDATE CURRENT_TIMESTAMP COMMENT 'ngay cap nhat'
+);
+
+CREATE TABLE ticket_type (
+id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT 'unique id',
+ticket_storage_id INT(10) COMMENT 'id ticket_storage',
+ticket_type_code VARCHAR(100) COMMENT 'ma loai ve, link voi app_param truong value voi code_type = VNA_TYPE_TICKET',
+amount_string VARCHAR(100) COMMENT 'gia ve (dinh dang String) chua qua xu ly',
+amount INT(10) COMMENT 'gia ve'
 );
 
 CREATE TABLE customer_booking (
@@ -127,13 +132,36 @@ insert into app_param(code_type, value, attr1, description, status)
 values('VNA_PARSER_PATH', 'tr.yui-dt-even > td:nth-child(3) > span.translate.wasTranslated, tr.yui-dt-odd > td:nth-child(3) > span.translate.wasTranslated', 'from\_time', 'Giờ đi', 1);
 insert into app_param(code_type, value, attr1, description, status)
 values('VNA_PARSER_PATH', 'tr.yui-dt-even > td:nth-child(4) > span.translate.wasTranslated, tr.yui-dt-odd > td:nth-child(4) > span.translate.wasTranslated', 'to\_time', 'Giờ đến', 1);
-insert into app_param(code_type, value, attr1, description, status)
-values('VNA_PARSER_PATH', '', 'ticket\_type', 'Loại vé', 1);
-insert into app_param(code_type, value, attr1, description, status)
-values('VNA_PARSER_PATH', '', 'amount', 'Giá vé', 1);
+insert into app_param(code_type, value, attr1, attr2, description, status)
+values('VNA_PARSER_PATH', 'div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"BF\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"BF\"] span.farefamily-cell-unavailable.translate.wasTranslated', 'amount', 'TGLH', 'Giá vé dành cho loại vé Thương gia linh hoạt', 1);
+insert into app_param(code_type, value, attr1, attr2, description, status)
+values('VNA_PARSER_PATH', 'div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"BS\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"BS\"] span.farefamily-cell-unavailable.translate.wasTranslated', 'amount', 'TGTC', 'Giá vé dành cho loại vé Thương gia tiêu chuẩn', 1);
+insert into app_param(code_type, value, attr1, attr2, description, status)
+values('VNA_PARSER_PATH', 'div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"EF\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"EF\"] span.farefamily-cell-unavailable.translate.wasTranslated', 'amount', 'PTLH', 'Giá vé dành cho loại vé Phổ thông linh hoạt', 1);
+insert into app_param(code_type, value, attr1, attr2, description, status)
+values('VNA_PARSER_PATH', 'div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"EE\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"EE\"] span.farefamily-cell-unavailable.translate.wasTranslated', 'amount', 'PTTC', 'Giá vé dành cho loại vé Phổ thông tiêu chuẩn', 1);
+insert into app_param(code_type, value, attr1, attr2, description, status)
+values('VNA_PARSER_PATH', 'div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"SF\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"SF\"] span.farefamily-cell-unavailable.translate.wasTranslated', 'amount', 'PTTK', 'Giá vé dành cho loại vé Phổ thông tiết kiệm', 1);
+insert into app_param(code_type, value, attr1, attr2, description, status)
+values('VNA_PARSER_PATH', 'div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"ES\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"ES\"] span.farefamily-cell-unavailable.translate.wasTranslated', 'amount', 'TKDB', 'Giá vé dành cho loại vé Tiết kiệm đặc biệt', 1);
+
+
+---- VNAirline Type ticket
+insert into app_param(code_type, value, description, status)
+values('VNA_TYPE_TICKET', 'TGLH', 'Thương gia linh hoạt', 1);
+insert into app_param(code_type, value, description, status)
+values('VNA_TYPE_TICKET', 'TGTC', 'Thương gia tiêu chuẩn', 1);
+insert into app_param(code_type, value, description, status)
+values('VNA_TYPE_TICKET', 'PTLH', 'Phổ thông linh hoạt', 1);
+insert into app_param(code_type, value, description, status)
+values('VNA_TYPE_TICKET', 'PTTC', 'Phổ thông tiêu chuẩn', 1);
+insert into app_param(code_type, value, description, status)
+values('VNA_TYPE_TICKET', 'PTTK', 'Phổ thông tiết kiệm', 1);
+insert into app_param(code_type, value, description, status)
+values('VNA_TYPE_TICKET', 'TKDB', 'Tiết kiệm đặc biệt', 1);
 
 -- Fake data
 insert into customer(title, first_name, last_name, mobilephone, email, birth_date)
 values ('Ông', 'Lê', 'Đô Na', '01689163690', 'ledona1509@gmail.com', '1991-09-15');
 insert into account(user_name, password, customer_id, status)
-values('ledona1509', 'pss123', 1, 1);	
+values('ledona1509', 'pss123', 1, 1);

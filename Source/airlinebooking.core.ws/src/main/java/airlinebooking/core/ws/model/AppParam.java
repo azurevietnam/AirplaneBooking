@@ -32,7 +32,7 @@ public class AppParam implements java.io.Serializable {
 	private String value;
 	private String description;
 	private ActiveType status = ActiveType.ACTIVE;
-	private String telephone;
+	private String codePlace;
 	private String attr1;
 	private String attr2;
 	private String attr3;
@@ -57,7 +57,7 @@ public class AppParam implements java.io.Serializable {
 		this.value = value;
 		this.description = description;
 		this.status = status;
-		this.telephone = telephone;
+		this.codePlace = telephone;
 		this.attr1 = attr1;
 		this.attr2 = attr2;
 		this.attr3 = attr3;
@@ -121,11 +121,11 @@ public class AppParam implements java.io.Serializable {
 
 	@Column(name = "telephone", length = 20)
 	public String getTelephone() {
-		return this.telephone;
+		return this.codePlace;
 	}
 
 	public void setTelephone(String telephone) {
-		this.telephone = telephone;
+		this.codePlace = telephone;
 	}
 
 	@Column(name = "attr1", length = 100)
