@@ -22,8 +22,10 @@ public class AppParamTest {
 	@Test
 	public void getListByHQL(){
 		try {
+			@SuppressWarnings("unused")
 			List<AppParam> result = appDao.getParserPathByAirlineType(AirlineType.VNAIRLINE);
-			System.out.println("");
+			
+			System.out.println("Done");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

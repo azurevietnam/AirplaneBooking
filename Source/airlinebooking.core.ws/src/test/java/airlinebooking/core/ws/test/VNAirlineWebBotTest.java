@@ -1,10 +1,13 @@
 package airlinebooking.core.ws.test;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +22,7 @@ import arilinebooking.core.ws.webbot.WebBot;
 @ContextConfiguration(locations = { "classpath:spring/applicationContext.xml" })
 public class VNAirlineWebBotTest {
 	@Test
-	public void getHTMLByJSoup(){
+	public void getHTMLByURL(){
 		WebBot vn = new VNAirlineWebBot();
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.YEAR, 2015);
@@ -32,6 +35,17 @@ public class VNAirlineWebBotTest {
 		Elements content = doc.select("div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"ES\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"ES\"] span.farefamily-cell-unavailable.translate.wasTranslated");
  
 		System.out.println(content.text());
+		System.out.println("Done");
+	}
+	
+	@Test
+	public void getHTMLByFile() throws IOException{
+		File input = new File("C:/Users/nald/Desktop/united.html");
+		Document doc = Jsoup.parse(input, "UTF-8");
+		Elements elements = doc.select("div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"ES\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"ES\"] span.farefamily-cell-unavailable.translate.wasTranslated");
+		for (Element element : elements){
+			System.out.println(element.text());
+		}
 		System.out.println("Done");
 	}
 }

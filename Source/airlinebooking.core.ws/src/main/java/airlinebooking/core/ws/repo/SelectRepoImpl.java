@@ -38,7 +38,6 @@ public class SelectRepoImpl extends AbstractQueryRepo implements SelectRepo {
 			Query query = session.createQuery(hql);
 			addParameters(query, params);
 			query.setCacheable(true);
-
 			query.setMaxResults(1);
 			return (T) query.uniqueResult();
 		} catch (Exception e) {
