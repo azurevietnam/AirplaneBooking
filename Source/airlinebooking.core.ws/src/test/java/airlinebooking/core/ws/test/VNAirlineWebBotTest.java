@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import airlinebooking.core.ws.model.helper.HtmlResultMH;
 import arilinebooking.core.ws.webbot.VNAirlineWebBot;
 import arilinebooking.core.ws.webbot.WebBot;
 
@@ -26,8 +27,8 @@ public class VNAirlineWebBotTest {
 		cal.set(Calendar.DAY_OF_MONTH, 25);
 		Date pickedDate = cal.getTime();
 		
-		String htmlResult = vn.getHTML("SGN", "DAD", pickedDate, 1, 0, 0);
-		Document doc = Jsoup.parse(htmlResult);
+		HtmlResultMH htmlResult = vn.getHTML("SGN", "DAD", pickedDate, 1, 0, 0);
+		Document doc = Jsoup.parse(htmlResult.getHtmlResult());
 		Elements content = doc.select("div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"ES\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"ES\"] span.farefamily-cell-unavailable.translate.wasTranslated");
  
 		System.out.println(content.text());

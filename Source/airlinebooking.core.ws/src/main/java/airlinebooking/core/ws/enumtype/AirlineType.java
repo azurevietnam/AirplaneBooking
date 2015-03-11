@@ -3,9 +3,7 @@ package airlinebooking.core.ws.enumtype;
 import java.util.HashMap;
 import java.util.Map;
 
-public enum TicketStorageAirlineType {
-	UNKNOWN(0),
-	
+public enum AirlineType {
 	VNAIRLINE(1),
 	
     JETSTAR (2),
@@ -34,7 +32,7 @@ public enum TicketStorageAirlineType {
      * @param value
      *            the value
      */
-    TicketStorageAirlineType(Integer value) {
+    AirlineType(Integer value) {
         this.value = value;
     }
     
