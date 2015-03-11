@@ -15,7 +15,7 @@ public class QueryRepoImpl implements QueryRepo {
 	CrudRepo crudRepo;
 	
 	@Autowired
-	SelectRepo queryRepo;
+	SelectRepo selectRepo;
 	
 	@Override
 	@Transactional
@@ -38,13 +38,20 @@ public class QueryRepoImpl implements QueryRepo {
 	@Override
 	@Transactional
 	public <T> T getEntityById(Class<T> clazz, Serializable id) throws DataAccessException {
-		return queryRepo.getEntityById(clazz, id);
+		return selectRepo.getEntityById(clazz, id);
 	}
 
 	@Override
+	@Transactional
 	public <T> T getEntityByHQL(String hql, List<Object> params) throws DataAccessException {
-		// TODO Auto-generated method stub
-		return null;
+		return selectRepo.getEntityByHQL(hql, params);
+	}
+
+	@Override
+	@Transactional
+	public <T> List<T> getListByHQL(String hql, List<Object> params)
+			throws DataAccessException {
+		return selectRepo.getListByHQL(hql, params);
 	}
 
 }

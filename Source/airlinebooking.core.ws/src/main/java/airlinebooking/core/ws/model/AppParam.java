@@ -119,13 +119,13 @@ public class AppParam implements java.io.Serializable {
 		this.status = status;
 	}
 
-	@Column(name = "telephone", length = 20)
-	public String getTelephone() {
+	@Column(name = "code_place", length = 100)
+	public String getCodePlace() {
 		return this.codePlace;
 	}
 
-	public void setTelephone(String telephone) {
-		this.codePlace = telephone;
+	public void setCodePlace(String codePlace) {
+		this.codePlace = codePlace;
 	}
 
 	@Column(name = "attr1", length = 100)
