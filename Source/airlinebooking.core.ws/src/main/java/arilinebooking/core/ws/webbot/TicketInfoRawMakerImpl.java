@@ -9,7 +9,7 @@ import org.jsoup.select.Elements;
 
 import airlinebooking.core.ws.model.helper.TicketInforRawMH;
 
-public class ConverterImpl implements Converter {
+public class TicketInfoRawMakerImpl implements TicketInfoRawMaker {
 
 	@Override
 	public List<TicketInforRawMH> convertParserToTicketInforMH(
