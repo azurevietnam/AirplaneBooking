@@ -16,8 +16,8 @@ import airlinebooking.core.ws.enumtype.AirlineType;
 import airlinebooking.core.ws.model.TicketParserParam;
 import airlinebooking.core.ws.model.helper.HtmlResultMH;
 import airlinebooking.core.ws.model.helper.TicketInforRawMH;
-import arilinebooking.core.ws.webbot.TicketInfoRawMaker;
-import arilinebooking.core.ws.webbot.TicketInfoRawMakerImpl;
+import arilinebooking.core.ws.webbot.TicketInforRawMaker;
+import arilinebooking.core.ws.webbot.TicketInforRawMakerImpl;
 import arilinebooking.core.ws.webbot.Parser;
 import arilinebooking.core.ws.webbot.ParserJsoupImpl;
 
@@ -79,7 +79,7 @@ public class ConverterTest {
 			HashMap<String, Object> result = parserJsoup.getObjectInfor(htmlResult, parserPathList);
 			
 			
-			TicketInfoRawMaker converter = new TicketInfoRawMakerImpl();
+			TicketInforRawMaker converter = new TicketInforRawMakerImpl();
 			List<TicketInforRawMH> ticketInforMHList = converter.convertParserToTicketInforMH(result);
 			
 			System.out.println("");

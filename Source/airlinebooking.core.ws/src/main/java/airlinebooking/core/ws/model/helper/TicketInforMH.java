@@ -7,7 +7,7 @@ import airlinebooking.core.ws.model.Ticket;
 import airlinebooking.core.ws.model.TicketType;
 
 public class TicketInforMH {
-	private Ticket ticket;
+	private Ticket ticket = new Ticket();
 	private List<TicketType> ticketTypeList = new ArrayList<TicketType>();
 	
 	public TicketInforMH(){}
