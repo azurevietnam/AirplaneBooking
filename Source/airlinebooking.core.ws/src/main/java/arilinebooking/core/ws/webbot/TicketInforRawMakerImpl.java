@@ -17,9 +17,9 @@ public class TicketInforRawMakerImpl implements TicketInforRawMaker {
 
 		List<TicketInforRawMH> ticketInforMHList = new ArrayList<TicketInforRawMH>();
 
-		int numberObject = 0;
-
 		if (!objectConvertHashMap.isEmpty()) {
+			int numberObject = 0;
+			
 			Elements flightCodeElements = (Elements) objectConvertHashMap
 					.get("flight_code");
 			Elements fromTimeElements = (Elements) objectConvertHashMap

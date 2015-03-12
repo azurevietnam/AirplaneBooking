@@ -82,7 +82,8 @@ CREATE TABLE ticket_parser_param (
 id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT 'unique id',
 airline_type INT(1) COMMENT 'hang may bay: 1: VNAirline, 2: Jetstar, 3: Vietjet',
 code_type VARCHAR(100) COMMENT 'ma thong tin (tuong ung voi cac field cua ticket)',
-ticket_type_code VARCHAR(100) COMMENT 'ma loai ve, link voi app_param truong value voi code_type = VNA_TYPE_TICKET',
+ticket_type_code VARCHAR(100) COMMENT 'dung xac dinh ma loai ve voi thong tin ve gia ve, link voi app_param truong value voi code_type = VNA_TYPE_TICKET',
+description TEXT COMMENT 'mo ta',
 selector_path TEXT COMMENT 'duong dan selector',
 status INT(1) COMMENT 'trang thai: 0: inactive, 1: active'
 );
@@ -135,39 +136,38 @@ update_date DATETIME ON UPDATE CURRENT_TIMESTAMP COMMENT 'ngay cap nhat'
 
 -- app_param master data
 ---- VNAirline Parser path
-insert into app_param(code_type, attr1, description, value, status)
-values('VNA_PARSER_PATH', 'flight_code', 'Mã chuyến bay', 'a.translate[title=\"Xem chi tiết chuyến bay\"]', 1);
-insert into app_param(code_type, attr1, description, value, status)
-values('VNA_PARSER_PATH', 'from_time', 'Giờ đi', 'tr.yui-dt-even > td:nth-child(3) > span.translate.wasTranslated, tr.yui-dt-odd > td:nth-child(3) > span.translate.wasTranslated', 1);
-insert into app_param(code_type, attr1, description, value, status)
-values('VNA_PARSER_PATH', 'to_time', 'Giờ đến', 'tr.yui-dt-even > td:nth-child(4) > span.translate.wasTranslated, tr.yui-dt-odd > td:nth-child(4) > span.translate.wasTranslated', 1);
-insert into app_param(code_type, attr1, attr2, attr3, description, value, status)
-values('VNA_PARSER_PATH', 'amount', 'TGLH', '1', 'Giá vé dành cho loại vé Thương gia linh hoạt', 'div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"BF\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"BF\"] span.farefamily-cell-unavailable.translate.wasTranslated', 1);
-insert into app_param(code_type, attr1, attr2, attr3, description, value, status)
-values('VNA_PARSER_PATH', 'amount', 'TGTC', '1', 'Giá vé dành cho loại vé Thương gia tiêu chuẩn', 'div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"BS\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"BS\"] span.farefamily-cell-unavailable.translate.wasTranslated', 1);
-insert into app_param(code_type, attr1, attr2, attr3, description, value, status)
-values('VNA_PARSER_PATH', 'amount', 'PTLH', '1', 'Giá vé dành cho loại vé Phổ thông linh hoạt', 'div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"EF\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"EF\"] span.farefamily-cell-unavailable.translate.wasTranslated', 1);
-insert into app_param(code_type, attr1, attr2, attr3, description, value, status)
-values('VNA_PARSER_PATH', 'amount', 'PTTC', '1', 'Giá vé dành cho loại vé Phổ thông tiêu chuẩn', 'div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"EE\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"EE\"] span.farefamily-cell-unavailable.translate.wasTranslated', 1);
-insert into app_param(code_type, attr1, attr2, attr3, description, value, status)
-values('VNA_PARSER_PATH', 'amount', 'PTTK', '1', 'Giá vé dành cho loại vé Phổ thông tiết kiệm', 'div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"SF\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"SF\"] span.farefamily-cell-unavailable.translate.wasTranslated', 1);
-insert into app_param(code_type, attr1, attr2, attr3, description, value, status)
-values('VNA_PARSER_PATH', 'amount', 'TKDB', '1', 'Giá vé dành cho loại vé Tiết kiệm đặc biệt', 'div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"ES\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"ES\"] span.farefamily-cell-unavailable.translate.wasTranslated', 1);
-
+insert into ticket_parser_param(airline_type, code_type, ticket_type_code, description, selector_path, status)
+values (1, 'flight_code', '', 'Mã chuyến bay', 'a.translate[title=\"Xem chi tiết chuyến bay\"]', 1);
+insert into ticket_parser_param(airline_type, code_type, ticket_type_code, description, selector_path, status)
+values (1, 'from_time', '', 'Giờ đi', 'tr.yui-dt-even > td:nth-child(3) > span.translate.wasTranslated, tr.yui-dt-odd > td:nth-child(3) > span.translate.wasTranslated', 1);
+insert into ticket_parser_param(airline_type, code_type, ticket_type_code, description, selector_path, status)
+values (1, 'to_time', '', 'Giờ đến', 'tr.yui-dt-even > td:nth-child(4) > span.translate.wasTranslated, tr.yui-dt-odd > td:nth-child(4) > span.translate.wasTranslated', 1);
+insert into ticket_parser_param(airline_type, code_type, ticket_type_code, description, selector_path, status)
+values (1, 'amount', 'VNA_TGLH', 'Giá vé dành cho loại vé Thương gia linh hoạt', 'div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"BF\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"BF\"] span.farefamily-cell-unavailable.translate.wasTranslated', 1);
+insert into ticket_parser_param(airline_type, code_type, ticket_type_code, description, selector_path, status)
+values (1, 'amount', 'VNA_TGTC', 'Giá vé dành cho loại vé Thương gia tiêu chuẩn', 'div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"BS\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"BS\"] span.farefamily-cell-unavailable.translate.wasTranslated', 1);
+insert into ticket_parser_param(airline_type, code_type, ticket_type_code, description, selector_path, status)
+values (1, 'amount', 'VNA_PTLH', 'Giá vé dành cho loại vé Phổ thông linh hoạt', 'div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"EF\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"EF\"] span.farefamily-cell-unavailable.translate.wasTranslated', 1);
+insert into ticket_parser_param(airline_type, code_type, ticket_type_code, description, selector_path, status)
+values (1, 'amount', 'VNA_PTTC', 'Giá vé dành cho loại vé Phổ thông tiêu chuẩn', 'div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"EE\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"EE\"] span.farefamily-cell-unavailable.translate.wasTranslated', 1);
+insert into ticket_parser_param(airline_type, code_type, ticket_type_code, description, selector_path, status)
+values (1, 'amount', 'VNA_PTTK', 'Giá vé dành cho loại vé Phổ thông tiết kiệm', 'div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"SF\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"SF\"] span.farefamily-cell-unavailable.translate.wasTranslated', 1);
+insert into ticket_parser_param(airline_type, code_type, ticket_type_code, description, selector_path, status)
+values (1, 'amount', 'VNA_TKDB', 'Giá vé dành cho loại vé Tiết kiệm đặc biệt', 'div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"ES\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"ES\"] span.farefamily-cell-unavailable.translate.wasTranslated', 1);
 
 ---- VNAirline Type ticket
 insert into app_param(code_type, value, description, status)
-values('VNA_TYPE_TICKET', 'TGLH', 'Thương gia linh hoạt', 1);
+values('VNA_TYPE_TICKET', 'VNA_TGLH', 'Thương gia linh hoạt', 1);
 insert into app_param(code_type, value, description, status)
-values('VNA_TYPE_TICKET', 'TGTC', 'Thương gia tiêu chuẩn', 1);
+values('VNA_TYPE_TICKET', 'VNA_TGTC', 'Thương gia tiêu chuẩn', 1);
 insert into app_param(code_type, value, description, status)
-values('VNA_TYPE_TICKET', 'PTLH', 'Phổ thông linh hoạt', 1);
+values('VNA_TYPE_TICKET', 'VNA_PTLH', 'Phổ thông linh hoạt', 1);
 insert into app_param(code_type, value, description, status)
-values('VNA_TYPE_TICKET', 'PTTC', 'Phổ thông tiêu chuẩn', 1);
+values('VNA_TYPE_TICKET', 'VNA_PTTC', 'Phổ thông tiêu chuẩn', 1);
 insert into app_param(code_type, value, description, status)
-values('VNA_TYPE_TICKET', 'PTTK', 'Phổ thông tiết kiệm', 1);
+values('VNA_TYPE_TICKET', 'VNA_PTTK', 'Phổ thông tiết kiệm', 1);
 insert into app_param(code_type, value, description, status)
-values('VNA_TYPE_TICKET', 'TKDB', 'Tiết kiệm đặc biệt', 1);
+values('VNA_TYPE_TICKET', 'VNA_TKDB', 'Tiết kiệm đặc biệt', 1);
 
 -- Fake data
 insert into customer(title, first_name, last_name, mobilephone, email, birth_date)
