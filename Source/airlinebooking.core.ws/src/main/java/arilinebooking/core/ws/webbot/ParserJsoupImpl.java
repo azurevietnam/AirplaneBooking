@@ -1,6 +1,5 @@
 package arilinebooking.core.ws.webbot;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -27,19 +26,16 @@ public class ParserJsoupImpl implements Parser {
 				resultHashMap.put(ticketParserParam.getCodeType(), elements);
 			}
 			else{
-				HashMap<String, Object> subHashMap = new HashMap<String, Object>();
-				subHashMap.put(ticketParserParam.getTicketTypeCode(), elements);
-				
 				if (resultHashMap.get(ticketParserParam.getCodeType()) != null)
 				{
-					List<HashMap<String, Object>> hashMapListOld = (List<HashMap<String, Object>>) resultHashMap.get(ticketParserParam.getCodeType());
-					hashMapListOld.add(subHashMap);
+					HashMap<String, Object> hashMapListOld = (HashMap<String, Object>) resultHashMap.get(ticketParserParam.getCodeType());
+					hashMapListOld.put(ticketParserParam.getTicketTypeCode(), elements);
 					resultHashMap.put(ticketParserParam.getCodeType(), hashMapListOld);
 				}
 				else{
-					List<HashMap<String, Object>> hashMapList = new ArrayList<HashMap<String, Object>>();
-					hashMapList.add(subHashMap);
-					resultHashMap.put(ticketParserParam.getCodeType(), hashMapList);
+					HashMap<String, Object> hashMapListNew = new HashMap<String, Object>();
+					hashMapListNew.put(ticketParserParam.getTicketTypeCode(), elements);
+					resultHashMap.put(ticketParserParam.getCodeType(), hashMapListNew);
 				}
 			}
 		}
