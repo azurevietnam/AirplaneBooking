@@ -21,7 +21,7 @@ import airlinebooking.core.ws.model.TicketParserParam;
 import airlinebooking.core.ws.model.helper.HtmlResultMH;
 import arilinebooking.core.ws.webbot.Parser;
 import arilinebooking.core.ws.webbot.ParserJsoupImpl;
-import arilinebooking.core.ws.webbot.VNAirlineWebBot;
+import arilinebooking.core.ws.webbot.WebBotVNAImpl;
 import arilinebooking.core.ws.webbot.WebBot;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -36,7 +36,7 @@ public class ParserTest {
 			List<TicketParserParam> parserPathList = ticketParserParamDao.getParserPathByAirlineType(AirlineType.VNAIRLINE);
 			
 			Parser parserJsoup = new ParserJsoupImpl();
-			WebBot webBotVNA = new VNAirlineWebBot();
+			WebBot webBotVNA = new WebBotVNAImpl();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.YEAR, 2015);
 			cal.set(Calendar.MONTH, Calendar.MARCH);

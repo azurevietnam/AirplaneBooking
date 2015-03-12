@@ -15,7 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import airlinebooking.core.ws.model.helper.HtmlResultMH;
-import arilinebooking.core.ws.webbot.VNAirlineWebBot;
+import arilinebooking.core.ws.webbot.WebBotVNAImpl;
 import arilinebooking.core.ws.webbot.WebBot;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -23,7 +23,7 @@ import arilinebooking.core.ws.webbot.WebBot;
 public class VNAirlineWebBotTest {
 	@Test
 	public void getHTMLByURL(){
-		WebBot vn = new VNAirlineWebBot();
+		WebBot vn = new WebBotVNAImpl();
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.YEAR, 2015);
 		cal.set(Calendar.MONTH, Calendar.MARCH);

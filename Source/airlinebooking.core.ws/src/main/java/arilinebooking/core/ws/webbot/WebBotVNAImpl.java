@@ -15,7 +15,7 @@ import airlinebooking.core.ws.model.helper.HtmlResultMH;
  * @author ledona
  *
  */
-public class VNAirlineWebBot implements WebBot {
+public class WebBotVNAImpl implements WebBot {
 
 	int timeOut = 10 * 1000; // set timeout jsoup connection to get data is 10s
 	String userAgent = "Mozilla";
