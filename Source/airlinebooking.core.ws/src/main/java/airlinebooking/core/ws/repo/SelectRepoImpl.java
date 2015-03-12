@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,4 +61,32 @@ public class SelectRepoImpl extends AbstractQueryRepo implements SelectRepo {
 		}
 	}
 
+	@Override
+	public <T> List<T> getListBySQL(Class<T> clazz, String sql,
+			List<Object> params) throws DataAccessException {
+		return getListBySQL(clazz, sql, params, null, null);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public <T> List<T> getListBySQL(Class<T> clazz, String sql,
+			List<Object> params, List<Class<?>> synchronizedClass,
+			Integer maxResult) throws DataAccessException {
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			SQLQuery query = session.createSQLQuery(sql);
+			addParameters(query, params);
+			addSynchronizedClass(query, synchronizedClass);
+			query.setCacheable(true);
+			query.addEntity(clazz);
+
+			if (maxResult != null && maxResult > 0) {
+				query.setMaxResults(maxResult);
+			}
+
+			return query.list();
+		} catch (Exception e) {
+			throw new DataAccessException(e);
+		}
+	}
 }

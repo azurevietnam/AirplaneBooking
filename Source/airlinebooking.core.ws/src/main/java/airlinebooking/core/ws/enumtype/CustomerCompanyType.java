@@ -15,7 +15,7 @@ public enum CustomerCompanyType {
     private Integer value;
     
     /** The values. */
-    private static Map<Integer, ActiveType> values = null;
+    private static Map<Integer, CustomerCompanyType> values = null;
     
     /**
      * Gets the value.
@@ -43,14 +43,14 @@ public enum CustomerCompanyType {
      *            the value
      * @return the gender type
      */
-    public static ActiveType parseValue(Integer value) {
+    public static CustomerCompanyType parseValue(Integer value) {
     	if (value != null && value == -1){
     		value = -2;
     	}    		
         if (values == null) {
-            values = new HashMap<Integer, ActiveType>(
-                    ActiveType.values().length);
-            for (ActiveType e : ActiveType.values())
+            values = new HashMap<Integer, CustomerCompanyType>(
+                    CustomerCompanyType.values().length);
+            for (CustomerCompanyType e : CustomerCompanyType.values())
                 values.put(e.getValue(), e);
         }
         return values.get(value);

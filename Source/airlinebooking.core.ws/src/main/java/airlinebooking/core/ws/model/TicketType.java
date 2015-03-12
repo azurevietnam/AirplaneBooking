@@ -20,7 +20,7 @@ public class TicketType implements java.io.Serializable{
 	 */
 	private static final long serialVersionUID = -1426326134468307419L;
 	private Integer id;
-	private TicketStorage ticketStorage;
+	private Ticket ticket;
 	private String ticketTypeCode;
 	private String amountString;
 	private Integer amount;
@@ -36,12 +36,12 @@ public class TicketType implements java.io.Serializable{
 	}
 	
 	@ManyToOne(targetEntity = Customer.class, cascade=CascadeType.ALL)
-	@JoinColumn(name = "ticket_storage_id", referencedColumnName = "id")
-	public TicketStorage getTicketStorage() {
-		return ticketStorage;
+	@JoinColumn(name = "ticket_id", referencedColumnName = "id")
+	public Ticket getTicket() {
+		return ticket;
 	}
-	public void setTicketStorage(TicketStorage ticketStorage) {
-		this.ticketStorage = ticketStorage;
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
 	}
 	
 	@Column(name = "ticket_type_code", length = 100)

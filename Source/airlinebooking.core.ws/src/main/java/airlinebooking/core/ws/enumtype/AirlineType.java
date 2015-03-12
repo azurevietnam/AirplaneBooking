@@ -15,7 +15,7 @@ public enum AirlineType {
     private Integer value;
     
     /** The values. */
-    private static Map<Integer, ActiveType> values = null;
+    private static Map<Integer, AirlineType> values = null;
     
     /**
      * Gets the value.
@@ -43,14 +43,14 @@ public enum AirlineType {
      *            the value
      * @return the gender type
      */
-    public static ActiveType parseValue(Integer value) {
+    public static AirlineType parseValue(Integer value) {
     	if (value != null && value == -1){
     		value = -2;
     	}    		
         if (values == null) {
-            values = new HashMap<Integer, ActiveType>(
-                    ActiveType.values().length);
-            for (ActiveType e : ActiveType.values())
+            values = new HashMap<Integer, AirlineType>(
+            		AirlineType.values().length);
+            for (AirlineType e : AirlineType.values())
                 values.put(e.getValue(), e);
         }
         return values.get(value);

@@ -6,10 +6,19 @@ import java.util.List;
 import airlinebooking.core.ws.exception.DataAccessException;
 
 public interface SelectRepo {
-	<T> T getEntityById(Class<T> clazz, Serializable id) throws DataAccessException;
+	<T> T getEntityById(Class<T> clazz, Serializable id)
+			throws DataAccessException;
 
-	<T> T getEntityByHQL(String hql, List<Object> params) throws DataAccessException;
+	<T> T getEntityByHQL(String hql, List<Object> params)
+			throws DataAccessException;
+
+	public <T> List<T> getListByHQL(String hql, List<Object> params)
+			throws DataAccessException;
+
+	public <T> List<T> getListBySQL(Class<T> clazz, String sql,
+			List<Object> params) throws DataAccessException;
 	
-	public <T> List<T> getListByHQL(String hql, List<Object> params) throws DataAccessException;
-
+	public <T> List<T> getListBySQL(Class<T> clazz, String sql,
+			List<Object> params, List<Class<?>> synchronizedClass,
+			Integer maxResult) throws DataAccessException;
 }

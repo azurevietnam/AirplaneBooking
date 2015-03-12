@@ -54,4 +54,19 @@ public class QueryRepoImpl implements QueryRepo {
 		return selectRepo.getListByHQL(hql, params);
 	}
 
+	@Override
+	@Transactional
+	public <T> List<T> getListBySQL(Class<T> clazz, String sql,
+			List<Object> params) throws DataAccessException {
+		return selectRepo.getListBySQL(clazz, sql, params);
+	}
+
+	@Override
+	@Transactional
+	public <T> List<T> getListBySQL(Class<T> clazz, String sql,
+			List<Object> params, List<Class<?>> synchronizedClass,
+			Integer maxResult) throws DataAccessException {
+		return selectRepo.getListBySQL(clazz, sql, params, synchronizedClass, maxResult);
+	}
+
 }

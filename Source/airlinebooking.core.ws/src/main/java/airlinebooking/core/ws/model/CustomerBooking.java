@@ -33,7 +33,7 @@ public class CustomerBooking implements java.io.Serializable {
 	private Integer id;
 	private Account account;
 	private Customer customer;
-	private TicketStorage ticketStorage;
+	private Ticket ticket;
 	private Integer adultQuanlity;
 	private Integer childrenQuanlity;
 	private Integer infantQuanlity;
@@ -47,18 +47,18 @@ public class CustomerBooking implements java.io.Serializable {
 	public CustomerBooking() {
 	}
 
-	public CustomerBooking(TicketStorage ticketStorage) {
-		this.ticketStorage = ticketStorage;
+	public CustomerBooking(Ticket ticket) {
+		this.ticket = ticket;
 	}
 
 	public CustomerBooking(Account account, Customer customer,
-			TicketStorage ticketStorage, Integer adultQuanlity,
+			Ticket ticket, Integer adultQuanlity,
 			Integer childrenQuanlity, Integer infantQuanlity,
 			Integer amountTotal, String createUser, Date createDate,
 			String updateUser, Date updateDate) {
 		this.account = account;
 		this.customer = customer;
-		this.ticketStorage = ticketStorage;
+		this.ticket = ticket;
 		this.adultQuanlity = adultQuanlity;
 		this.childrenQuanlity = childrenQuanlity;
 		this.infantQuanlity = infantQuanlity;
@@ -100,14 +100,14 @@ public class CustomerBooking implements java.io.Serializable {
 		this.customer = customer;
 	}
 
-	@ManyToOne(targetEntity = TicketStorage.class, cascade=CascadeType.ALL)
-	@JoinColumn(name = "ticket_storage_id", referencedColumnName = "id")
-	public TicketStorage getTicketStorage() {
-		return this.ticketStorage;
+	@ManyToOne(targetEntity = Ticket.class, cascade=CascadeType.ALL)
+	@JoinColumn(name = "ticket_id", referencedColumnName = "id")
+	public Ticket getTicket() {
+		return this.ticket;
 	}
 
-	public void setTicketStorage(TicketStorage ticketStorage) {
-		this.ticketStorage = ticketStorage;
+	public void setTicket(Ticket ticket) {
+		this.ticket = ticket;
 	}
 
 	@Column(name = "adult_quanlity")
