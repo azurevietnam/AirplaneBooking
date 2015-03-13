@@ -169,6 +169,15 @@ values('VNA_TYPE_TICKET', 'VNA_PTTK', 'Phổ thông tiết kiệm', 1);
 insert into app_param(code_type, value, description, status)
 values('VNA_TYPE_TICKET', 'VNA_TKDB', 'Tiết kiệm đặc biệt', 1);
 
+---- Jetstar Parser Path
+insert into ticket_parser_param(airline_type, code_type, ticket_type_code, description, selector_path, status)
+values (2, 'flight_code', '', 'Mã chuyến bay', 'a.translate[title=\"Xem chi tiết chuyến bay\"]', 1);
+insert into ticket_parser_param(airline_type, code_type, ticket_type_code, description, selector_path, status)
+values (2, 'from_time', '', 'Giờ đi', 'tr.yui-dt-even > td:nth-child(3) > span.translate.wasTranslated, tr.yui-dt-odd > td:nth-child(3) > span.translate.wasTranslated', 1);
+insert into ticket_parser_param(airline_type, code_type, ticket_type_code, description, selector_path, status)
+values (2, 'to_time', '', 'Giờ đến', 'tr.yui-dt-even > td:nth-child(4) > span.translate.wasTranslated, tr.yui-dt-odd > td:nth-child(4) > span.translate.wasTranslated', 1);
+
+
 -- Fake data
 insert into customer(title, first_name, last_name, mobilephone, email, birth_date)
 values ('Ông', 'Lê', 'Đô Na', '01689163690', 'ledona1509@gmail.com', '1991-09-15');
