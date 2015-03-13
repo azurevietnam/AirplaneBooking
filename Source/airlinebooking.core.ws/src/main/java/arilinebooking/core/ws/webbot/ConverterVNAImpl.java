@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 
 import airlinebooking.core.ws.enumtype.AirlineType;
 import airlinebooking.core.ws.model.Ticket;
-import airlinebooking.core.ws.model.TicketType;
+import airlinebooking.core.ws.model.TicketPriceDetail;
 import airlinebooking.core.ws.model.helper.TicketInforMH;
 import airlinebooking.core.ws.model.helper.TicketInforRawMH;
 
@@ -24,7 +24,7 @@ public class ConverterVNAImpl extends Converter {
 			for (TicketInforRawMH ticketInforRawMH : ticketInforRawMHList) {
 				TicketInforMH ticketInforMH = new TicketInforMH();
 				Ticket ticket = new Ticket();
-				List<TicketType> ticketTypeList = new ArrayList<TicketType>();
+				List<TicketPriceDetail> ticketTypeList = new ArrayList<TicketPriceDetail>();
 
 				ticket.setAirlineType(airlineType);
 				ticket.setOriginCode(oriCode);
@@ -39,7 +39,7 @@ public class ConverterVNAImpl extends Converter {
 
 				for (Entry<String, String> entry : ticketInforRawMH
 						.getTicketPriceByType().entrySet()) {
-					TicketType ticketType = new TicketType();
+					TicketPriceDetail ticketType = new TicketPriceDetail();
 					ticketType.setTicket(ticket);
 					ticketType.setTicketTypeCode(entry.getKey());
 					ticketType.setAmountString(entry.getValue());

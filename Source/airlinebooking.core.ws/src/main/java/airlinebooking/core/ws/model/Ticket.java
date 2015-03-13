@@ -30,13 +30,12 @@ public class Ticket implements java.io.Serializable {
 	private static final long serialVersionUID = 1927781322548261468L;
 	private Integer id;
 	private AirlineType airlineType;
-	private String flightCode;
-	private String originCode;
+	private String originationCode;
 	private String destinationCode;
-	private Date fromDate;
-	private Date toDate;
+	private Date pickedDate;
 	private Date fromTime;
 	private Date toTime;
+	private Integer breakpointNumber;
 	private Integer durationTime;
 	private String createUser;
 	private Date createDate;
@@ -44,24 +43,6 @@ public class Ticket implements java.io.Serializable {
 	private Date updateDate;
 
 	public Ticket() {
-	}
-
-	public Ticket(String flightCode,
-			String originCode, String destinationCode, Date fromDate,
-			Date toDate, Date fromTime, Date toTime, Integer durationTime, String createUser,
-			Date createDate, String updateUser, Date updateDate) {
-		this.flightCode = flightCode;
-		this.originCode = originCode;
-		this.destinationCode = destinationCode;
-		this.fromDate = fromDate;
-		this.toDate = toDate;
-		this.fromTime = fromTime;
-		this.toTime = toTime;
-		this.durationTime = durationTime;
-		this.createUser = createUser;
-		this.createDate = createDate;
-		this.updateUser = updateUser;
-		this.updateDate = updateDate;
 	}
 
 	@Id
@@ -88,22 +69,13 @@ public class Ticket implements java.io.Serializable {
 		this.airlineType = airlineType;
 	}
 
-	@Column(name = "flight_code", length = 100)
-	public String getFlightCode() {
-		return this.flightCode;
+	@Column(name = "origination_code", length = 10)
+	public String getOriginationCode() {
+		return this.originationCode;
 	}
 
-	public void setFlightCode(String flightCode) {
-		this.flightCode = flightCode;
-	}
-
-	@Column(name = "origin_code", length = 10)
-	public String getOriginCode() {
-		return this.originCode;
-	}
-
-	public void setOriginCode(String originCode) {
-		this.originCode = originCode;
+	public void setOriginationCode(String originationCode) {
+		this.originationCode = originationCode;
 	}
 
 	@Column(name = "destination_code", length = 10)
@@ -116,23 +88,13 @@ public class Ticket implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "from_date", length = 10)
-	public Date getFromDate() {
-		return this.fromDate;
+	@Column(name = "picked_date", length = 10)
+	public Date getPickedDate() {
+		return this.pickedDate;
 	}
 
-	public void setFromDate(Date fromDate) {
-		this.fromDate = fromDate;
-	}
-
-	@Temporal(TemporalType.DATE)
-	@Column(name = "to_date", length = 10)
-	public Date getToDate() {
-		return this.toDate;
-	}
-
-	public void setToDate(Date toDate) {
-		this.toDate = toDate;
+	public void setPickedDate(Date pickedDate) {
+		this.pickedDate = pickedDate;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
@@ -162,6 +124,15 @@ public class Ticket implements java.io.Serializable {
 
 	public void setDurationTime(Integer durationTime) {
 		this.durationTime = durationTime;
+	}
+	
+	@Column(name = "breakpoint_number")
+	public Integer getBreakpointNumber() {
+		return breakpointNumber;
+	}
+
+	public void setBreakpointNumber(Integer breakpointNumber) {
+		this.breakpointNumber = breakpointNumber;
 	}
 
 	@Column(name = "create_user", length = 100)

@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import airlinebooking.core.ws.model.Ticket;
-import airlinebooking.core.ws.model.TicketType;
+import airlinebooking.core.ws.model.TicketPriceDetail;
 
 public class TicketInforMH {
 	private Ticket ticket = new Ticket();
-	private List<TicketType> ticketTypeList = new ArrayList<TicketType>();
+	private List<TicketPriceDetail> ticketTypeList = new ArrayList<TicketPriceDetail>();
 	
 	public TicketInforMH(){}
 
@@ -20,11 +20,11 @@ public class TicketInforMH {
 		this.ticket = ticket;
 	}
 
-	public List<TicketType> getTicketTypeList() {
+	public List<TicketPriceDetail> getTicketTypeList() {
 		return ticketTypeList;
 	}
 
-	public void setTicketTypeList(List<TicketType> ticketTypeList) {
+	public void setTicketTypeList(List<TicketPriceDetail> ticketTypeList) {
 		this.ticketTypeList = ticketTypeList;
 	}
 }

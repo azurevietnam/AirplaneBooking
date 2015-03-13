@@ -56,26 +56,37 @@ update_date DATETIME ON UPDATE CURRENT_TIMESTAMP COMMENT 'ngay cap nhat'
 CREATE TABLE ticket (
 id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT 'unique id',
 airline_type INT(1) COMMENT 'hang may bay: 1: VNAirline, 2: Jetstar, 3: Vietjet',
-flight_code VARCHAR(100) COMMENT 'ma chuyen bay',
-origin_code VARCHAR(10) COMMENT 'ma diem di',
+origination_code VARCHAR(10) COMMENT 'ma diem di',
 destination_code VARCHAR(10) COMMENT 'ma diem den',
-from_date Date COMMENT 'ngay di',
-to_date Date COMMENT 'ngay den',
+picked_date Date COMMENT 'ngay di',
 from_time DATETIME COMMENT 'gio di',
 to_time DATETIME COMMENT 'gio den',
 duration_time INT(10) COMMENT 'thoi gian bay',
+breakpoint_number INT(2) COMMENT 'so diem dung',
 create_user VARCHAR(100) COMMENT 'nguoi tao',
 create_date DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'ngay tao',
 update_user VARCHAR(100) COMMENT 'nguoi cap nhat',
 update_date DATETIME ON UPDATE CURRENT_TIMESTAMP COMMENT 'ngay cap nhat'
 );
 
-CREATE TABLE ticket_type (
+CREATE TABLE ticket_price_detail (
 id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT 'unique id',
 ticket_id INT(10) COMMENT 'id ticket',
 ticket_type_code VARCHAR(100) COMMENT 'ma loai ve, link voi app_param truong value voi code_type = VNA_TYPE_TICKET',
-amount_string VARCHAR(100) COMMENT 'gia ve (dinh dang String) chua qua xu ly',
-amount INT(10) COMMENT 'gia ve'
+price INT(10) COMMENT 'gia truoc thue',
+tax INT(10) COMMENT 'thue',
+total INT(10) COMMENT 'gia sau thue = price + tax'
+);
+
+CREATE TABLE ticket_flight_detail (
+id INT(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT 'unique id',
+ticket_id INT(10) COMMENT 'id ticket',
+flight_code VARCHAR(10) COMMENT 'so hieu may bay',
+origination_code VARCHAR(10) COMMENT 'ma diem di',
+destination_code VARCHAR(10) COMMENT 'ma diem den',
+from_time DATETIME COMMENT 'gio di',
+to_time DATETIME COMMENT 'gio den',
+duration_time INT(10) COMMENT 'thoi gian bay'
 );
 
 CREATE TABLE ticket_parser_param (

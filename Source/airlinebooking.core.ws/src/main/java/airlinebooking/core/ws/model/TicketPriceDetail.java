@@ -12,8 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ticket_type", catalog = "airlinebooking")
-public class TicketType implements java.io.Serializable{
+@Table(name = "ticket_price_detail", catalog = "airlinebooking")
+public class TicketPriceDetail implements java.io.Serializable{
 
 	/**
 	 * 
@@ -22,8 +22,9 @@ public class TicketType implements java.io.Serializable{
 	private Integer id;
 	private Ticket ticket;
 	private String ticketTypeCode;
-	private String amountString;
-	private Integer amount;
+	private Integer price;
+	private Integer tax;
+	private Integer total;
 	
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -52,19 +53,27 @@ public class TicketType implements java.io.Serializable{
 		this.ticketTypeCode = ticketTypeCode;
 	}
 	
-	@Column(name = "amount_string", length = 100)
-	public String getAmountString() {
-		return amountString;
+	@Column(name = "tax")
+	public Integer getTax() {
+		return tax;
 	}
-	public void setAmountString(String amountString) {
-		this.amountString = amountString;
+	public void setTax(Integer tax) {
+		this.tax = tax;
 	}
 	
-	@Column(name = "amount")
-	public Integer getAmount() {
-		return amount;
+	@Column(name = "price")
+	public Integer getPrice() {
+		return price;
 	}
-	public void setAmount(Integer amount) {
-		this.amount = amount;
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
+	
+	@Column(name = "total")
+	public Integer getTotal() {
+		return total;
+	}
+	public void setTotal(Integer total) {
+		this.total = total;
 	}
 }

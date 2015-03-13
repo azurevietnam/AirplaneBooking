@@ -1,7 +1,7 @@
 package airlinebooking.core.ws.dao;
 
-import airlinebooking.core.ws.model.TicketType;
+import airlinebooking.core.ws.model.TicketPriceDetail;
 
 public interface TicketTypeDao {
-	public TicketType createTicketType(TicketType ticketType);
+	public TicketPriceDetail createTicketType(TicketPriceDetail ticketType);
 }
