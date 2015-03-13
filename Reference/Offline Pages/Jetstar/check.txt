@@ -1,0 +1,14 @@
+VNA
+- Nhiều loại vé cho 1 chuyến bay. Mỗi loại có 1 giá tương ứng
+- Thuế được tính sau khi đã chọn giá vé
+
+Jetstar
+- Nhiều chặn bay trong 1 chuyến bay
+- 1 giá cho 1 chuyến bay
+- Ngày đi và ngày đến có thể khác nhau
+- Thông tin thuế đi kèm
+
+
+Vietjet
+- Nhiều loại vé cho 1 chuyến bay. Mỗi loại có 1 giá tương ứng
+- Thông tin thuế đi kèm
