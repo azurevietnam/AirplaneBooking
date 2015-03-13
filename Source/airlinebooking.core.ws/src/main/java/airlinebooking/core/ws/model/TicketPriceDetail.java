@@ -22,7 +22,7 @@ public class TicketPriceDetail implements java.io.Serializable{
 	private Integer id;
 	private Ticket ticket;
 	private String ticketTypeCode;
-	private Integer price;
+	private Integer ticketPrice;
 	private Integer tax;
 	private Integer total;
 	
@@ -61,12 +61,12 @@ public class TicketPriceDetail implements java.io.Serializable{
 		this.tax = tax;
 	}
 	
-	@Column(name = "price")
-	public Integer getPrice() {
-		return price;
+	@Column(name = "ticket_price")
+	public Integer getTicketPrice() {
+		return ticketPrice;
 	}
-	public void setPrice(Integer price) {
-		this.price = price;
+	public void setTicketPrice(Integer ticketPrice) {
+		this.ticketPrice = ticketPrice;
 	}
 	
 	@Column(name = "total")
