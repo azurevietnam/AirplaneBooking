@@ -28,6 +28,7 @@ public class TicketParserParam implements java.io.Serializable{
 	private String ticketTypeCode;
 	private String description;
 	private String selectorPath;
+	private Integer haveParameter;
 	private ActiveType status = ActiveType.ACTIVE;
 	
 	public TicketParserParam() {
@@ -98,5 +99,14 @@ public class TicketParserParam implements java.io.Serializable{
 
 	public void setAirlineType(AirlineType airlineType) {
 		this.airlineType = airlineType;
+	}
+	
+	@Column(name = "have_parameter")
+	public Integer getHaveParameter() {
+		return haveParameter;
+	}
+
+	public void setHaveParameter(Integer haveParameter) {
+		this.haveParameter = haveParameter;
 	}
 }

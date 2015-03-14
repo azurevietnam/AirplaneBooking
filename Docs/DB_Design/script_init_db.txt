@@ -96,6 +96,7 @@ code_type VARCHAR(100) COMMENT 'ma thong tin (tuong ung voi cac field cua ticket
 ticket_type_code VARCHAR(100) COMMENT 'dung xac dinh ma loai ve voi thong tin ve gia ve, link voi app_param truong value voi code_type = VNA_TYPE_TICKET',
 description TEXT COMMENT 'mo ta',
 selector_path TEXT COMMENT 'duong dan selector',
+have_parameter INT(1) DEFAULT 0 COMMENT 'xac dinh selector_path co truyen tham so hay khong: 0: khong, 1: co',
 status INT(1) COMMENT 'trang thai: 0: inactive, 1: active'
 );
 
@@ -189,8 +190,8 @@ values('JET_TYPE_TICKET', 'JET_STARTER', 'STARTER', 1);
 ---- Jetstar Parser Path
 insert into ticket_parser_param(airline_type, code_type, description, selector_path, status)
 values (2, 'size', 'Số lượng phần tử cần lấy', 'div.fares > table.domestic tr:not(tr.starter-options.alt tr.business-options) > td:nth-child(1) > strong', 1);
-insert into ticket_parser_param(airline_type, code_type, description, selector_path, status)
-values (2, 'flight_code', 'Mã chuyến bay', 'div.fares > table.domestic tr:not(tr.starter-options.alt tr.business-options):nth-child(?) div.flights span.flight-no', 1);
+insert into ticket_parser_param(airline_type, code_type, description, have_parameter, selector_path, status)
+values (2, 'flight_code', 'Mã chuyến bay', 1, 'div.fares > table.domestic tr:not(tr.starter-options.alt tr.business-options):nth-child(?) div.flights span.flight-no', 1);
 insert into ticket_parser_param(airline_type, code_type, description, selector_path, status)
 values (2, 'from_time', 'Giờ đi', 'div.fares > table.domestic tr:not(tr.starter-options.alt tr.business-options) > td:nth-child(1) > strong', 1);
 insert into ticket_parser_param(airline_type, code_type, description, selector_path, status)

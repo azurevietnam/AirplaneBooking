@@ -23,18 +23,9 @@ public class TicketParserParamDaoImpl implements TicketParserParamDao {
 	@Override
 	public List<TicketParserParam> getParserPathByAirlineType(
 			AirlineType airlineType) throws DataAccessException {
-
-//		 StringBuilder hql = new StringBuilder();
-//		 List<Object> params = new ArrayList<Object>();
-//		
-//		 hql.append("from TicketParserParam tpp where tpp.airlineType = ?");
-//		 params.add(airlineType.getValue());
-//		
-//		 return repository.getListByHQL(hql.toString(), params);
-
 		StringBuilder sql = new StringBuilder();
 		List<Object> params = new ArrayList<Object>();
-		sql.append("select * from ticket_parser_param where 1=1");
+		sql.append("select * from ticket_parser_param where 1=1 and status = 1");
 		sql.append(" and airline_type=?");
 		params.add(airlineType.getValue());
 		return repository.getListBySQL(TicketParserParam.class, sql.toString(),

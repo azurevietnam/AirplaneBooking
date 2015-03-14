@@ -7,8 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import airlinebooking.core.ws.enumtype.AirlineType;
@@ -32,19 +30,15 @@ public class CrawlerVNAImpl extends Crawler {
 			HashMap<String, Object> objectHashMap = getHashMapListFromHtmlResult(htmlResultMH, parserPathList);
 			
 			if (!objectHashMap.isEmpty()) {
-				final String flightCode = "flight_code";
-				final String fromTime = "from_time";
-				final String toTime = "to_time";
-				final String breakpointNumber = "breakpoint_number";
-				final String ticketPrice = "ticket_price";
+				
 				final String formatTime = "HH:mm";
 				
-				Elements flightCodeElements = (Elements) objectHashMap.get(flightCode);
-				Elements fromTimeElements = (Elements) objectHashMap.get(fromTime);
-				Elements toTimeElements = (Elements) objectHashMap.get(toTime);
-				Elements breakpointElements = (Elements) objectHashMap.get(breakpointNumber);
+				Elements flightCodeElements = (Elements) objectHashMap.get(FLIGHT_CODE);
+				Elements fromTimeElements = (Elements) objectHashMap.get(FROM_TIME);
+				Elements toTimeElements = (Elements) objectHashMap.get(TO_TIME);
+				Elements breakpointElements = (Elements) objectHashMap.get(BREAKPOINT_NUMBER);
 				@SuppressWarnings("unchecked")
-				HashMap<String, Elements> ticketPriceElements = (HashMap<String, Elements>) objectHashMap.get(ticketPrice);
+				HashMap<String, Elements> ticketPriceElements = (HashMap<String, Elements>) objectHashMap.get(TICKET_PRICE);
 				
 				int numberObject = 0;
 				
@@ -96,40 +90,4 @@ public class CrawlerVNAImpl extends Crawler {
 		return ticketInforMHList;
 	}
 
-	// This code is tie to Jsoup technology TOO MUCH !
-	private HashMap<String, Object> getHashMapListFromHtmlResult(
-			HtmlResultMH htmlResultMH, List<TicketParserParam> parserPathList) {
-		HashMap<String, Object> resultHashMap = new HashMap<String, Object>();
-		Document doc = Jsoup.parse(htmlResultMH.getHtmlResult());
-
-		for (TicketParserParam ticketParserParam : parserPathList) {
-			Elements elements = doc.select(ticketParserParam.getSelectorPath());
-
-			if (ticketParserParam.getTicketTypeCode() == "" || ticketParserParam.getTicketTypeCode() == null) {
-				resultHashMap.put(ticketParserParam.getCodeType(), elements);
-			} else {
-				// Danh cho loai gia ve ticket_price
-				if (!elements.isEmpty()) {
-					if (resultHashMap.get(ticketParserParam.getCodeType()) != null) {
-						@SuppressWarnings("unchecked")
-						HashMap<String, Object> hashMapListOld = (HashMap<String, Object>) resultHashMap
-								.get(ticketParserParam.getCodeType());
-						hashMapListOld
-								.put(ticketParserParam.getTicketTypeCode(),
-										elements);
-						resultHashMap.put(ticketParserParam.getCodeType(),
-								hashMapListOld);
-					} else {
-						HashMap<String, Object> hashMapListNew = new HashMap<String, Object>();
-						hashMapListNew
-								.put(ticketParserParam.getTicketTypeCode(),
-										elements);
-						resultHashMap.put(ticketParserParam.getCodeType(),
-								hashMapListNew);
-					}
-				}
-			}
-		}
-		return resultHashMap;
-	}
 }
