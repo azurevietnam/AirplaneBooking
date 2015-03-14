@@ -27,12 +27,12 @@ public class VNAirlineWebBotTest {
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.YEAR, 2015);
 		cal.set(Calendar.MONTH, Calendar.MARCH);
-		cal.set(Calendar.DAY_OF_MONTH, 25);
+		cal.set(Calendar.DAY_OF_MONTH, 27);
 		Date pickedDate = cal.getTime();
 		
 		HtmlResultMH htmlResult = vn.getHTML("SGN", "DAD", pickedDate, 1, 0, 0);
 		Document doc = Jsoup.parse(htmlResult.getHtmlResult());
-		Elements content = doc.select("div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"ES\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"ES\"] span.farefamily-cell-unavailable.translate.wasTranslated");
+		Elements content = doc.select("tr.yui-dt-even > td:nth-child(5), tr.yui-dt-odd > td:nth-child(5)");
  
 		System.out.println(content.text());
 		System.out.println("Done");

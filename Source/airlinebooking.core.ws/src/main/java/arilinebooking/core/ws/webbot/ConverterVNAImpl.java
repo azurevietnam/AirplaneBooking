@@ -20,38 +20,38 @@ public class ConverterVNAImpl extends Converter {
 			String desCode, Date pickedDate, AirlineType airlineType) throws ParseException {
 		List<TicketInforMH> ticketInforMHList = new ArrayList<TicketInforMH>();
 
-		if (ticketInforRawMHList.size() > 0){
-			for (TicketInforRawMH ticketInforRawMH : ticketInforRawMHList) {
-				TicketInforMH ticketInforMH = new TicketInforMH();
-				Ticket ticket = new Ticket();
-				List<TicketPriceDetail> ticketTypeList = new ArrayList<TicketPriceDetail>();
-
-				ticket.setAirlineType(airlineType);
-				ticket.setOriginCode(oriCode);
-				ticket.setDestinationCode(desCode);
-				ticket.setFromDate(pickedDate);
-				ticket.setToDate(pickedDate);
-				ticket.setFlightCode(ticketInforRawMH.getFlightCode());
-				ticket.setFromTime(addTimeStringToDate(pickedDate,
-						ticketInforRawMH.getFromTime(), "HH:mm"));
-				ticket.setToTime(addTimeStringToDate(pickedDate,
-						ticketInforRawMH.getToTime(), "HH:mm"));
-
-				for (Entry<String, String> entry : ticketInforRawMH
-						.getTicketPriceByType().entrySet()) {
-					TicketPriceDetail ticketType = new TicketPriceDetail();
-					ticketType.setTicket(ticket);
-					ticketType.setTicketTypeCode(entry.getKey());
-					ticketType.setAmountString(entry.getValue());
-					ticketType.setAmount(convertAmountStringToAmount(entry.getValue(), "[0-9,]+"));
-					ticketTypeList.add(ticketType);
-				}
-
-				ticketInforMH.setTicket(ticket);
-				ticketInforMH.setTicketTypeList(ticketTypeList);
-				ticketInforMHList.add(ticketInforMH);
-			}
-		}
+//		if (ticketInforRawMHList.size() > 0){
+//			for (TicketInforRawMH ticketInforRawMH : ticketInforRawMHList) {
+//				TicketInforMH ticketInforMH = new TicketInforMH();
+//				Ticket ticket = new Ticket();
+//				List<TicketPriceDetail> ticketTypeList = new ArrayList<TicketPriceDetail>();
+//
+//				ticket.setAirlineType(airlineType);
+//				ticket.setOriginCode(oriCode);
+//				ticket.setDestinationCode(desCode);
+//				ticket.setFromDate(pickedDate);
+//				ticket.setToDate(pickedDate);
+//				ticket.setFlightCode(ticketInforRawMH.getFlightCode());
+//				ticket.setFromTime(addTimeStringToDate(pickedDate,
+//						ticketInforRawMH.getFromTime(), "HH:mm"));
+//				ticket.setToTime(addTimeStringToDate(pickedDate,
+//						ticketInforRawMH.getToTime(), "HH:mm"));
+//
+//				for (Entry<String, String> entry : ticketInforRawMH
+//						.getTicketPriceByType().entrySet()) {
+//					TicketPriceDetail ticketType = new TicketPriceDetail();
+//					ticketType.setTicket(ticket);
+//					ticketType.setTicketTypeCode(entry.getKey());
+//					ticketType.setAmountString(entry.getValue());
+//					ticketType.setAmount(convertAmountStringToAmount(entry.getValue(), "[0-9,]+"));
+//					ticketTypeList.add(ticketType);
+//				}
+//
+//				ticketInforMH.setTicket(ticket);
+//				ticketInforMH.setTicketTypeList(ticketTypeList);
+//				ticketInforMHList.add(ticketInforMH);
+//			}
+//		}
 		
 		return ticketInforMHList;
 	}

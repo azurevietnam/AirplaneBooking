@@ -20,6 +20,9 @@ import airlinebooking.core.ws.dao.TicketParserParamDao;
 import airlinebooking.core.ws.enumtype.AirlineType;
 import airlinebooking.core.ws.model.TicketParserParam;
 import airlinebooking.core.ws.model.helper.HtmlResultMH;
+import airlinebooking.core.ws.model.helper.TicketInforMH;
+import arilinebooking.core.ws.webbot.Crawler;
+import arilinebooking.core.ws.webbot.CrawlerVNAImpl;
 import arilinebooking.core.ws.webbot.Parser;
 import arilinebooking.core.ws.webbot.ParserJsoupImpl;
 import arilinebooking.core.ws.webbot.WebBotVNAImpl;
@@ -36,20 +39,19 @@ public class ParserTest {
 		try {
 			List<TicketParserParam> parserPathList = ticketParserParamDao.getParserPathByAirlineType(AirlineType.VNAIRLINE);
 			
-			Parser parserJsoup = new ParserJsoupImpl();
 			WebBot webBotVNA = new WebBotVNAImpl();
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.YEAR, 2015);
 			cal.set(Calendar.MONTH, Calendar.MARCH);
-			cal.set(Calendar.DAY_OF_MONTH, 25);
+			cal.set(Calendar.DAY_OF_MONTH, 20);
 			Date pickedDate = cal.getTime();
 			
-			HtmlResultMH htmlResult = webBotVNA.getHTML("SGN", "DAD", pickedDate, 1, 0, 0);
+			HtmlResultMH htmlResult = webBotVNA.getHTML("VII", "BMV", pickedDate, 1, 0, 0);
 			
-			@SuppressWarnings("unused")
-			HashMap<String, Object> result = parserJsoup.getObjectInfor(htmlResult, parserPathList);
+			Crawler crawlerVNA = new CrawlerVNAImpl();
+			List<TicketInforMH> result = crawlerVNA.getTicketInfor(htmlResult, parserPathList, "VII", "BMV", pickedDate, AirlineType.VNAIRLINE);
 			
-			System.out.println("");
+			System.out.println(result);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

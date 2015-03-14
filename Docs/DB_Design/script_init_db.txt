@@ -167,6 +167,8 @@ insert into ticket_parser_param(airline_type, code_type, description, selector_p
 values (1, 'from_time', 'Giờ đi', 'tr.yui-dt-even > td:nth-child(3) > span.translate.wasTranslated, tr.yui-dt-odd > td:nth-child(3) > span.translate.wasTranslated', 1);
 insert into ticket_parser_param(airline_type, code_type, description, selector_path, status)
 values (1, 'to_time', 'Giờ đến', 'tr.yui-dt-even > td:nth-child(4) > span.translate.wasTranslated, tr.yui-dt-odd > td:nth-child(4) > span.translate.wasTranslated', 1);
+insert into ticket_parser_param(airline_type, code_type, description, selector_path, status)
+values (1, 'breakpoint_number', 'Số điểm dừng', 'tr.yui-dt-even > td:nth-child(5), tr.yui-dt-odd > td:nth-child(5)', 1);
 insert into ticket_parser_param(airline_type, code_type, ticket_type_code, description, selector_path, status)
 values (1, 'ticket_price', 'VNA_TGLH', 'Giá vé dành cho loại vé Thương gia linh hoạt', 'div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"BF\"] span.prices-amount, div.flight-list-section.flight-list > table > tbody > tr > td[fare-family-key=\"BF\"] span.farefamily-cell-unavailable.translate.wasTranslated', 1);
 insert into ticket_parser_param(airline_type, code_type, ticket_type_code, description, selector_path, status)
