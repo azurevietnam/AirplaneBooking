@@ -1,0 +1,32 @@
+*{
+	direction: ltr;
+	align: left;}
+body{
+	font-family: Arial, sans-serif;}
+#content, #contentwsb{
+	float: left;}
+#sidebar{
+	float: right;}
+
+.PaxLabel{
+	float: left;
+	margin-top: 5px;}
+
+.toPrev{
+	text-align: left;}
+.toNext{
+	text-align: right;}
+
+
+	
+	
+#verisign{
+	float: right;}
+	
+.Label{
+	float: left; 
+	width: 130px; 
+	text-align: right;}
+.FormLabel{
+	float: left; 
+	width: 120px;}

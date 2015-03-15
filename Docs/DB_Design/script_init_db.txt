@@ -202,6 +202,26 @@ values (2, 'to_time', 'Giờ đến', 'div.fares > table.domestic tr:not(tr.star
 insert into ticket_parser_param(airline_type, code_type, ticket_type_code, description, selector_path, status)
 values (2, 'ticket_price', 'JET_STARTER', 'Vé loại STARTER', 'div.fares > table.domestic tr:not(tr.starter-options.alt tr.business-options) > td:nth-child(4) label', 1);
 
+---- Vietjet Type ticket
+insert into app_param set code_type = 'VIETJET_TYPE_TICKET', value = 'VIETJET_PROMO', description = 'Loại vé Promo', status = 1;
+insert into app_param set code_type = 'VIETJET_TYPE_TICKET', value = 'VIETJET_ECO', description = 'Loại vé Eco', status = 1;
+insert into app_param set code_type = 'VIETJET_TYPE_TICKET', value = 'VIETJET_SKYBOSS', description = 'Loại vé Skyboss', status = 1;
+
+---- Vietjet Parser Path
+insert into ticket_parser_param set airline_type = 3, code_type = 'flight_code', description = 'Mã chuyến bay', status = 1
+	, selector_path = 'a.translate[title="Xem chi tiết chuyến bay"]';
+insert into ticket_parser_param set airline_type = 3, code_type = 'from_time', description = 'Giờ đi', status = 1
+	, selector_path = '';
+insert into ticket_parser_param set airline_type = 3, code_type = 'to_time', description = 'Giờ đến', status = 1
+	, selector_path = '';
+insert into ticket_parser_param set airline_type = 3, code_type = 'breakpoint_number', description = 'Số điểm dừng', status = 1
+	, selector_path = '';
+insert into ticket_parser_param set airline_type = 3, code_type = 'ticket_price', ticket_type_code = 'VIETJET_PROMO', have_multi_value = 1, description = 'Loại vé Promo', status = 1
+	, selector_path = '';
+insert into ticket_parser_param set airline_type = 3, code_type = 'ticket_price', ticket_type_code = 'VIETJET_ECO', have_multi_value = 1, description = 'Loại vé Eco', status = 1
+	, selector_path = '';
+insert into ticket_parser_param set airline_type = 3, code_type = 'ticket_price', ticket_type_code = 'VIETJET_SKYBOSS', have_multi_value = 1, description = 'Loại vé Skyboss', status = 1
+	, selector_path = '';
 
 -- Fake data
 insert into customer(title, first_name, last_name, mobilephone, email, birth_date)

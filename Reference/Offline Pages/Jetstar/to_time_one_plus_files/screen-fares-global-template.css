@@ -1,0 +1,794 @@
+/*
+
+	book.jetstar.com Fares styles
+
+	Notes:
+	>> keep styles to one line
+	>> use classes define in conditional comments for targeting ie version (.ie6, .ie7, .ie7, .ie9)
+	>> class/id naming, all lowercase, use hyphen (-) as seperator e.g. nav-primary
+
+*/
+
+
+/* 	Fares Refresh
+	=========================== */
+
+	#main.fares  { padding: 30px 0 190px 0 !important; overflow: visible !important; }
+	.NewbuttonWrapper {padding-right: 15px;}
+
+	/* your search panel */
+	#book-content #your-search { margin: 30px 20px 10px 10px; padding: 0 0 10px; border-bottom: 1px solid #e5e5e5; position: relative; }
+	/* ie */ .ie6 #book-content #your-search,
+	/* ie */ .ie7 #book-content #your-search { margin-top: 20px; }
+	#book-content #your-search dl { display: inline; }
+	#book-content #your-search dl dt,
+	#book-content #your-search dl dd { display: inline; font-size: 0.75em; }
+	#book-content #your-search dl dt { font-weight: bold; color: #b6b7b7; }
+	#book-content #your-search a.modify { margin-left: 10px; font-size: 1em; display: inline; background: url(../images/bookings-sprite.png) -198px -83px no-repeat; padding-left: 15px; }
+	#book-content #your-search a.modify:hover { text-decoration: none; }
+	.ie8 #book-content #your-search a.modify { background-position: -198px -81px; }
+	#book-content #your-search h3 { color: #333333; font-size: 1.188em; }
+
+	/* fare option */
+ 	#book-content .fare-option { margin: 50px 0 0 10px; }
+	#book-content .section { margin-bottom: 60px; }
+	#book-content .section h1,
+	#book-content .section h2 { font-size: 1.75em; color: #333333;}
+	#book-content .section h2 em { color: #615b5e; font-size: 20px; }
+    #book-content .fares .section { position: relative; z-index: 12; }
+
+	/* info panel - traveling with kiddies */
+	#book-content .section .traveling-with-infants { border:solid 1px #cdcdcd; background-color: #e1e1e1; width: 480px; padding: 20px 20px 20px 120px; margin: 20px 0 20px 0; position: relative; background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f6f6f6), to(#dcdcdc)); background-image: -moz-linear-gradient(top, #f6f6f6, #dcdcdc); }
+	#book-content .section .traveling-with-infants h4 { color: #333333; font-size: 1.188em; margin-bottom: 5px; }
+	#book-content .section .traveling-with-infants p { margin: 0; }
+	#book-content .section .traveling-with-infants .icon { width: 90px; height: 74px; top: 10px; left: 10px; position: absolute; text-indent: -900em; background: url(../images/bookings-sprite.png) 0px -662px no-repeat; }
+
+	/* date picker nav */
+	#book-content .fare-option .day-picker { margin: 10px 0 0; padding: 0 30px; background: #f4f4f4 url(../images/bg-fares.png) left -617px repeat-x; position: relative; }
+	#book-content .fare-option .day-picker .dates { overflow: hidden; position: relative; width: 700px; float: left; margin-top: 10px; }
+	#book-content .fare-option .day-picker .dates a.nav { display: block; text-decoration: none; width: 9px; height: 12px; margin-top: 18px; font-size: 0; zoom: 1; position: relative; }
+	#book-content .fare-option .day-picker .dates a.nav { background: url(../images/bookings-sprite.png) left top no-repeat; }
+	#book-content .fare-option .day-picker .dates a.prev { background-position: -30px -145px; float: left; }
+	#book-content .fare-option .day-picker .dates a.next { background-position: -40px -145px; float: right; }
+	#book-content .fare-option .day-picker .dates a.prev:hover { background-position: -30px -158px; }
+	#book-content .fare-option .day-picker .dates a.next:hover { background-position: -40px -158px; }
+	#book-content .fare-option .day-picker .dates ul { display: inline; overflow: hidden; list-style: none; float: left; margin-left: 15px; }
+	#book-content .fare-option .day-picker .dates ul li { float: left; width: 93px; }
+	#book-content .fare-option .day-picker .dates ul a { font-size: 11px; padding: 11px 5px 8px; border-right: 1px solid #d3d3d3; color: #525759; display: block; text-align: center; text-decoration: none; }
+	#book-content .fare-option .day-picker .dates ul li.first a { border-left: 1px solid #d3d3d3; }
+	#book-content .fare-option .day-picker .dates ul li.active a { padding: 8px 5px; border-left: 1px solid #d3d3d3; }
+	#book-content .fare-option .day-picker .dates ul li.active { border-top: 3px solid #615b5e; margin-left: -1px; }
+	#book-content .fare-option .day-picker .dates ul li.active a,
+	#book-content .fare-option .day-picker .dates ul li a:hover { background: #ffffff; }
+	#book-content .fare-option .day-picker .dates ul li.na a:hover { background: transparent }
+	#book-content .fare-option .day-picker .dates ul a span,
+	#book-content .fare-option .day-picker .dates ul a strong { display: block; font-size: 12px; }
+	#book-content .fare-option .day-picker .dates ul a strong { color: #fe5815; }
+	#book-content .fare-option .day-picker .dates ul a span { color: #b6b7b7; }
+	#book-content .fare-option .day-picker .flexible { float: right; width: 172px; }
+	#book-content .fare-option .day-picker .flexible a { overflow: hidden; font-weight: bold; font-size: 0.938em; display: block;}
+	#book-content .fare-option .day-picker .flexible p a { color: #666 !important; font-weight: normal !important; }
+	#book-content .fare-option .day-picker .flexible a:hover { color:#555; text-decoration: none; }
+	#book-content .fare-option .day-picker .flexible a span { display: block; width: 14px; height: 15px; font-size: 0; margin-right: 6px; float: left; background: url(../images/bookings-sprite.png) -21px -82px no-repeat; text-indent: -990em; }
+	#book-content .fare-option .day-picker .flexible p { font-size: 0.688em; margin-bottom: 0; }
+
+	/* notification panel */
+	#book-content .fare-notification { display: none; background-color: #fffedd; position: relative; zoom: 1; }
+	#book-content .fare-notification .cont { border-bottom: solid 1px #d8d8d8; padding: 15px 0 8px 23px; overflow: hidden; }
+	#book-content .fare-notification h2 { margin: 0 0 5px 0; font-size: 1.125em; padding-left: 52px; }
+	#book-content .fare-notification p { margin: 0 0 6px 0; padding-left: 52px; }
+	#book-content .fare-notification p a { font-size: 11px; margin-right: 10px; }
+	#book-content .fare-notification .close-notification { position :absolute; top: 11px; right: 11px; width: 13px; height: 13px; text-indent:-900em; display: block; background: url(../images/bookings-sprite.png) -182px -82px no-repeat; overflow: hidden; }
+	#book-content .fare-notification .close-notification:hover { background-position: -182px -96px; }
+	#book-content .fare-notification .icon-plane { margin: 14px 17px 0 0; float: left; width: 33px; height: 33px; background: url(../images/bookings-sprite.png) -148px -81px no-repeat; text-indent: -900em; }
+
+	/* fare picker */
+	.fare-option .fare-picker { padding: 30px 40px 0 0; position :relative; zoom: 1; }
+	.fare-option .fare-picker .fares { width: 700px; float: left; margin-right: 15px; }
+	.fare-option .fare-picker .fares table { width: 700px; border-bottom: 1px solid #333333; border-collapse: separate; }
+	.ie6 .fare-option .fare-picker .fares table, .ie7 .fare-option .fare-picker .fares table { border-collapse: collapse; }
+	.fare-option .fare-picker .fares table h3 { color: #fe5815; font-size: 1em; }
+	.fare-option .fare-picker .fares table th { padding: 10px 10px 6px 8px; }
+	.fare-option .fare-picker .fares table td { padding: 10px; }
+	.fare-option .fare-picker .fares table thead th.starter,
+	.fare-option .fare-picker .fares table thead th.business { background: url(../images/bg-fares.png) 0 -101px repeat-x; }
+	.fare-option .fare-picker .fares table thead dt { font-size: 1.563em; float: left; background: url(../images/bookings-sprite.png) right -499px no-repeat; padding-right: 24px; margin-bottom: -5px; }
+	.fare-option .fare-picker .fares table thead th.starter dt { background-position: right -496px; }
+	.fare-option .fare-picker .fares table thead th.business dt { background-position: right -524px; }
+	.fare-option .fare-picker .fares table thead dd { font-size: 0.75em; clear: left; }
+	.fare-option .fare-picker .fares table thead td { width: 125px; }
+	.fare-option .fare-picker .fares table.international thead .starter { width: 128px; border-right: 1px solid #FFFFFF; }
+	.fare-option .fare-picker .fares table.international thead .business { width: 131px; }
+	.fare-option .fare-picker .fares table thead .flight-detail { width: 90px; }
+	.fare-option .fare-picker .fares table.domestic thead .starter { width: 210px; }
+	.fare-option .fare-picker .fares table thead th { text-align: left; color: #FFFFFF; }
+	.fare-option .fare-picker .fares table thead td { font-size: 0.688em; font-weight: bold; color: #333333; padding: 2px 10px 6px; /*min-width: 100px*/ }
+	.fare-option .fare-picker .fares table thead td.starter { background: url(../images/bg-fare-starter-inclusions.gif) right bottom repeat-x; padding: 0; }
+	.fare-option .fare-picker .fares table thead td.business { background: url(../images/bg-fare-business-inclusions.gif) right bottom repeat-x; padding: 0; }
+	.fare-option .fare-picker .fares table thead td a { font-weight: normal; color: white; display: block; padding: 3px 9px 6px; cursor: pointer; background: url(../images/bookings-sprite.png) right -771px no-repeat; }
+	.fare-option .fare-picker .fares table thead td a.title { display: none; }
+	.fare-option .fare-picker .fares table tbody .alt td { background-color: #f6f6f6; }
+	.fare-option .fare-picker .fares table tbody td { border-top: 1px solid #333333; }
+	.fare-option .fare-picker .fares table tbody td { border-top: 1px solid #333333; }
+	.fare-option .fare-picker .fares table tbody td label { cursor: pointer; }
+	.fare-option .fare-picker .fares table tbody td.starter { background: url(../images/bg-fares.png) 0 -303px repeat-x; }
+	.fare-option .fare-picker .fares table tbody td.starter:hover { cursor: pointer; background-position: 0 -676px}
+	.fare-option .fare-picker .fares table.international tbody td.starter { border-right: 1px solid #FFFFFF; }
+	.fare-option .fare-picker .fares table.international tbody td.starter:hover { cursor: pointer; }
+	.fare-option .fare-picker .fares table tbody td.business { background: url(../images/bg-fares.png) 0 -404px repeat-x; }
+	.fare-option .fare-picker .fares table tbody td.business:hover { cursor: pointer; background-position: 0 -777px }
+	.fare-option .fare-picker .fares table tbody td.business.na:hover { cursor: default; background-position: 0 -404px  }
+	.fare-option .fare-picker .fares table tbody td.starter.na:hover { cursor: default; background-position: 0 -303px  }
+	.fare-option .fare-picker .fares table tbody td.na { color: #9D9D9D; }
+	.fare-option .fare-picker .fares .dreamliner-logo.style-one { margin-left: 0; margin-top: 25px; }
+
+	/* Bundle Panels - 2011 */
+	.fare-option .fare-picker .fares table tbody td.starter-expand,
+	.fare-option .fare-picker .fares table tbody td.business-expand { border: none; /*display: none;*/ position: absolute; visibility: hidden; }
+	.fare-option .fare-picker .fares table tbody td strong { display: block; font-size: 0.875em; color: #525759; }
+	.fare-option .fare-picker .fares table tbody td .airport,
+	.fare-option .fare-picker .fares table tbody td .stops,
+	.fare-option .fare-picker .fares table tbody td .duration { font-size: 0.688em; display: block; color: #525759; }
+	.fare-option .fare-picker .fares table tbody td .sale { display: block; margin-top: 5px; font-weight: bold; font-size: 0.688em; padding-left: 22px; background: url(../images/bookings-sprite.png) -186px -155px no-repeat; }
+	/* ie */ .ie8 .fare-option .fare-picker .fares table tbody td .sale,
+	/* ie */ .ie7 .fare-option .fare-picker .fares table tbody td .sale,
+	/* ie */ .ie6 .fare-option .fare-picker .fares table tbody td .sale { margin-left: 3px; padding-left: 20px;  }
+	.fare-option .fare-picker .fares table tbody td .sale-twoforone { display: block; margin-top: 5px; font-weight: bold; font-size: 0.688em; padding-left: 22px; background: url(../images/bookings-sprite.png) -174px -931px no-repeat; }
+	/* ie */ .ie8 .fare-option .fare-picker .fares table tbody td .sale-twoforone,
+	/* ie */ .ie7 .fare-option .fare-picker .fares table tbody td .sale-twoforone,
+	/* ie */ .ie6 .fare-option .fare-picker .fares table tbody td .sale-twoforone { margin-left: 3px; padding-left: 20px;  }
+	.fare-option .fare-picker .fares table tbody td .info { display: block; margin-top: 5px; font-size: 0.688em; color: #525759; padding-left: 22px; background: url(../images/icon-info.png) 0 0 no-repeat; }
+	.fare-option .fare-picker .fares table tbody td.starter-select .info,
+	.fare-option .fare-picker .fares table tbody td.business-select .info { color: #fff; }
+	.fare-option .fare-picker .fares table tbody td.starter-select .sale { background-position: -186px -651px; }
+	.fare-option .fare-picker .fares table tbody td.starter-select .sale-twoforone { background-position: -193px -916px; }
+	.fare-option .fare-picker .fares table tbody td.starter-select .info { color: #FFAC8A; }
+	/* ie */ .ie8 .fare-option .fare-picker .fares table tbody td .info,
+	/* ie */ .ie7 .fare-option .fare-picker .fares table tbody td .info ,
+	/* ie */ .ie6 .fare-option .fare-picker .fares table tbody td .info{ margin-left: 3px; padding-left: 20px; }
+	.fare-option .fare-picker .fares table tbody td label { font-size: 0.875em; display: inline; color: #525759; font-weight: bold; }
+	.fare-option .fare-picker .fares table tbody td.starter-select label { color: #FFFFFF; }
+	.fare-option .fare-picker .fares table tbody td.business-select label { color: #FFFFFF; }
+	.fare-option .fare-picker .fares table tbody .field { margin-bottom: 0; position: relative; }
+	.fare-picker .fares table tbody .field input.radio { margin-left: 0; margin-top: 0; }
+	.fare-option .fare-picker .fares table tbody td.starter-select { background: #FE5815; color: #FFFFFF; }
+	.fare-option .fare-picker .fares table tbody td.business-select { background: #615b5e; color: #FFFFFF; }
+	.fare-option .fare-picker .fares table tbody td.starter-expand { background: #FE5815 url(../images/bg-fare-starter-expand.png) left top repeat-y; color: #FFFFFF; }
+	.fare-option .fare-picker .fares table tbody td.business-expand { background: #615b5e url(../images/bg-fare-business-expand.png) left top repeat-y; color: #FFFFFF; }
+	.fare-option .fare-picker .fares table tbody td.business-expand.alter-style { background: #615b5e; }
+	.fare-option .fare-picker .fares table tbody a.overlay { display: inline-block; padding-right: 20px;  }
+	.fare-option .fare-picker .fares table tbody h4 { margin-bottom: 10px; font-size: 1em; }
+	.fare-option .fare-picker .fares table tbody .col1 { float: left; width: 220px; margin-right: 10px; z-index: 2; position: relative; }
+	.fare-option .fare-picker .fares table tbody .seat-notification { position: relative; border: solid 1px #787475; border-width: 1px 0; padding: 7px 5px 7px 31px; margin-bottom: 8px; margin-right:30px; height: 25px; }
+	.fare-option .fare-picker .fares table tbody .seat-notification a { font-size: 0.688em; color: #fff; text-decoration: none; float: left; line-height: 1.15; }
+	.fare-option .fare-picker .fares table tbody .seat-notification a:hover { color: #ddd; cursor:pointer; }
+	.fare-option .fare-picker .fares table tbody .seat-notification .icon-alert { display: block; width:19px; height:17px; text-indent: -900em; position: absolute; top: 10px; left: 3px; background:url(../images/bookings-sprite.png) -189px -1px no-repeat }
+	/* ie */.ie6 .fare-option .fare-picker .fares table tbody .seat-notification .icon-alert { zoom:1; background: url(../images/ie6-sprite.gif) -1px -57px no-repeat; }
+	.fare-option .fare-picker .fares table tbody .seat-notification .business-seats-tooltip { vertical-align: baseline; background:url(../images/bookings-sprite.png) right -561px no-repeat; position: relative; top: 2px; }
+
+	.fare-option .fare-picker .fares table tbody ul { list-style: none; margin: 0 0 10px;  }
+	.fare-option .fare-picker .fares table tbody li { font-size: 0.72em; background:url(../images/bookings-sprite.png) 0 -814px no-repeat; padding-left: 16px; padding-bottom: 2px; vertical-align: top; margin-bottom: 5px; line-height: 1.2; }
+	/* ie */.ie6 .fare-option .fare-picker .fares .starter-expand li { zoom:1; background: url(../images/ie6-sprite.gif) no-repeat -181px -8px; }
+	/* ie */.ie6 .fare-option .fare-picker .fares .business-expand li { zoom:1; background: url(../images/ie6-sprite.gif) no-repeat -158px -33px; }
+	.fare-option .fare-picker .fares table tbody li strong { font-size: inherit; }
+	.fare-option .fare-picker .fares table tbody span.star { display: inline-block; text-indent: -9999px; height: 10px; width: 11px; background:url(../images/bookings-sprite.png) -49px -145px no-repeat; vertical-align: text-top; margin-top: 2px; }
+	/* ie */.ie6 .fare-option .fare-picker .fares table tbody span.star { margin-left: 3px; }
+	.fare-option .fare-picker .fares table tbody a.overlay { font-size: 0.72em; color: #FFFFFF; font-weight: bold; background: url(../images/bookings-sprite.png) right -282px no-repeat; }
+	.fare-option .fare-picker .fares table tbody a.inline { color: #FFFFFF; text-decoration: underline; }
+	/* ie */.ie6 .fare-option .fare-picker .fares .starter-expand a.overlay { zoom:1; background: url(../images/ie6-sprite.gif) right -161px no-repeat; }
+	/* ie */.ie6 .fare-option .fare-picker .fares .business-expand a.overlay { zoom:1; background: url(../images/ie6-sprite.gif) right -186px no-repeat; }
+	.fare-option .fare-picker .fares table tbody a:hover.overlay { text-decoration: underline; }
+	.fare-option .fare-picker .fares table tbody .col1 ul { margin-right:30px; }
+	#book-content .fare-option .fare-picker .fares table tbody .col1 .cta-bundle { font-size:15px; font-weight:bold; width:120px; height:110px; padding:18px 18px 52px 16px; text-align:right; color:#fff; position:absolute; right:0; margin:30px 0 0; background: url(../images/bookings-sprite.png) right -1019px no-repeat; }
+	.fare-option .fare-picker .fares table tbody .col1 .cta-bundle em { font-style:normal; font-weight:normal; color:#fff; padding-left:10px; }
+	.fare-option .fare-picker .fares table tbody .col1 .cta-bundle span { display:block; font-size:11px; font-weight:normal; color:#ababab;  }
+	.fare-option .fare-picker .fares table tbody .col2 { float: left; width: 450px; z-index: 1; position: relative }
+	.fare-option .fare-picker .fares table tbody .starter-expand .col2 .option { width: 223px; background: #e1480d; }
+	/* ie */.ie6 .fare-option .fare-picker .fares table tbody .starter-expand .col2 .option { background: #eb4e10; }
+	.fare-option .fare-picker .fares table tbody .business-expand .col2 .option { background: #4c474a; }
+	/* ie */.ie6 .fare-option .fare-picker .fares table tbody .business-expand .col2 .option { background: #565153; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-top { background: url(../images/bg-fares.png) left -878px; color: #fe5815; font-weight: bold; line-height: 1; font-size: 1.125em; padding:5px 10px; position:relative; z-index: 1; }
+	.fare-option .fare-picker .fares table tbody .starter-options .option .bundle-top { border:1px outset; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-top.hover { background-position:left -934px; cursor:pointer; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-top.selected { background-position:left -990px; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-top strong { color: #333333; display: inline; font-size: inherit; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-top div { color: #525759; font-size: 0.75em; display: block; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-top span { vertical-align: text-top; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-top .field label { font-size:0.865em; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-top .field input { margin:0 0 0 4px; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-top .field input:hover { cursor:pointer; }
+	.fare-option .fare-picker .bundle-cards .card-top .brandDemi.long-nominals{ font-size: 18px; float: none}
+
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-top-toggle { background: url(../images/bg-fares.png) left -878px; color: #fe5815; font-weight: bold; line-height: 1; font-size: 1.125em; padding:5px 10px; position:relative; z-index: 1; }
+	.fare-option .fare-picker .fares table tbody .starter-options .option .bundle-top-toggle { border:1px outset; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-top-toggle.hover { background-position:left -934px; cursor:pointer; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-top-toggle.selected { background-position:left -990px; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-top-toggle strong { color: #333333; display: inline; font-size: inherit; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-top-toggle div { color: #525759; font-size: 0.75em; display: block; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-top-toggle span { vertical-align: text-top; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-top-toggle span.indicator { vertical-align: inherit; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-top-toggle .field label { font-size:0.865em; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-top-toggle .field input { margin:0 0 0 4px; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-top-toggle .field input:hover { cursor:pointer; }
+
+	.fare-option .fare-picker .fares table tbody .col2 .option .bundle-detail { padding: 10px; position: relative; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .field { position: absolute; top: 6px; right: 9px; }
+	.fare-option .fare-picker .fares table tbody .col2 .option .field label { color: #333333; font-size: 0.688em; font-weight: normal }
+	.fare-option .fare-picker .fares table tbody .col2 .option .field label span { text-decoration: underline; position: absolute; top: 20px; right: 2px; font-size: 11px; color: #fe5815; white-space: nowrap }
+	.fare-option .fare-picker .fares table tbody .col2 .option .field label:hover span { text-decoration: underline; }
+	.fare-option .fare-picker .fares table tbody .col2 .bundle-detail li { font-size: 0.75em; }
+	.fare-option .fare-picker .fares table tbody .col2 .bundle-detail li em { font-style:normal; font-weight: normal; }
+	.fare-option .fare-picker .fares table tbody .starter-options .bundle-detail li em { color:#ffbda4; }
+	.fare-option .fare-picker .fares table tbody .col2 li.regular-start { margin-top: 8px; }
+	.fare-option .fare-picker .fares table tbody td.starter-expand label { font-size: 0.75em; color: #fff; font-weight: normal; }
+	.fare-option .fare-picker .fares table tbody .baggage-option { margin-bottom: 10px; padding-bottom:10px; background:url(../images/bg-hr-orange.png) repeat-x 0 bottom; }
+	.fare-option .fare-picker .fares table tbody .baggage-option p a { color: #FFF; text-decoration: underline; }
+	#book-content .fare-option .fare-picker .fares table tbody p.note { color:#ffbda4; margin-bottom:4px; }
+	.fare-option .fare-picker .fares table tbody select { padding: 1px; background: url(../images/bg-fares.png) left -202px; border: 1px solid #b6532c; font-size: 0.75em; width: 340px }
+	.fare-option .fare-picker .fares table tbody select.disabled { opacity: 0.5; filter: alpha(opacity=50); }
+	.fare-option .fare-picker .fares table tbody option { background: #FFFFFF; }
+	.fare-option .fare-picker .fares table tbody .promo { clear: left; position: relative; background: url(../images/bg-fares.png) 0 0 repeat-x; margin: 10px 0 10px; padding: 10px 10px 10px 180px; }
+	.fare-option .fare-picker .fares table tbody .promo img { position: absolute; bottom: -10px; left: 0; }
+	#book-content .fare-option .fare-picker .fares table tbody .promo p { float: left; margin-bottom: 0; font-weight: bold; font-size: 15px; color: #FFFFFF; }
+	#book-content .fare-option .fare-picker .fares table tbody .promo p strong { color: #fe5815; display: inline; font-size: 15px; }
+	.fare-option .fare-picker .fares table tbody .promo a { display: block; float: right; clear: none; font-size: 0.813em; background: url(../images/bookings-sprite.png) left -411px no-repeat; color: #333333; line-height: 19px; padding: 0 8px; white-space: nowrap; }
+	.fare-option .fare-picker .fares table tbody .promo a:hover { background-position: left -430px; color: #FFFFFF; }
+	.fare-option .fare-picker div.legend { margin-top: 15px; }
+	#book-content .fare-option .fare-picker .legend p { color: #6d6d6d; font-size: 0.688em; margin: 0 0 10px; }
+	#book-content .fare-option .fare-picker .legend p.small-light-note { color: #7e7e7e; font-size: 11px;  }
+	#book-content .fare-option .fare-picker .legend dl { margin-top: 10px; overflow: hidden; }
+	#book-content .fare-option .fare-picker .legend dt,
+	#book-content .fare-option .fare-picker .legend dd { font-size: 0.688em; color: #333333; float: left; margin-right: 10px; }
+	#book-content .fare-option .fare-picker .legend dd.last-line { clear: both; white-space: nowrap }
+	#book-content .fare-option .fare-picker .legend dt { font-weight: bold; float: none; margin-bottom: 2px; }
+	#book-content .fare-option .fare-picker a.tooltip-info { margin-top: 0px; float: left; cursor: pointer; }
+	#book-content .fare-option .fare-picker a.tooltip-info span { background: url(../images/bookings-sprite.png) no-repeat right -560px; padding-right: 15px; }
+	.ie7 #book-content .fare-option .fare-picker a.tooltip-info span,
+	.ie6 #book-content .fare-option .fare-picker a.tooltip-info span { display:block; }
+	/* ie */ .ie6 #book-content .fare-option .fare-picker a.tooltip-info span { zoom:1; background: url(../images/ie6-sprite.gif) right -130px no-repeat; }
+	#book-content .fare-option .fare-picker a.tooltip-info:hover { text-decoration: none; color: #888; }
+
+
+	/* Bundle Panels - 2012 */
+	.fare-picker .bundle { display: none; position: relative; visibility: visible; background-color: #FE5815; color: #333; }
+	.fare-option .fare-picker .fares table td.bundle-cards { padding: 10px 20px; border-top: none; }
+	.fare-option .fare-picker .bundle-cards h3.title { margin: 8px 0 15px; font-size: 20px; color: #fff; text-align: center; }
+	.fare-option .fare-picker .bundle-cards ol { margin: 10px 0 0 0; padding: 0; list-style-type: none; }
+	.fare-option .fare-picker .bundle-cards ol li.included,
+	.fare-option .fare-picker .bundle-cards ol li.plus,
+	.fare-option .fare-picker .bundle-cards ol li.max { float: left; padding: 0; background: #fff; }
+	.fare-option .fare-picker .bundle-cards ol .included,
+	.fare-option .fare-picker .bundle-cards ol .max { width: 218px; margin: 16px 0; }
+	.fare-option .fare-picker .bundle-cards ol .plus { width: 224px; position: relative; z-index: 99; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); }
+	.fare-option .fare-picker .bundle-cards .card-top { min-height: 81px; padding: 8px 10px; position: relative; background: #231d20 url(../images/fare-selector-bundles-bg-sprite.png) repeat-x 0 -204px; }
+	.fare-option .fare-picker .bundle-cards .included .card-top { background: #c0bfbf url(../images/fare-selector-bundles-bg-sprite.png) repeat-x 0 0; }
+	.fare-option .fare-picker .bundle-cards .plus .card-top { min-height: 96px; padding-top: 9px; padding-right: 50px; }
+	.fare-option .fare-picker .bundle-cards .card-top h4 { font-size: 20px; color: #a6a6a6; margin-bottom: 1px; }
+	.fare-option .fare-picker .bundle-cards .card-top h4 span { color: #fff; }
+	.fare-option .fare-picker .bundle-cards .card-top h5 { font-size: 13px; color: #FE5815; margin-top: 5px; overflow: hidden; position: relative;}
+	.fare-option .fare-picker .bundle-cards .card-top h5 strong { display: block; margin-right: 10px; font-size: 31px; color: #FE5815; float: left; font-weight: bold; }
+	.fare-option .fare-picker .bundle-cards .included .card-top h4 { color: #666; margin-top: 17px;}
+	.fare-option .fare-picker .bundle-cards .included .card-top h4 span{ color: #333; display: block; }
+	#book-content .fare-picker .bundle-cards .plus .card-top p,
+	.fare-option .fare-picker .bundle-cards .plus .card-top h4 { padding-right: 50px; }
+	#book-content .fare-picker .bundle-cards .card-top p { font-size: 12px; margin: 0; }
+	#book-content .fare-picker .bundle-cards .plus .card-top p,
+	#book-content .fare-picker .bundle-cards .max .card-top p { font-size: 13px; color: #fff; }
+	.fare-picker .bundle-cards .plus .card-inner { border-color: #444; border-width: 2px; border-style: solid; border-top-style: none; }
+	.fare-picker .bundle-cards .max .card-inner { border-color: #444; border-width: 2px; border-right-style: solid; border-bottom-style: solid; }
+	.fare-picker .bundle-cards ol dl { padding: 10px; }
+	.fare-picker .bundle-cards ol dt,
+	.fare-picker .bundle-cards ol dd { padding-left: 40px; padding-right: 15px; }
+	.fare-picker .bundle-cards ol .max dt,
+	.fare-picker .bundle-cards ol .max dd { padding-right: 7px; }
+	.fare-picker .bundle-cards ol dt { position: relative; margin-top: 8px; padding-top: 8px; padding-bottom: 2px; font-size: 12px; font-weight: bold; color: #525759; border-top: 1px solid #efefef; }
+	.fare-picker .bundle-cards ol dt.single { padding-bottom: 11px; }
+	.fare-picker .bundle-cards ol dt img { display: block; width: 30px; height: 30px; position: absolute; top: 5px; left: 2px; }
+	.fare-picker .bundle-cards ol dt.first { border-top: none; padding-top: 0; }
+	.fare-picker .bundle-cards ol dt.first img { top: -2px; }
+	.fare-picker .bundle-cards ol dd { color: #525759; font-size: 11px; }
+	.fare-picker .bundle-cards ol dd.terms { margin-top: 20px; padding-left: 0; }
+	.fare-option .fare-picker .bundle-cards .bundle-status { margin: 9px; }
+	.fare-option .fare-picker .bundle-cards .bundle-status .jq-btn { width: 200px; padding-right: 0; }
+	.fare-picker .bundle-cards .included .bundle-status { padding-top: 9px; padding-bottom: 7px; font-size: 17px; }
+	.fare-picker .bundle-cards .included .bundle-status em { display: block; }
+	.fare-picker .bundle-cards .plus .bundle-status { margin-bottom: 5px; }
+	#book-content .fare-picker .bundle-cards .plus .card-inner p { margin: 7px 5px 7px 10px; font-size: 11px; color: #525759; }
+	.fare-picker .bundle-cards .plus .card-top .banner { position: absolute; top: 0; right: 0; min-width: 120px; min-height: 120px; }
+	.fare-option .fare-picker .bundle-status.added { padding-left: 40px; background: #eee url(../images/manage-has-checked-in.png) no-repeat 8px 50%; border: 1px solid #dbdbdb; color: #525759; border-radius: 1px; box-shadow: none; }
+	#book-content .fare-picker .bundle-cards .card-inner dd.terms p { font-size: 100%; padding-left: 0; margin-left: 0; }
+
+	/* Bundle Panels - 2012 - Coloured Version Additions */
+	.fare-option .fare-picker .bundle-varient .card-top h5,
+	.fare-option .fare-picker .bundle-varient .card-top h5 strong { color: #fff;  }
+	.fare-option .fare-picker .bundle-varient .card-top h4,
+	.fare-option .fare-picker .bundle-varient .card-top h4 span,
+	.fare-picker .bundle-varient ol dd,
+	#book-content .fare-picker .bundle-varient .plus .card-top p,
+	#book-content .fare-picker .bundle-varient .max .card-top p { color: #333; }
+	.fare-picker .bundle-varient ol dt { color: #333; border-top: 1px solid #ccc; }
+	.fare-picker .bundle-varient .max .card-inner { border-color: #0091f2; background-color: #ccebff; }
+	.fare-option .fare-picker .bundle-varient .max .card-top { background: #0067ac url(../images/fare-selector-bundles-bg-sprite.png) repeat-x 0 -956px; }
+	.fare-picker .bundle-varient .plus .card-inner { border-color: #72aa05; background-color: #ecfcce; }
+	.fare-option .fare-picker .bundle-varient .plus .card-top { background: #72aa05 url(../images/fare-selector-bundles-bg-sprite.png) repeat-x 0 -582px; }
+	#book-content .fare-picker .bundle-varient .plus .card-inner p { color: #333; }
+	#book-content .fare-picker .bundle-varient .card-inner a { text-decoration: underline; color: #333; }
+	.fare-option .fare-picker .bundle-varient .bundle-status.added { background-color: #fff; }
+	.fare-picker .bundle-varient a.terms { padding: 0 11px; }
+	
+	/* Booking and Service fee footer warning */
+	#book-content #booking-service-fee-warning p { color: #6d6d6d !important; font-size: 0.688em !important; margin-top:20px; margin-bottom:0px;}	
+
+    /* Bundle top notices */
+    .fare-option .fare-picker .fares .bundle .bundle-notice { margin-bottom: 1.5em; padding: 10px 1em 15px; color: #fff; position: relative; font-weight: bold; text-align: center; border-bottom: 1px solid #ffac8a; }
+    #book-content .fare-option .fare-picker .fares .bundle .notice-baggage { font-size: 14px; }
+    .fare-option .fare-picker .fares .bundle .notice-baggage .icon { display: inline-block; width: 36px; height: 30px; margin: 0 1em -0.5em 0; background: url(../images/icons/icon-nobag-white.png) no-repeat; }
+
+    /* Max Business bundle panel */
+    #book-content .fare-picker .business-options .bundle-cards.alter-style .find-out { color: #525759; text-decoration: underline; }
+    .fare-picker .business-options .bundle-cards.alter-style ol dt,
+	.fare-picker .business-options .bundle-cards.alter-style ol dd { padding-left: 45px; padding-right: 29px; }
+	.fare-picker .business-options .bundle-cards.alter-style ol dt.first.entertain { padding-top: 0; margin-top: 0; }
+	.fare-picker .business-options .bundle-cards.alter-style ol dt.first.entertain img { top: 0; }
+    .fare-picker .business-options .bundle-cards.alter-style ol dd { line-height: 16px }
+    .fare-picker .business-options .bundle-cards.alter-style dd.terms { padding-left: 0; }
+    .fare-picker .business-options .bundle-cards.alter-style dd.terms a,
+    .fare-picker .business-options .bundle-cards.alter-style p.terms a { font-size: 11px; padding-left: 12px; }
+	.fare-picker .business-options .bundle-cards.alter-style .included { padding-bottom: 7px; width: 430px; }
+	.fare-picker .business-options .bundle-cards.alter-style .included .card-top { min-height: 47px; padding: 8px 12px; }
+	#book-content .fare-picker .business-options .bundle-cards.alter-style .included h2 { color: #333333; font-size: 24px; line-height: 24px; margin: 0; padding-top: 10px; }
+	.fare-picker .business-options .bundle-cards.alter-style .included h2 .icon-checked { background: url(../images/sprite_jq-buttons.png) no-repeat -128px -8px; display: inline-block; *display: inline; height: 24px; padding-right: 10px; position: relative; top: 2px; width: 24px; zoom: 1;}
+	.fare-picker .business-options .bundle-cards.alter-style .notice { background: #fffedd; border-bottom: #efefef; margin-bottom: 13px; padding: 7px 10px 2px 14px; position: relative; }
+	.ie7 .fare-picker .business-options .bundle-cards.alter-style .notice { z-index: 9999 }
+	.fare-picker .business-options .bundle-cards.alter-style .included dl { padding-bottom: 0; }
+	#book-content .fare-picker .business-options .bundle-cards.alter-style .notice .tooltip-info { display: inline-block; *display: inline; float:none; color: #525759; zoom: 1; }
+	.ie7 #book-content .fare-picker .business-options .bundle-cards.alter-style .notice .tooltip-info { position: relative; top: -10px; }
+	#book-content .fare-picker .business-options .bundle-cards.alter-style .notice .tooltip-info span { background-position: right -1536px; padding-right: 22px; zoom: 1; }
+	.fare-picker .business-options .bundle-cards.alter-style .included dd.terms { margin-top: 10px; }
+	#book-content .fare-picker .business-options .bundle-cards.alter-style .notice p { color: #525759; display: inline-block; *display: inline; font-size: 12px; zoom: 1;}
+	#book-content .fare-picker .business-options .bundle-cards.alter-style .notice .icon-warning { background: url(../images/bookings-sprite.png) no-repeat 0 -1500px; display: inline-block; *display: inline; height: 20px; padding-right: 10px; position: relative; top: 5px; width: 24px; zoom: 1; }
+	.fare-picker .business-options .bundle-cards.alter-style .included .card-inner .two-column .left-col,
+	.fare-picker .business-options .bundle-cards.alter-style .included .card-inner .two-column .right-col { float: left; width: 50%; }
+	.fare-picker .business-options .bundle-cards.alter-style .plus.business-max { box-shadow: 0 2px 12px 1px rgba(0, 0, 0, 0.5); width: 230px }
+	.fare-picker .business-options .bundle-cards.alter-style .plus.business-max .card-top { background-color: #231d20; background-position: 0 -1069px; border: 1px solid #000; padding-top: 15px }
+	.fare-picker .business-options .bundle-cards.alter-style .plus.business-max .card-top h3 { color: #fff; font-size: 25px; }
+	#book-content .fare-picker .business-options .bundle-cards.alter-style .plus.business-max .card-top p { padding-right: 21px }
+	.fare-picker .business-options .bundle-cards.alter-style .plus.business-max dd.terms { margin-top: 25px;  }
+	.fare-picker .bundle-cards.alter-style .plus.business-max dt.first img { top: 0;}
+	.fare-picker .bundle-cards.alter-style .plus.business-max .bundle-status { margin-top: 0; margin-bottom: 11px; }
+	.ie9 .fare-picker .bundle-cards.alter-style .plus.business-max .btn-toggle.bundle-status .btn-is-selected button { position: relative; top: 1px; }
+	.fare-picker .business-options .bundle-cards.alter-style .tooltip-help { background: url(../images/bg-tooltip-passenger.png) no-repeat scroll left top; clear: left; display: none; overflow: visible; padding: 16px 12px 0; position: absolute; width: 453px; z-index: 9000; }
+	#book-content .fare-picker .business-options .bundle-cards.alter-style .tooltip-help h4 { background: url(../images/bg-fares.png) repeat-x left top; line-height: 20px; font-size: 15px; padding: 10px 15px;  text-align: left; }
+	#book-content .fare-picker .business-options .bundle-cards.alter-style .notice .tooltip-help p { font-size: 12px; line-height: 17px; margin: 10px 15px 5px; padding: 0; text-align: left; }
+	.fare-picker .business-options .bundle-cards.alter-style .tooltip-help .footer { background: url(../images/bg-tooltip-passenger.png) repeat 0 -578px; bottom: -22px; clear: both; display: block; height: 22px; left: 0; padding: 0; position: absolute; width: 475px; }
+	.fare-option .fare-picker .bundle-cards.alter-style .btn-toggle.bundle-status .jq-btn { width: auto; }
+
+
+	/* Culture Specific styles including overrides */
+	/*id-id*/
+	.fare-option.id-id .fare-picker .business-options .bundle-cards.alter-style .included { width: 402px; }
+	.fare-option.id-id .fare-picker .business-options .bundle-cards.alter-style .plus.business-max { width: 257px; }
+	.fare-option.id-id .fare-picker .business-options .bundle-cards.alter-style ol dt,
+	.fare-option.id-id .fare-picker .business-options .bundle-cards.alter-style ol dd { padding-right: 15px; }
+
+
+	/* carrier legend icons */
+	#book-content img.legend { vertical-align: baseline; }	
+	#book-content .legend img.legend { margin-right: 3px; }
+	#book-content .legend-js-aust-nz { background: url(../images/bookings-sprite.png) no-repeat -60px -145px; }
+	#book-content .legend-js-asia { background: url(../images/bookings-sprite.png) no-repeat -73px -145px; }
+	#book-content .legend-js-pacific { background: url(../images/bookings-sprite.png) no-repeat -86px -145px; }
+	#book-content .legend-ferry { background: url(../images/bookings-sprite.png) no-repeat -163px -143px; }
+	#book-content .stops .legend-ferry, 
+	#book-content .flight-no .legend-ferry,
+	#book-content .flight-no-carrier .legend-ferry { margin-left: 2px; }
+	#book-content .legend-valuair { background: url(../images/bookings-sprite.png) no-repeat -112px -145px; }
+	#book-content .legend-qantas { background: url(../images/bookings-sprite.png) no-repeat -113px -158px; }
+	#book-content .legend-js-japan { background: url(../images/bookings-sprite.png) no-repeat -125px -145px; }
+	#book-content .legend-vietnam-airlines { background: url(../images/bookings-sprite.png) no-repeat -146px -145px; }
+
+	/* fares summary (bubble) */
+	.fare-option .fare-picker .summary { width: 185px; float: right; position: relative; }
+	.fare-option .fare-picker .summary .bubble h3 { color: #fe5815; font-size: 1.063em; font-weight: bold; border-bottom: 1px solid #6a6869; padding: 10px 0 8px 13px }
+	.fare-option .fare-picker .summary .bubble { display: none; position: relative; width: 172px; margin-left: 15px; background: #333333; min-height: 100px; border-bottom: 3px solid #fe5815; }
+	.fare-option .fare-picker .summary .bubble span.arrow { display: block; position: absolute; top: 10px; left: -13px; background: url(../images/bookings-sprite.png) 0 -145px no-repeat; width: 13px; height: 18px; }
+	.fare-option .fare-picker .summary .bubble div.section { border-bottom: 1px solid #6a6869; padding: 10px 15px; }
+	.fare-option .fare-picker .summary .bubble div.total { border-bottom: 0; padding: 6px 15px; }
+	.fare-option .fare-picker .summary .bubble div.departing { border-top: 1px solid #6a6869; }
+	#book-content .fare-option .fare-picker .summary .bubble .section { margin-bottom: 0; }
+	.fare-option .fare-picker .summary .bubble .section table { width: 100%; }
+	.fare-option .fare-picker .summary .bubble .section th { text-align: left; }
+	.fare-option .fare-picker .summary .bubble .section td { text-align: right; }
+	.fare-option .fare-picker .summary .bubble .section thead th { cursor: pointer; font-weight: bold; font-size: 0.875em; color: #FFFFFF; padding-bottom: 5px; }
+	.fare-option .fare-picker .summary .bubble .section thead td { position: relative; }
+	.fare-option .fare-picker .summary .bubble .section thead th a { display: block; vertical-align: text-top; font-size: 0; line-height: 1; width: 8px; height: 5px; float: right; outline: none; margin-top: 7px; }
+	/* ie */ .ie6 .fare-option .fare-picker .summary .bubble .section thead th a ,
+	/* ie */ .ie7 .fare-option .fare-picker .summary .bubble .section thead th a { margin-top: -10px; }
+	.fare-option .fare-picker .summary .bubble .section thead th a { background: url(../images/bookings-sprite.png) -21px -146px no-repeat; /*vertical-align: middle;*/ }
+	.fare-option .fare-picker .summary .bubble .section thead th:hover a { background-position: -21px -152px; }
+	.fare-option .fare-picker .summary .bubble .section .closed thead th a { background-position: -13px -146px; }
+	.fare-option .fare-picker .summary .bubble .section .closed thead th:hover a { background-position: -13px -152px; }
+	.fare-option .fare-picker .summary .bubble .section .open thead th a { display: none; visibility:hidden; }
+	.fare-option .fare-picker .summary .bubble .section .open thead th { cursor: default; }
+	.fare-option .fare-picker .summary .bubble .section .open tbody { display: block; }
+	.fare-option .fare-picker .summary .bubble .section .closed tbody { display: none; }
+	.fare-option .fare-picker .summary .bubble .section tbody { font-size: 0.688em; }
+	.fare-option .fare-picker .summary .bubble .section tbody td,
+	.fare-option .fare-picker .summary .bubble .section tbody th { height: 1px; color: #999999; font-weight: normal; padding-left: 5px; }
+	.fare-option .fare-picker .summary .bubble .section tbody th em,
+	.fare-option .fare-picker .summary .bubble .section tbody td em { color: #666666; font-style: normal; }
+	.fare-option .fare-picker .summary .bubble .section tbody th.title,
+	.fare-option .fare-picker .summary .bubble .section tbody th.section { color: #FFFFFF; font-weight: bold; }
+	.fare-option .fare-picker .summary .bubble .section tbody th.section { text-align: center; vertical-align: middle; padding: 10px 0 1px 0; background: url(../images/bg-bubble-section-title.gif) left -8px repeat-x; }
+	.fare-option .fare-picker .summary .bubble .section tbody th.section span { background: #333333; padding: 0 5px; }
+	.fare-option .fare-picker .summary .bubble .section tbody th.narrow { padding: 0px; background-position: left -14px; }
+	.fare-option .fare-picker .summary .bubble .section tbody th.title { padding-top: 7px; padding-left: 0; padding-bottom: 3px; width: 142px }
+	.fare-option .fare-picker .summary .bubble .section tbody td { white-space: nowrap; text-align:right }
+	.fare-option .fare-picker .summary .bubble .section tfoot { color: #FFFFFF; }
+	.fare-option .fare-picker .summary .bubble .section tfoot th { text-align: right; color: #999999; font-weight: normal; padding: 3px 0; font-size: 0.688em; }
+	.fare-option .fare-picker .summary .bubble .section tfoot td { text-align: right; font-weight: bold; font-size: 0.875em; }
+	.fare-option .fare-picker .summary .bubble .section ul { list-style: none; }
+	.fare-option .fare-picker .summary .bubble .section li { text-align: right; }
+	.fare-option .fare-picker .summary .bubble .section li.currency { color: #FFFFFF; font-size: 0.688em; font-weight: bold; }
+	.fare-option .fare-picker .summary .bubble .section li.price { color: #fe5815; font-size: 1.25em; font-weight: bold; }
+
+	/* CTA */
+	.fare-option .fare-picker .summary .cta { display: block; width: 205px; height: 226px; left: -10px; position: absolute; background: url(../images/bookings-bubble-cta.png) left top no-repeat; text-indent: -900em; }
+	.fare-option .fare-picker .summary .cta-vi-VN { background-image: url(../images/bookings-bubble-cta-vietnamese.png); }
+	.fare-option .fare-picker .summary .cta-ja-JP { background-image: url(../images/bookings-bubble-cta-japanese.png); }
+	.fare-option .fare-picker .summary .cta-ms-MY { background-image: url(../images/bookings-bubble-cta-bahasa-malay.png); }
+	.fare-option .fare-picker .summary .cta-th-TH { background-image: url(../images/bookings-bubble-cta-thai.png); }
+	.fare-option .fare-picker .summary .cta-id-ID { background-image: url(../images/bookings-bubble-cta-indonesian.png); }
+	.fare-option .fare-picker .summary .cta-ko-KR { background-image: url(../images/bookings-bubble-cta-korean.png); }
+	.fare-option .fare-picker .summary .cta-zh-SG { background-image: url(../images/bookings-bubble-cta-chinese.png); }
+	.fare-option .fare-picker .summary .cta-zh-CN { background-image: url(../images/bookings-bubble-cta-chinese.png); }
+	.fare-option .fare-picker .summary .cta-zh-HK { background-image: url(../images/bookings-bubble-cta-hk-chinese.png); }
+
+	/* CTA - content override for booking info */
+	.fare-option .fare-picker .summary .cta.impt-info h3 .icon,
+	.fare-option .fare-picker .summary .cta.impt-info .impt-info-tip,
+	.fare-option .fare-picker .summary .cta.impt-info .info-content .tooltip-help h4 .icon { background: url(../images/bookings-sprite.png) no-repeat 0 0; display: block; background-size: auto; }
+	.fare-option .fare-picker .summary .cta.impt-info { background: #333333; height: auto; left: 15px; text-indent: 0; width: 170px; }
+	.fare-option .fare-picker .summary .cta.impt-info h3,
+	.fare-option .fare-picker .summary .cta.impt-info h4,
+	.fare-option .fare-picker .summary .cta.impt-info .info-content,
+	.fare-option .fare-picker .summary .cta.impt-info p { color: #fff; padding: 13px 11px; }
+	.fare-option .fare-picker .summary .cta.impt-info h3 { font-size: 16px; line-height: 16px; padding-left: 63px; position: relative; }
+	.fare-option .fare-picker .summary .cta.impt-info h3 .icon { background-position: 0 -279px; display: block; height: 33px; left: 13px; position: absolute; top: 22px; width: 36px;  }
+	.fare-option .fare-picker .summary .cta.impt-info h4 { background: #fe5815; font-size: 15px; line-height: 16px; padding: 6px 11px; }
+	.fare-option .fare-picker .summary .cta.impt-info .impt-info-tip { background-position: right -560px; cursor: pointer; display: inline-block; height: 13px; position: relative; top: 2px; width: 12px; zoom: 1; *display: inline; }
+	.ie7 .fare-option .fare-picker .summary .cta.impt-info .impt-info-tip { top: 0; }
+	#book-content .fare-option .fare-picker .summary .cta.impt-info .para { font-size: 11px; line-height: 16px; margin-bottom: 10px; padding: 0 }
+	.fare-option .fare-picker .summary .cta.impt-info .info-content .tooltip-help { background: url(../images/bg-tooltip-passenger.png) no-repeat scroll left top; clear: left; display: none; overflow: visible; padding: 16px 12px 0; position: absolute; width: 453px; z-index: 800; }
+	.fare-option .fare-picker .summary .cta.impt-info .info-content .tooltip-help h4 { background: url(../images/bg-fares.png) repeat-x left top; line-height: 20px; padding: 10px 15px;  }
+	.fare-option .fare-picker .summary .cta.impt-info .info-content .tooltip-help h4 .icon { background-position: -189px 0; float: left; height: 18px; margin-right: 5px; width: 20px; background-size: auto; }
+	#book-content .fare-option .fare-picker .summary .cta.impt-info .info-content .tooltip-help p { color: #353535; font-size: 12px; line-height: 17px; margin: 10px 15px 5px; padding: 0; }
+	.fare-option .fare-picker .summary .cta.impt-info .info-content .tooltip-help .footer { background: url(../images/bg-tooltip-passenger.png) repeat 0 -578px; bottom: -22px; clear: both; display: block; height: 22px; left: 0; padding: 0; position: absolute; width: 475px; }
+
+	.hotels .fare-option .fare-picker .summary .cta { display: none; }
+	#book-content .flight-summary-details { display: none; }
+	#book-content .tooltip-airport-info { display: none; }
+	#book-content .tooltip-airport-info-tip { clear: left; width: 462px; min-height: 215px; background: url(../images/bg-tooltip-airport-info.png) left top no-repeat; padding: 12px 12px 0 19px; display: none; z-index: 2000; overflow: visible; }
+	/* ie */ .ie6 #book-content .tooltip-airport-info-tip { height: 218px; background-image: none; background-color: #FFFFFF; padding: 0; margin-left: 10px; border: 5px solid #CCCCCC; }
+	#book-content .tooltip-airport-info-tip span.footer { zoom: 1; display: block; position: absolute; bottom: -22px; left: 0; clear: both; height: 22px; width: 493px; padding: 0; background: url(../images/bg-tooltip-airport-info.png) 0 -378px; }
+	/* ie */ .ie6 #book-content .tooltip-fares span.footer { display: none; }
+	#book-content .tooltip-fares h4 { font-size: 0.938em; color: #FFFFFF; padding: 8px 15px; background: url(../images/bg-fares.png) left top repeat-x #333333; margin-bottom: 0; }
+	#book-content .tooltip-fares .copy { float: left; padding: 15px 15px 0; width: 200px; }
+	#book-content .tooltip-airport-info-tip img { padding: 15px 15px 0 0; }
+	#book-content .tooltip-fares p { margin-bottom: 10px; font-size: 0.688em; }
+	#book-content .tooltip-fares strong { font-weight: bold; font-size: 11px; }
+	#book-content .tooltip-fares a { display: block; }
+	#book-content .tooltip-flight-detail-info { display: none; clear: left; width: 517px; padding: 16px 12px 0; z-index: 2000; overflow: visible; position: absolute; background: url(../images/bg-tooltip-flight-detail.png) left top no-repeat; }
+	/* ie */ .ie6 #book-content .tooltip-flight-detail-info { background-image: none; background-color: #FFFFFF; padding: 0; margin-left: 10px; border: 5px solid #CCCCCC; }
+	#book-content .tooltip-flight-detail-info span.footer { display: block; position: absolute; bottom: -22px; left: 0; clear: both; height: 22px; width: 545px; padding: 0; background: url(../images/bg-tooltip-flight-detail.png) 0 -975px; }
+	/* ie */ .ie6 #book-content .tooltip-flight-detail-info span.footer { display: none; }
+	#book-content .tooltip-flight-detail-info div.legend { background: #eeeeee; border-top: 1px solid #e1e1e1; margin-top: 0; }
+	/* ie */ .ie6 #book-content .tooltip-flight-detail-info div.legend { padding-bottom: 25px }
+	#book-content .tooltip-flight-detail-info div.legend dt,
+	#book-content .tooltip-flight-detail-info div.legend dd { margin-top: 5px; }
+	#book-content .fare-option .fare-picker .tooltip-flight-detail-info div.legend dl { margin: 0; padding: 3px 15px 0; }
+	#book-content .tooltip-flight-detail-info .flights dl { border-bottom: 1px solid #e1e1e1; padding: 15px; }
+	#book-content .tooltip-flight-detail-info .flights dl.last { border-bottom: none; }
+	#book-content .tooltip-flight-detail-info .flights dt { font-size: 0.938em; font-weight: bold; margin-bottom: 8px; }
+	#book-content .tooltip-flight-detail-info .flights dt .flight-no { font-size: 11px; font-weight: normal; }
+	#book-content .tooltip-flight-detail-info .flights dd { font-size: 11px; margin-bottom: 3px; }
+	#book-content .tooltip-flight-detail-info .flights dd strong { display: inline; }
+	#book-content .tooltip-flight-detail-info .flights dd em { color: #8e8e8e; font-style: normal; }
+	#book-content .tooltip-flight-detail-info .flights dd.note { color: #fe5815; }
+	#book-content .tooltip-flight-detail-info .flights dd.note.grey { color: #939697; }
+	#book-content .tooltip-fare-inclusions { visibility: hidden; position: absolute; width: 360px; padding: 12px 12px 0; background: url(../images/bg-tooltip-inclusions-both.png) left top no-repeat; margin-bottom: 20px; z-index: 800; }
+	#book-content .tooltip-fare-inclusions p { margin-top: 10px; }
+	#book-content .tooltip-flight-detail-info .dreamliner-logo.style-one { margin-left: 5px; margin-top: 0; width: 79px; }
+
+
+	/* ie */ .ie6 #book-content .tooltip-fare-inclusions { background-image: none; background-color: #FFFFFF; padding: 0; margin-top: 11px; margin-left: 11px; border: 5px solid #CCCCCC; }
+	#book-content .tooltip-fare-inclusions.single { z-index: 800; width: 255px; background: url(../images/bg-tooltip-inclusions-single.png) left top no-repeat; }
+	#book-content .tooltip-fare-inclusions span.footer { display: block; clear: both; position: absolute; bottom: -60px; left: 0; width: 384px; height: 20px; background: url(../images/bg-tooltip-inclusions-both.png) 0 -280px no-repeat; }
+	/* ie */ .ie6 #book-content .tooltip-fare-inclusions span.footer { display: none; }
+	#book-content .tooltip-fare-inclusions.single span.footer { width: 284px; background: url(../images/bg-tooltip-inclusions-single.png) 0 -280px no-repeat; }
+	#book-content .tooltip-fare-inclusions div { float: left; padding: 15px 10px; }
+	#book-content .tooltip-fare-inclusions .starter-inclusions { width: 127px; border-bottom: 4px solid #fe5815; }
+	#book-content .tooltip-fare-inclusions .business-inclusions { width: 192px; border-left: 1px solid #d1d0d0; border-bottom: 4px solid #615b5e; }
+	#book-content .tooltip-fare-inclusions.single div { float: none; width: auto; }
+	#book-content .tooltip-fare-inclusions ul { list-style: none; }
+	#book-content .tooltip-fare-inclusions li { font-size: 0.688em; background:url(../images/bookings-sprite.png) -22px -803px no-repeat; padding-left: 16px; vertical-align: top; margin-bottom: 5px; line-height: 1.15; }
+	#book-content .tooltip-fare-inclusions a.overlay { font-size: 0.688em; font-weight: bold; display: inline-block; padding-right: 20px; background: url(../images/bookings-sprite.png) right -747px no-repeat; }
+	#book-content .tooltip-business-cabin-info { z-index: 1001; position: absolute; background: url("../images/bg-tooltip-airport-info.png") no-repeat scroll left -45px transparent; clear: left; display: none; overflow: visible; padding: 0px 12px 0 19px; width: 462px; z-index: 2000; }
+	/* ie */ .ie6 #book-content .tooltip-business-cabin-info { background-image: none; background-color: #FFFFFF; padding: 0; margin-top: 11px; margin-left: 11px; border: 5px solid #CCCCCC; }
+	#book-content .tooltip-business-cabin-info h4 { font-size: 0.938em; background: #333333; color: #FFFFFF; padding: 8px 15px; background: url(../images/bg-fares.png) left top repeat-x; margin-bottom: 0; }
+	#book-content .tooltip-business-cabin-info p { color: #333; padding: 12px 15px 6px 15px; margin-bottom: 0; }
+	#book-content .tooltip-business-cabin-info p strong { color: #333; display: inline; font-size: 12px }
+	#book-content .tooltip-business-cabin-info span.footer { display: block; position: absolute; bottom: -22px; left: 0; clear: both; height: 22px; width: 493px; padding: 0; background: url(../images/bg-tooltip-airport-info.png) 0 -378px; }
+	/* ie */ .ie6 #book-content .tooltip-business-cabin-info span.footer { display: none; }
+
+	/* info panel */
+	#book-content #important-info { overflow: hidden; }
+	#book-content #important-info.fares { position: relative; }
+	#book-content #important-info.fares h1 { clear: both; margin-bottom: 30px; }
+	#book-content #important-info dl { background: #fafafa; border: solid 1px #d9d9d9; float: left; margin-left: 30px; padding-bottom: 30px; width: 700px; display: inline; }
+	#book-content #important-info dl dd { margin: 15px 0 0 20px; padding-top: 20px; width: 660px; border-top: 1px solid #dfdfdf; float: left; display: inline; }
+	#book-content #important-info dl dd .important-content { float: left; width: 400px; }
+	#book-content #important-info dl dd .important-content h4 { font-size: 0.938em; margin: 5px 0 15px 0; }
+	#book-content #important-info dl dd img { float: right; border: solid 3px #d9d9d9; }
+	#book-content #important-info label.agree input { margin: 0 7px 0 0; padding: 0; line-height: 0.688em; float: left; }
+	#book-content #important-info label.agree { font-size: 0.75em; float: left; margin-left: 30px; clear: both;  border: solid 1px #d9d9d9; padding: 10px 65px; width: 570px; font-weight: bold; background: #EEE; border-top: none;}
+	.ie6 #book-content #important-info label.agree { display: inline; }
+	#book-content #important-info label.agree span { float: left; display: inline-block; }
+	.ie6 #book-content #important-info label.agree span,
+	.ie7 #book-content #important-info label.agree span { padding-top: 3px; }
+	#book-content #important-info dl dd:first-child { border-top: none; }
+	#book-content #important-info .orange { color: #fe5815; }
+
+	/* booking summary */
+	#book-content #booking-summary { overflow: hidden; }
+	#book-content #booking-summary.fares { position: relative; }
+	#book-content #booking-summary.fares h1 { border-bottom: 1px solid #dfdfdf; padding-bottom: 10px; clear: both; line-height: 1; }
+	#book-content #booking-summary.fares dl { float: left; margin: 30px 0 0 30px; width: 285px; }
+ 	#book-content #booking-summary.fares dl.departing  { margin-left: 0; }
+	#book-content #booking-summary.fares dd.details { margin-bottom: 30px; }
+	#book-content #booking-summary.fares dd .checkbox { float: left; }
+	#book-content #booking-summary.fares dd label { font-size: 0.688em; float: left; display: inline-block; color: #95959e; width: 243px; margin: 2px 0 10px 3px; overflow: hidden; }
+	#book-content #booking-summary.fares dl.oneway { margin-right: 315px; }
+	/* ie */ .ie6 #book-content #booking-summary.fares dl { margin-left: 15px; }
+	#book-content #booking-summary.fares dl.total-price { width: 270px; margin-right: 0; }
+	.ie6 #book-content #booking-summary.fares dl.total-price { margin-left: 40px; }
+	#book-content #booking-summary.fares dt { font-size: 1.188em; }
+	#book-content #booking-summary.fares .price { color: #fe5815; font-weight: bold; font-size: 1.438em; }
+	#book-content #booking-summary.fares dl.total-price .price { font-size: 2.5em; }
+	#book-content #booking-summary.fares dl.total-price .passengers { font-weight: bold; font-size: 0.688em; color: #333333; }
+	#book-content #booking-summary.fares dl.total-price .fine-print { font-size: 0.688em; color: #a6a6a6; margin-top: 14px; }
+	#book-content #booking-summary.fares ul { list-style: none; margin-top: 10px; }
+	#book-content #booking-summary.fares li { margin-bottom: 15px; }
+	#book-content #booking-summary.fares li p { margin-bottom: 3px; font-size: 0.688em; color: #333333; }
+	#book-content #booking-summary.fares li p span { color: #a6a6a6; }
+	#book-content #booking-summary.fares li .date-time { font-weight: bold; color: #333333; }
+	#book-content #booking-summary.fares li .flight-no { font-weight: bold; color: #333333; }
+	#book-content #booking-summary.fares li .origin-destination { color: #a6a6a6; }
+	#book-content #booking-summary.fares li .origin-destination span { color: #333333; }
+	#book-content #booking-summary.fares li .hotel-overview { font-weight: bold; }
+	#book-content #booking-summary.fares li .room-type { color: #A6A6A6; }
+	#book-content #booking-summary.fares li .check-date em { color: #A6A6A6; font-style: normal; }
+	#book-content #booking-summary.fares a.btn-continue { margin-top: 18px; display: block; width: 205px; height: 37px; padding-top: 1px; padding-left: 5px; background: #fe5815 url(../images/bookings-sprite.png) 0px -353px; color: #fff; text-transform: uppercase; font-size: 30px; line-height: 38px; filter: alpha(opacity=100); clear: both; }
+	/* ie */ .ie6 #book-content #booking-summary.fares a.btn-continue, .ie7 #book-content #booking-summary.fares a.btn-continue { padding-top: 0; margin-top: 0; }
+	#book-content #booking-summary.fares a.btn-continue.disabled { background-position: 0px -315px; background-color: #e8e8e8; cursor: default; }
+	#book-content #booking-summary.fares a.btn-continue:hover { text-decoration: none; opacity: 0.8; filter: alpha(opacity=80); }
+	#book-content #booking-summary.fares a.disabled:hover { opacity: 1; filter: alpha(opacity=100); cursor: default; }
+
+	#book-content #booking-summary.fares .small-light-note { color: #a6a6a6; font-size: 11px;  clear: both; padding-left: 30px;}
+
+	/* booking summary */
+	#book-content .qff-info { margin-top: 40px; margin-bottom: -10px; }
+	#book-content .qff-info h1 { float: left; width: 600px; }
+	#book-content .qff-info p { margin: 0 30px; font-size: 11px; width: 600px; float: left; }
+	#book-content .qff-info img { float: left; }
+	#book-content #booking-summary .summary-disclosure { clear: both; font-size: 11px; padding: 0px 65px 0px 0; }
+
+	/* Sale options */
+	#book-content .gradient-bg { background: #e6e6e6; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFF', endColorstr='#CCCCCC'); background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#CCC)); background: -moz-linear-gradient(top,  #FFF,  #CCC); }
+	#book-content .value-bundles .offer-return { width: 450px; float: left; clear: both; }
+	#book-content .value-bundles .offer-return a { float: left; padding: 8px; color: #333; font-size: .75em; }
+	#book-content .value-bundles .offer-return span { width: 12px; height: 9px; background: url(../images/bookings-sprite.png) -43px -160px no-repeat; float: left; margin: 12px 0 0 0; }
+	#book-content .alert-bundle-sale-fares { width: 450px; border-top: solid 1px #353535; border-bottom: solid 1px #353535; }
+	#book-content .alert-bundle-sale-fares div { padding: 16px 20px 5px 60px; background: url(../images/bookings-sprite.png) -160px -904px no-repeat; overflow: hidden;}
+	#book-content .alert-bundle-sale-fares p { color: #333; }
+	#book-content .alert-bundle-sale-fares p strong { font-size: 100%; }
+	#book-content .alert-bundle-sale-fares p span { color: #858585; }
+	#book-content .alert-bundle-sale-fares p a.button { margin-left: 10px; color: #FFF; }
+
+	#book-content .fares .twoforone-warning { background: #FFF; border: solid 4px #CCC; margin: -10px -10px 10px -10px; padding: 5px; width: 205px; }
+	#book-content .fares .twoforone-warning span { display: block; float: left; width: 37px; height: 34px; background: url(../images/bookings-sprite.png) -91px -81px no-repeat; }
+	#book-content .fares .twoforone-warning p { float: right; color: #333; font-size: 0.688em; width: 159px; margin-bottom: 0; }
+    #book-content .fares .card-inner .twoforone-warning {padding-left: 7px; width: auto;}
+    #book-content .fares .card-inner .twoforone-warning.no-sale { display: none;position: absolute; height: 0 }
+    #book-content .fares .card-inner .twoforone-warning span { background: url("../images/manage-alert.png") no-repeat scroll 0 3px transparent; height: 31px; width: 30px;}
+    #book-content .fares .card-inner .twoforone-warning p {color: #525759; font-size: 100% }
+	#book-content .fares .sale-banner { display: block; position: absolute; right: -10px; top: -10px; width: 46px; height: 30px; background: url(../images/bookings-sprite.png) 0 -940px no-repeat;  }
+	#book-content .fares .sale-banner-ja-JP { display: block; position: absolute; right: -10px; top: -10px; width: 46px; height: 30px; background: url(../images/bg_sale-sash-jp.png) 0 0 no-repeat;  }
+
+	/* Price lock */
+	#book-content .fares .logo-pricelock { position:absolute; left:15px; top:-32px; }
+	.ie6 #book-content .fares .logo-pricelock { top: 10px; }
+	#book-content .fares .price-lockV2 h1 { margin:0 0 0.5em 0; }
+	#book-content .fares .price-lockV2 p { margin:1.3em 0; padding-right:110px; }
+	#book-content .fares .price-lockV2 .pricelock-activate { display:none; border-top:1px solid #e2e2e2; }
+	#book-content .fares .price-lockV2 .pricelock-total { overflow: auto; }
+	#book-content .fares .price-lockV2 .pricelock-total dt { font-size: 0.75em; font-weight: bold; margin: 0 0 2px; clear: both; }
+	#book-content .fares .price-lockV2 .pricelock-total .total-item { float:left; width:84%; margin-bottom: 10px; }
+	#book-content .fares .price-lockV2 .pricelock-total dd.total-item { font-size:0.7em; }
+	#book-content .fares .price-lockV2 .pricelock-total .total-amount { font-size:0.75em; color: #FE5815; font-weight: bold; text-align: right; float:right; width:15%; }
+	#book-content .fares .price-lockV2 .pricelock-total .break { border-top: 1px solid #eee; padding-top: 10px; clear: both; }
+	#book-content .fares .price-lockV2 .pricelock-tscs { border-top:1px solid #e2e2e2; padding-top:1em; overflow: auto; margin-bottom: 1.4em;}
+	#book-content .fares .price-lockV2 .pricelock-tscs h4 { font-weight:bold; }
+	#book-content .fares .price-lockV2 .pricelock-tscs p { font-size:0.7em; margin:0.7em 0; padding:0; }
+	#book-content .fares .price-lockV2 .pricelock-tscs p strong { font-size:1.2em; }
+	#book-content .fares .price-lockV2 .checkbox input { margin:2px 8px 0 0; float:left;  }
+	#book-content .fares .price-lockV2 .checkbox label { color:#333; font-size:0.775em; font-weight:bold; width:94%; float:left; }
+	.ie6 #book-content .fares .price-lockV2 .checkbox label,
+	.ie7 #book-content .fares .price-lockV2 .checkbox label { padding-top:4px; }
+	#book-content .fares .price-lockV2 .pricelock-continue { position:relative; float:right; }
+	#book-content .fares .price-lockV2 .pricelock-continue .button { margin-top:1em; }
+	#book-content .fares .price-lockV2 .pricelock-continue .pricelock-cancel { font-size: 0.75em; font-weight:bold; display: block; margin-top:15px; }
+	#book-content .fares .price-lockV2 .error-message { display:none; height: auto; padding-bottom:0; padding-left:10px; position:absolute; width: 325px; top: 0; left:-370px; }
+	.ie7 #book-content .fares .price-lockV2 .error-message { padding-bottom:15px; }
+	#book-content .fares .price-lockV2 .error-message p { font-size:0.75em; margin:0; padding-top:2px; padding-right: 0; }
+	#book-content .fares .price-lockV2 .error-message .alert-icon { margin-bottom: 15px; }
+
+
+
+
+	#main #booking-summary.section-price-lock h1 {  color:#454545; border-bottom: 1px solid #dfdfdf; padding-bottom: 10px; clear: both; line-height: 1; margin:0; }
+	#main #booking-summary.section-price-lock dl { float: left; margin: 30px 0 0 30px; width: 285px; }
+	#main #booking-summary.section-price-lock dl.departing { margin-left:0; margin-top:0; }
+	#main #booking-summary.section-price-lock dl.returning { margin-top:0;}
+	#main #booking-summary.section-price-lock dl.oneway { margin-right: 315px; }
+	/* ie */ .ie6 #main #booking-summary.section-price-lock dl { margin-left: 15px; }
+	#main #booking-summary.section-price-lock dt { font-size: 1.188em; }
+	#main #booking-summary.section-price-lock dd.details { margin-bottom: 30px; }
+	#main #booking-summary.section-price-lock dd .checkbox { float: left; }
+	#main #booking-summary.section-price-lock dd label { font-size: 0.688em; float: left; display: inline-block; color: #95959e; width: 243px; margin: 2px 0 10px 3px; overflow: hidden; }
+	#main #booking-summary.section-price-lock ul { list-style: none; margin-top: 10px; padding:0; }
+	#main #booking-summary.section-price-lock li { margin-bottom: 15px; font-size:100%; padding:0; background:none; }
+	#main #booking-summary.section-price-lock li p { margin-bottom: 3px; padding:0; line-height:1.27; font-size: 0.688em; color: #333; }
+	#main #booking-summary.section-price-lock li p span { color: #a6a6a6; }
+	#main #booking-summary.section-price-lock li p img { display:inline; }
+	#main #booking-summary.section-price-lock li .date-time { font-weight: bold; color: #333; }
+	#main #booking-summary.section-price-lock li .flight-no { font-weight: bold; color: #333; }
+	#main #booking-summary.section-price-lock li .origin-destination { color: #a6a6a6; }
+	#main #booking-summary.section-price-lock li .origin-destination span { color: #333; }
+	#main #booking-summary.section-price-lock .price { color: #fe5815; font-weight: bold; font-size: 1.438em; }
+	#main #booking-summary.section-price-lock .total-price { width: 270px; margin-right: 0; }
+	/* ie */ .ie6 #main #booking-summary.section-price-lock .total-price { margin-left: 40px; }
+	#main #booking-summary.section-price-lock .total-price  dt { color:#333; }
+	#main #booking-summary.section-price-lock .total-price .price { font-size: 2.5em; }
+	#main #booking-summary.section-price-lock .total-price .passengers { font-weight: bold; font-size: 0.688em; color: #333; }
+	#main #booking-summary.section-price-lock .total-price .fine-print { color:#333; font-size: 0.688em; margin-top: 14px; }
+	#main #booking-summary.section-price-lock .amount-owing { color:#333; font-size:26px; font-weight:bold; clear:both; }
+	#main #booking-summary.section-price-lock .amount-owing em { color:#fe5815; font-style:normal; }
+
+
+	/* Containers */
+	#main #booking-summary.section-price-lock { margin-left: 30px; margin-right: 30px; }
+	#main #booking-summary.section-price-lock  .price-lock-body { position: relative;   display: block; border-bottom: 1px solid #e2e2e2; }
+	#main #booking-summary.section-price-lock  .price-lock-body-inner { background: url(../images/bg-price-lock.png) 0 0 repeat-y; }
+
+	/* Columns */
+	#booking-summary.section-price-lock .price-lock-main { float: left; width: 601px; }
+	#booking-summary.section-price-lock .price-lock-side { float: right; width: 299px;  }
+
+	/*Flight details*/
+	#booking-summary.section-price-lock .price-lockV2 { background: url(../images/pricelock-grey.png) 20px 30px no-repeat; border-top: 1px solid #e2e2e2; padding: 30px 30px 30px 165px; position: static; }
+	#booking-summary.section-price-lock .price-lockV2 strong { font-size: 1.2em; line-height: 1.4; }
+
+	#booking-summary.section-price-lock .price-lock-total { background: #FFF; margin-left: -1px; position; relative; }
+
+	#booking-summary.section-price-lock .price-lock-flights { background: #FFF url(../images/bg-price-lock.png) 100% 0 repeat-y; }
+
+	#booking-summary.section-price-lock .btn-reg { width: 215px; }
+	#booking-summary.section-price-lock .btn-reg button { width: 215px; }
+
+	#booking-summary.section-price-lock .price-lock-total { padding-bottom: 20px; min-height: 220px; }
+	#booking-summary.section-price-lock .price-lock-flights { min-height: 240px; }
+	.ie7 #booking-summary.section-price-lock  .price-lock-flights { min-height: 256px; }
+
+	#main #booking-summary.section-price-lock .hold-fares { position: relative;padding-top: 30px;display: block;width: 269px;padding-left: 30px;padding-bottom: 30px; margin-right: 1px;border-top: 1px solid #e2e2e2; }
+	#main #booking-summary.section-price-lock .text-or { position: absolute; top: 0; margin-top: -15px; left: 50%; margin-left: -15px; width: 30px; height: 28px; display: block; text-indent: -9999em; overflow: hidden; background: url(../images/or.png) 0 0 no-repeat; }
+
+	#main #booking-summary.section-price-lock dl.total-price dt { color: #525759; }
+	#main #booking-summary.section-price-lock .total-price .fine-print { color: #a6a6a6; font-size: 11px; }
+
+	/* Total price */
+	#main #booking-summary.section-price-lock dl.pricelock-total { float: none; width: auto; margin-left: 0; width: 100%; float: none; }
+	#main #booking-summary.section-price-lock dl.pricelock-total dt { font-size: 15px; color: #333; }
+	#main #booking-summary.section-price-lock dl.pricelock-total dd { color: #aeaeae; font-size: 20px; font-weight: bold; }
+	#main #booking-summary.section-price-lock dl.pricelock-total dd + dt { margin-top: 20px; }
+	#main #booking-summary.section-price-lock dl.pricelock-total .total-item,
+	#main #booking-summary.section-price-lock dl.pricelock-total .total-amount { font-weight: bold; }
+	#main #booking-summary.section-price-lock dl.pricelock-total .total-amount { color: #fe5815; }
+
+	/*Disclosure statement */
+	#main #booking-summary.section-price-lock .summary-disclosure { padding-left: 0; }
+
+	#main #booking-summary.section-price-lock h2 { margin: 0; }
+	#main #booking-summary.section-price-lock h2 span { color: #fe5815; }
+	#main #booking-summary.section-price-lock .price-lockV2 p { padding-right: 0; }
+
+
+	/* Error Messages */
+	#book-content .fares .error-message { position: absolute; height: 27px; top: 65px; left: 30px; z-index: 5; background-color: #fff; border:solid 4px #222; width: 520px; padding: 14px 20px 16px 60px; }
+	#book-content .fares .error-message-big { height: 34px; padding: 7px 20px 16px 60px; }
+	#book-content .fares .error-message p { color: #363636; line-height: 15px; }
+	#book-content .fares .error-message .alert { display: block; width: 37px; height: 34px; background: url(../images/bookings-sprite.png) -91px -82px no-repeat; position: absolute; left: 13px; top: 13px; padding:0px 0px 0px 0px; }
+
+	/* Custom modal styles */
+	#overlay .modal-style1 { float: left; width: 490px; }
+	#overlay .modal-style1 p { font-size: 12px; clear:both; }
+	#overlay .modal-style1 .button { text-align: center; width: 70px; float: right; margin-bottom: 10px; color: #FFF; }
+	#overlay #us-redirect h1 { font-size: 18px; margin-bottom: 15px; }
+	#overlay #us-redirect p { font-size: 0.75em; }
+
+	/* Inline Alert Messages */
+	#book-content .inline-message { border: solid 3px #333333; margin: 20px 0; }
+	#book-content .inline-message h3 { display: block; color: #FFF; padding: 5px 20px 5px 40px; background: url(../images/bookings-sprite.png) 18px -245px no-repeat #333; }
+	#book-content .inline-message p { padding: 10px 20px 0 20px; margin-bottom: 0; }
+	#book-content .inline-message img { float: right; }
+
+	/* Inclusions modal */
+	.modal-inclusions table { margin: 0 auto; }
+	.modal-inclusions tr { border-bottom: 1px solid #cdcdcd; border-top: 1px solid #cdcdcd; }
+	.modal-inclusions td { width: 130px; padding: 10px; vertical-align: top; border-bottom: 1px solid #cdcdcd; border-top: 1px solid #cdcdcd; border-right: 1px solid white; background: #dfdfdf; text-align: center; font-size: 11px; color: #666; }
+	.modal-inclusions td .conj { color: #a7a7a7; }
+	.modal-inclusions td img { margin: 0 auto; display: block; }
+	.modal-inclusions .first { width: 150px; padding-left: 5px; border: none; background: #fff; text-align: left; font-size: 12px; font-weight: bold; color: #333; }
+	.modal-inclusions .first img { float: left; margin: 0 10px 1px 0; }
+	.modal-inclusions thead tr { border: none;  }
+	.modal-inclusions thead th { background: #241e21 url(../images/modal-flight-inclusion-bg-sprite.png) repeat-x 0 0; text-align: left; }
+	.modal-inclusions thead th h3 { color: #a6a6a6; font-size: 19px; margin: 15px 10px; }
+	.modal-inclusions thead th h3 span { color: #fff; }
+	.modal-inclusions thead td { width: 90px; padding-right: 50px; border-top: none; border-bottom: none; background: #525759 url(../images/modal-flight-inclusion-bg-sprite.png) repeat-x 0 -105px; font-size: 12px; font-weight: bold; color:#fff; text-align: left;}
+	.modal-inclusions thead td span { display: block; }
+	.modal-inclusions thead .first { background: #fff; padding: 10px; }
+	.modal-inclusions .terms { display: block; margin: 10px; font-size: 11px; text-align: right; }
+	.modal-inclusions .inc-footnotes { padding: 0 25px; margin-top: 15px; }
+	.modal-inclusions .inc-footnotes p { color: #333; margin-bottom: 15px; }
+
+	/* price watch */
+	.icon-price-watch { width: 34px; height: 17px; display: none; overflow: hidden; text-indent: -9999em; background:url(../images/bookings-sprite.png) -43px 0 no-repeat; vertical-align: middle; line-height: 1; margin-right: 5px; margin-top: -8px; position: absolute; left: 10px; top: 50%; }
+	.btn-price-watch.jq-btn { padding: 5px 20px; vertical-align: middle; position: relative;  }
+
+	.price-watch-strip {  width: 900px; padding: 20px 30px; margin: 20px 0; }
+	.price-watch-strip-container { background: #ffede6; position: relative; top: 0!important; }
+	.price-watch-strip-container.is_stuck {  z-index: 9999; left: 0; top: 107px!important; width: 100% !important; }
+	.price-watch-strip-container.is_stuck .price-watch-strip { margin: 0 auto; }
+	.low-fares .price-watch-strip {  }
+	#book-content .price-watch-strip p { margin: 0; color: #000; }
+	.price-watch-strip strong { color: #fe5815; font-size: 15px; }
+	.fares-watch-price { float: left; margin-right: 10px; }
+	.ie7 .price-watch-strip { display: none; }
+
+	/* Baggage Important Info Popup */
+	#baggage-info-update .heading b { color: #fe5815; }
+	#baggage-info-update h4 { padding: 10px 0; color: #525759; }
+	#baggage-info-update .baggage-limits { width: 409px; }
+	#baggage-info-update .baggage-limits .image{ height: 180px; background: url(../images/carry_crossover_pax.png) no-repeat;position: relative; }
+    #baggage-info-update .baggage-limits .image-gk{ height: 180px; background: url(../images/carry_crossover_paxGK.png) no-repeat;position: relative; }
+	#baggage-info-update .baggage-limits .image div, #baggage-info-update .baggage-limits .image-gk div { color: #fff;font-size: 14px;font-weight: bold;position: absolute; top: 125px; width: 190px; text-align: center; }
+	#baggage-info-update .baggage-limits .image div.from, #baggage-info-update .baggage-limits .image-gk div.from { left: 10px; }
+	#baggage-info-update .baggage-limits .image div.to, #baggage-info-update .baggage-limits .image-gk div.to { left: 205px; }
+	#baggage-info-update .baggage-limits .legend .left, 
+	#baggage-info-update .baggage-limits .legend .right { width: 180px; margin-bottom: 20px; font-size: 11px; float: left; }
+    #baggage-info-update .baggage-limits .legend .left { margin-left: 25px; }
+    #baggage-info-update .baggage-limits .legend .right { margin-left: 10px; float: left; }
+	#baggage-info-update .baggage-limits .foot-note { clear: both; }
+	#baggage-info-update .baggage-limits .foot-note p { font-size: 0.75em; line-height: 15px; }
+	#baggage-info-update .baggage-limits .foot-note p b { font-weight: normal; color: #fe5815; }
+	#baggage-info-update .info-block__img { float: right; }
+	#baggage-info-update .orange { color: #fe5815; }
+	#baggage-info-update .info-block strong { font-size: 15px; }
+	#baggage-info-update .column--left { float: left;padding: 0 10px; }
+	#baggage-info-update .column--left .prologue { margin: 5px 0; }
+	#baggage-info-update .column--left .prologue p { font-size: 0.75em; line-height: 10px; color: #6d6d6d; }
+	#baggage-info-update .column--left .prologue p.GKPopupText { line-height: 15px; width: 450px}
+	#baggage-info-update .column--right { position: absolute;top: 0;bottom: 0;right: 0;padding: 20px; }
+	#baggage-info-update .column--right .btn-continue { bottom: 20px;right: 20px;position: absolute; }
+
+	.important-info-update { display: none; width: 192px; }
