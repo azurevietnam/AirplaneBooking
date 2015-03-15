@@ -19,14 +19,13 @@ import airlinebooking.core.ws.model.TicketPriceDetail;
 import airlinebooking.core.ws.model.helper.HtmlResultMH;
 import airlinebooking.core.ws.model.helper.TicketInforMH;
 
-public class CrawlerVNAImpl extends Crawler {
+public class CrawlerVietJetImpl extends Crawler {
 
 	@Override
 	public List<TicketInforMH> getTicketInfor(HtmlResultMH htmlResultMH, List<TicketParserParam> parserPathList, String oriCode,
 			String desCode, Date pickedDate, AirlineType airlineType) throws ParseException {
-
 		List<TicketInforMH> ticketInforMHList = new ArrayList<TicketInforMH>();
-
+		
 		if (!htmlResultMH.getHtmlResult().isEmpty()) {
 			Document contentDocument = Jsoup.parse(htmlResultMH.getHtmlResult());
 			HashMap<String, Object> objectHashMap = getHashMapListFromHtmlResult(contentDocument, parserPathList);
@@ -34,11 +33,13 @@ public class CrawlerVNAImpl extends Crawler {
 			if (!objectHashMap.isEmpty()) {
 				
 				final String formatTime = "HH:mm";
+				final Integer breakPointNumberDefault = 0;
+				final String patternTime = "[a-zA-Z\\s]";
+				final String partternTicketPrice = "[0-9,]+";
 				
 				Elements flightCodeElements = (Elements) objectHashMap.get(FLIGHT_CODE);
 				Elements fromTimeElements = (Elements) objectHashMap.get(FROM_TIME);
 				Elements toTimeElements = (Elements) objectHashMap.get(TO_TIME);
-				Elements breakpointElements = (Elements) objectHashMap.get(BREAKPOINT_NUMBER);
 				@SuppressWarnings("unchecked")
 				HashMap<String, Elements> ticketPriceElements = (HashMap<String, Elements>) objectHashMap.get(TICKET_PRICE);
 				
@@ -53,9 +54,9 @@ public class CrawlerVNAImpl extends Crawler {
 					ticket.setPickedDate(pickedDate);
 					ticket.setOriginationCode(oriCode);
 					ticket.setDestinationCode(desCode);
-					ticket.setBreakpointNumber(getBreakpointNumber(breakpointElements, index));
-					ticket.setFromTime(convertToTime(pickedDate, fromTimeElements.get(index).text(), formatTime));
-					ticket.setToTime(convertToTime(pickedDate, toTimeElements.get(index).text(), formatTime));
+					ticket.setBreakpointNumber(breakPointNumberDefault);
+					ticket.setFromTime(convertToTime(pickedDate, fromTimeElements.get(index).text().replaceAll(patternTime, ""), formatTime));
+					ticket.setToTime(convertToTime(pickedDate, toTimeElements.get(index).text().replaceAll(patternTime, ""), formatTime));
 					ticket.setDurationTime(getDurationTimeInMinute(ticket.getFromTime(), ticket.getToTime()));
 					
 					TicketFlightDetail ticketFlightDetail = new TicketFlightDetail();
@@ -75,7 +76,7 @@ public class CrawlerVNAImpl extends Crawler {
 						Elements priceElements = ticketPriceElement.getValue();
 						
 						ticketPriceDetail.setTicketTypeCode(ticketPriceElement.getKey());
-						ticketPriceDetail.setTicketPrice(convertToTicketPrice(priceElements.get(index).text(), "[0-9,]+"));
+						ticketPriceDetail.setTicketPrice(convertToTicketPrice(priceElements.get(index).text(), partternTicketPrice));
 						ticketPriceDetail.setTotal(ticketPriceDetail.getTicketPrice());
 						ticketPriceDetailList.add(ticketPriceDetail);
 					}
@@ -89,7 +90,7 @@ public class CrawlerVNAImpl extends Crawler {
 				}
 			}
 		}
-
+		
 		return ticketInforMHList;
 	}
 

@@ -209,19 +209,17 @@ insert into app_param set code_type = 'VIETJET_TYPE_TICKET', value = 'VIETJET_SK
 
 ---- Vietjet Parser Path
 insert into ticket_parser_param set airline_type = 3, code_type = 'flight_code', description = 'Mã chuyến bay', status = 1
-	, selector_path = 'a.translate[title="Xem chi tiết chuyến bay"]';
+	, selector_path = 'table.FlightsGrid td.SegInfo:nth-child(3) > span';
 insert into ticket_parser_param set airline_type = 3, code_type = 'from_time', description = 'Giờ đi', status = 1
-	, selector_path = '';
+	, selector_path = 'table.FlightsGrid td.SegInfo:nth-child(1)';
 insert into ticket_parser_param set airline_type = 3, code_type = 'to_time', description = 'Giờ đến', status = 1
-	, selector_path = '';
-insert into ticket_parser_param set airline_type = 3, code_type = 'breakpoint_number', description = 'Số điểm dừng', status = 1
-	, selector_path = '';
+	, selector_path = 'table.FlightsGrid td.SegInfo:nth-child(2)';
 insert into ticket_parser_param set airline_type = 3, code_type = 'ticket_price', ticket_type_code = 'VIETJET_PROMO', have_multi_value = 1, description = 'Loại vé Promo', status = 1
-	, selector_path = '';
+	, selector_path = 'table.FaresGrid td:nth-child(1)';
 insert into ticket_parser_param set airline_type = 3, code_type = 'ticket_price', ticket_type_code = 'VIETJET_ECO', have_multi_value = 1, description = 'Loại vé Eco', status = 1
-	, selector_path = '';
+	, selector_path = 'table.FaresGrid td:nth-child(2)';
 insert into ticket_parser_param set airline_type = 3, code_type = 'ticket_price', ticket_type_code = 'VIETJET_SKYBOSS', have_multi_value = 1, description = 'Loại vé Skyboss', status = 1
-	, selector_path = '';
+	, selector_path = 'table.FaresGrid td:nth-child(3)';
 
 -- Fake data
 insert into customer(title, first_name, last_name, mobilephone, email, birth_date)

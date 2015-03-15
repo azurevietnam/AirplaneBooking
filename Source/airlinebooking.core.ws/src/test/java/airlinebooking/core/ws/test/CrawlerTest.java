@@ -1,9 +1,12 @@
 package airlinebooking.core.ws.test;
 
+import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,7 @@ import airlinebooking.core.ws.model.helper.HtmlResultMH;
 import airlinebooking.core.ws.model.helper.TicketInforMH;
 import arilinebooking.core.ws.webbot.Crawler;
 import arilinebooking.core.ws.webbot.CrawlerJetImpl;
+import arilinebooking.core.ws.webbot.CrawlerVietJetImpl;
 import arilinebooking.core.ws.webbot.WebBot;
 import arilinebooking.core.ws.webbot.WebBotJetImpl;
 
@@ -46,6 +50,35 @@ public class CrawlerTest {
 			
 			@SuppressWarnings("unused")
 			List<TicketInforMH> ticketInforMHList = crJet.getTicketInfor(htmlResultMH, parserPathList, oriCode, desCode, pickedDate, airlineType);
+
+			System.out.println("Done");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void crawlerVietJet() {
+		try {
+			Calendar cal = Calendar.getInstance();
+			cal.set(Calendar.YEAR, 2015);
+			cal.set(Calendar.MONTH, Calendar.APRIL);
+			cal.set(Calendar.DAY_OF_MONTH, 30);
+			Date pickedDate = cal.getTime();
+			String oriCode = "SGN";
+			String desCode = "HAN";
+			AirlineType airlineType = AirlineType.VIETJET;
+			
+			List<TicketParserParam> parserPathList = ticketParserParamDao.getParserPathByAirlineType(airlineType);
+			File input = new File("/Users/Dona/Desktop/untitled2.html");
+			Document doc = Jsoup.parse(input, "UTF-8");
+			HtmlResultMH htmlResultMH = new HtmlResultMH();
+			htmlResultMH.setAirlineType(airlineType);
+			htmlResultMH.setHtmlResult(doc.toString());
+			Crawler crVietJet = new CrawlerVietJetImpl();
+			
+			@SuppressWarnings("unused")
+			List<TicketInforMH> ticketInforMHList = crVietJet.getTicketInfor(htmlResultMH, parserPathList, oriCode, desCode, pickedDate, airlineType);
 
 			System.out.println("Done");
 		} catch (Exception e) {

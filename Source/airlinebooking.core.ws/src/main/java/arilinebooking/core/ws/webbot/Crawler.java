@@ -27,21 +27,8 @@ public abstract class Crawler {
 	public static final String BREAKPOINT_NUMBER = "breakpoint_number";
 	public static final String TICKET_PRICE = "ticket_price";
 	
-	public abstract List<TicketInforMH> getTicketInfor(
-			HtmlResultMH htmlResultMH, List<TicketParserParam> parserPathList,
-			String oriCode, String desCode, Date pickedDate,
-			AirlineType airlineType) throws ParseException;
-	
-	public Elements getElementsAtIndex(Document document, String parserPath, Integer index){
-		Elements resultElements;
-		String charBeReplaced = "?";
-		
-		parserPath = parserPath.replaceAll(charBeReplaced, index.toString());
-		
-		resultElements = document.select(parserPath);
-		
-		return resultElements;
-	}
+	public abstract List<TicketInforMH> getTicketInfor(HtmlResultMH htmlResultMH, List<TicketParserParam> parserPathList,
+			String oriCode, String desCode, Date pickedDate, AirlineType airlineType) throws ParseException;
 	
 	public  Date convertToTime(Date pickedDate, String time, String formatTime){
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
