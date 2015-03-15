@@ -17,33 +17,26 @@ import airlinebooking.core.ws.model.helper.HtmlResultMH;
  */
 public class WebBotVNAImpl implements WebBot {
 
-	int timeOut = 10 * 1000; // set timeout jsoup connection to get data is 10s
-	String userAgent = "Mozilla";
-
 	@Override
 	public HtmlResultMH getHTML(String oriCode, String desCode,
 			Date pickedDate, int adultNumber, int childrenNumber,
-			int infantNumber) {
+			int infantNumber) throws Exception {
 		HtmlResultMH htmlResultMH = new HtmlResultMH();
 		htmlResultMH.setAirlineType(AirlineType.VNAIRLINE);
-
+		
+		int timeOut = 10 * 1000; // set timeout jsoup connection to get data is 10s
+		String userAgent = "Mozilla";
+		
 		// Convert Date pickedDate to String format 'yyyy-MM-dd'
-		String pickedDateFormat = DateHelper.convertDateToString(pickedDate,
-				"yyyy-MM-dd");
+		String pickedDateFormat = DateHelper.convertDateToString(pickedDate, "yyyy-MM-dd");
 
 		String url = "https://wl-prod.sabresonicweb.com/SSW2010/B3QE/webqtrip.html?searchType=NORMAL&journeySpan=OW"
-				+ "&origin="
-				+ oriCode
-				+ "&destination="
-				+ desCode
-				+ "&departureDate="
-				+ pickedDateFormat
-				+ "&numAdults="
-				+ adultNumber
-				+ "&numChildren="
-				+ childrenNumber
-				+ "&numInfants="
-				+ infantNumber
+				+ "&origin=" + oriCode
+				+ "&destination=" + desCode
+				+ "&departureDate=" + pickedDateFormat
+				+ "&numAdults=" + adultNumber
+				+ "&numChildren=" + childrenNumber
+				+ "&numInfants=" + infantNumber
 				+ "&alternativeLandingPage=true&promoCode=&lang=vi_VN";
 		try {
 			Document doc = Jsoup.connect(url).userAgent(userAgent)

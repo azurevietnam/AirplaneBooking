@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import airlinebooking.core.ws.enumtype.AirlineType;
@@ -27,7 +29,8 @@ public class CrawlerVNAImpl extends Crawler {
 		List<TicketInforMH> ticketInforMHList = new ArrayList<TicketInforMH>();
 
 		if (!htmlResultMH.getHtmlResult().isEmpty()) {
-			HashMap<String, Object> objectHashMap = getHashMapListFromHtmlResult(htmlResultMH, parserPathList);
+			Document contentDocument = Jsoup.parse(htmlResultMH.getHtmlResult());
+			HashMap<String, Object> objectHashMap = getHashMapListFromHtmlResult(contentDocument, parserPathList);
 			
 			if (!objectHashMap.isEmpty()) {
 				
@@ -74,6 +77,7 @@ public class CrawlerVNAImpl extends Crawler {
 						
 						ticketPriceDetail.setTicketTypeCode(ticketPriceElement.getKey());
 						ticketPriceDetail.setTicketPrice(convertToTicketPrice(priceElements.get(index).text(), "[0-9,]+"));
+						ticketPriceDetail.setTotal(ticketPriceDetail.getTicketPrice());
 						ticketPriceDetailList.add(ticketPriceDetail);
 					}
 					

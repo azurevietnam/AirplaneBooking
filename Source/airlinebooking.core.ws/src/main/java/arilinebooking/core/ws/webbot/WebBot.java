@@ -21,5 +21,5 @@ public interface WebBot {
 	 * @param infantNumber infant number
 	 * @return HtmlResultMH object
 	 */
-	public HtmlResultMH getHTML(String oriCode, String desCode, Date pickedDate, int adultNumber, int childrenNumber, int infantNumber);
+	public HtmlResultMH getHTML(String oriCode, String desCode, Date pickedDate, int adultNumber, int childrenNumber, int infantNumber) throws Exception;
 }

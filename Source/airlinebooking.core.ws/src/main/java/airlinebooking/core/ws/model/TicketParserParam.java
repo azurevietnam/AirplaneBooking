@@ -13,6 +13,7 @@ import org.hibernate.annotations.Type;
 
 import airlinebooking.core.ws.enumtype.ActiveType;
 import airlinebooking.core.ws.enumtype.AirlineType;
+import airlinebooking.core.ws.enumtype.YesNoType;
 
 @Entity
 @Table(name = "ticket_parser_param", catalog = "airlinebooking")
@@ -28,7 +29,8 @@ public class TicketParserParam implements java.io.Serializable{
 	private String ticketTypeCode;
 	private String description;
 	private String selectorPath;
-	private Integer haveParameter;
+	private YesNoType haveParameter;
+	private YesNoType haveMultiValue;
 	private ActiveType status = ActiveType.ACTIVE;
 	
 	public TicketParserParam() {
@@ -102,11 +104,28 @@ public class TicketParserParam implements java.io.Serializable{
 	}
 	
 	@Column(name = "have_parameter")
-	public Integer getHaveParameter() {
+	@Type(type = "airlinebooking.core.ws.enumtype.GenericEnumUserType", parameters = {
+			@Parameter(name = "enumClass", value = "airlinebooking.core.ws.enumtype.YesNoType"),
+			@Parameter(name = "identifierMethod", value = "getValue"),
+			@Parameter(name = "valueOfMethod", value = "parseValue") })
+	public YesNoType getHaveParameter() {
 		return haveParameter;
 	}
 
-	public void setHaveParameter(Integer haveParameter) {
+	public void setHaveParameter(YesNoType haveParameter) {
 		this.haveParameter = haveParameter;
+	}
+
+	@Column(name = "have_multi_value")
+	@Type(type = "airlinebooking.core.ws.enumtype.GenericEnumUserType", parameters = {
+			@Parameter(name = "enumClass", value = "airlinebooking.core.ws.enumtype.YesNoType"),
+			@Parameter(name = "identifierMethod", value = "getValue"),
+			@Parameter(name = "valueOfMethod", value = "parseValue") })
+	public YesNoType getHaveMultiValue() {
+		return haveMultiValue;
+	}
+
+	public void setHaveMultiValue(YesNoType haveMultiValue) {
+		this.haveMultiValue = haveMultiValue;
 	}
 }

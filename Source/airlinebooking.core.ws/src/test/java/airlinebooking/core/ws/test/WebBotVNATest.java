@@ -20,9 +20,9 @@ import arilinebooking.core.ws.webbot.WebBot;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring/applicationContext.xml" })
-public class VNAirlineWebBotTest {
+public class WebBotVNATest {
 	@Test
-	public void getHTMLByURL(){
+	public void getHTMLByURL() throws Exception{
 		WebBot vn = new WebBotVNAImpl();
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.YEAR, 2015);
@@ -48,4 +48,6 @@ public class VNAirlineWebBotTest {
 		}
 		System.out.println("Done");
 	}
+	
+	
 }

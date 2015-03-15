@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import airlinebooking.core.ws.enumtype.AirlineType;
+import airlinebooking.core.ws.enumtype.YesNoType;
 import airlinebooking.core.ws.model.TicketParserParam;
 import airlinebooking.core.ws.model.helper.HtmlResultMH;
 import airlinebooking.core.ws.model.helper.TicketInforMH;
@@ -85,17 +85,15 @@ public abstract class Crawler {
 		return result;
 	}
 	
-	// This code is tie to Jsoup technology TOO MUCH !
-	public HashMap<String, Object> getHashMapListFromHtmlResult(
-			HtmlResultMH htmlResultMH, List<TicketParserParam> parserPathList) {
+	public HashMap<String, Object> getHashMapListFromHtmlResult(Document contentDocument, List<TicketParserParam> parserPathList) {
 		HashMap<String, Object> resultHashMap = new HashMap<String, Object>();
-		Document doc = Jsoup.parse(htmlResultMH.getHtmlResult());
 		
 		for (TicketParserParam ticketParserParam : parserPathList) {
-			if (ticketParserParam.getHaveParameter() == 0){
-				Elements elements = doc.select(ticketParserParam.getSelectorPath());
+			if (ticketParserParam.getHaveParameter() == YesNoType.NO){
+				// Get paraserParam not have parameter
+				Elements elements = contentDocument.select(ticketParserParam.getSelectorPath());
 
-				if (ticketParserParam.getTicketTypeCode() == "" || ticketParserParam.getTicketTypeCode() == null) {
+				if (ticketParserParam.getHaveMultiValue() == YesNoType.NO) {
 					// HashMap<String, Elements>
 					resultHashMap.put(ticketParserParam.getCodeType(), elements);
 				} else {
@@ -116,5 +114,14 @@ public abstract class Crawler {
 			}
 		}
 		return resultHashMap;
+	}
+	
+	public Elements getElementsFromParserPathParameter(Document contentDocument, TicketParserParam parserPathWitParameter, Integer index){
+		Elements resultElements = new Elements();
+		
+		String newParserPath = parserPathWitParameter.getSelectorPath().replaceAll("\\?", index.toString());
+		resultElements = contentDocument.select(newParserPath);
+		
+		return resultElements;
 	}
 }
