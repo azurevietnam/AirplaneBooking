@@ -15,6 +15,5 @@ public interface TicketParserParamDao {
 	 */
 	public List<TicketParserParam> getParserPathByAirlineType(AirlineType airlineType) throws DataAccessException;
 
-	TicketParserParam getTicketParserParamById(int id)
-			throws DataAccessException;
+	TicketParserParam getTicketParserParamById(int id) throws DataAccessException;
 }

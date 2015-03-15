@@ -7,7 +7,9 @@ import org.springframework.stereotype.Repository;
 
 import airlinebooking.core.ws.exception.DataAccessException;
 import airlinebooking.core.ws.model.Ticket;
-import airlinebooking.core.ws.model.helper.TicketInforRawMH;
+import airlinebooking.core.ws.model.TicketFlightDetail;
+import airlinebooking.core.ws.model.TicketPriceDetail;
+import airlinebooking.core.ws.model.helper.TicketInforMH;
 import airlinebooking.core.ws.repo.QueryRepo;
 
 @Repository
@@ -16,8 +18,14 @@ public class TicketDaoImpl implements TicketDao {
 	@Autowired
 	QueryRepo queryRepo;
 	
+	@Autowired
+	TicketFlightDetailDao ticketFlightDetailDao;
+	
+	@Autowired
+	TicketPriceDetailDao ticketPriceDetailDao;
+	
 	@Override
-	public Ticket createTicketType(Ticket ticket){
+	public Ticket createTicket(Ticket ticket){
 		if (ticket == null) {
 			throw new IllegalArgumentException("ticketType");
 		}
@@ -31,7 +39,25 @@ public class TicketDaoImpl implements TicketDao {
 	}
 	
 	@Override
-	public void saveListTicketInforMH(List<TicketInforRawMH> ticketInforMHList) {
-		// TODO Auto-generated method stub
+	public Ticket getTicketById(int id) throws DataAccessException {
+		return queryRepo.getEntityById(Ticket.class, id);
+	}
+
+	@Override
+	public void saveListTicketInforMH(List<TicketInforMH> ticketInforMHList) throws DataAccessException {
+		for (TicketInforMH ticketInforMH : ticketInforMHList) {
+			Ticket newTicket = createTicket(ticketInforMH.getTicket());
+			
+			for (TicketPriceDetail ticketPriceDetail : ticketInforMH.getTicketPriceDetailList()) {
+				ticketPriceDetail.setTicket(newTicket);
+				ticketPriceDetailDao.createTicketPriceDetail(ticketPriceDetail);
+			}
+			
+			for(TicketFlightDetail ticketFlightDetail : ticketInforMH.getTicketFlightDetailList())
+			{
+				ticketFlightDetail.setTicket(newTicket);
+				ticketFlightDetailDao.createTicketFlightDetail(ticketFlightDetail);
+			}
+		}
 	}
 }

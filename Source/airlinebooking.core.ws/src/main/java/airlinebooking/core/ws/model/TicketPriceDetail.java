@@ -2,7 +2,6 @@ package airlinebooking.core.ws.model;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ticket_price_detail", catalog = "airlinebooking")
+@Table(name = "ticket_price_detail")
 public class TicketPriceDetail implements java.io.Serializable{
 
 	/**
@@ -36,7 +35,7 @@ public class TicketPriceDetail implements java.io.Serializable{
 		this.id = id;
 	}
 	
-	@ManyToOne(targetEntity = Customer.class, cascade=CascadeType.ALL)
+	@ManyToOne(targetEntity = Ticket.class)
 	@JoinColumn(name = "ticket_id", referencedColumnName = "id")
 	public Ticket getTicket() {
 		return ticket;

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import airlinebooking.core.ws.dao.TicketDao;
 import airlinebooking.core.ws.dao.TicketParserParamDao;
 import airlinebooking.core.ws.enumtype.AirlineType;
 import airlinebooking.core.ws.model.TicketParserParam;
@@ -29,13 +30,16 @@ public class CrawlerTest {
 	@Autowired
 	TicketParserParamDao ticketParserParamDao;
 	
+	@Autowired
+	TicketDao ticketDao;
+	
 	@Test
 	public void crawlerJetstar() {
 		try {
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.YEAR, 2015);
 			cal.set(Calendar.MONTH, Calendar.MARCH);
-			cal.set(Calendar.DAY_OF_MONTH, 29);
+			cal.set(Calendar.DAY_OF_MONTH, 28);
 			Date pickedDate = cal.getTime();
 			String oriCode = "SGN";
 			String desCode = "HAN";
@@ -47,9 +51,10 @@ public class CrawlerTest {
 			String htmlResultMH = wbJet.getHtmlResult(oriCode, desCode, pickedDate, 1, 0, 0);
 			Crawler crJet = new CrawlerJetImpl();
 			
-			@SuppressWarnings("unused")
 			List<TicketInforMH> ticketInforMHList = crJet.getTicketInfor(htmlResultMH, parserPathList, oriCode, desCode, pickedDate, airlineType);
-
+			
+			ticketDao.saveListTicketInforMH(ticketInforMHList);
+			
 			System.out.println("Done");
 		} catch (Exception e) {
 			e.printStackTrace();

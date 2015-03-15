@@ -4,7 +4,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +16,7 @@ import javax.persistence.TemporalType;
 
 
 @Entity
-@Table(name = "ticket_flight_detail", catalog = "airlinebooking")
+@Table(name = "ticket_flight_detail")
 public class TicketFlightDetail implements java.io.Serializable {
 	/**
 	 * 
@@ -44,7 +43,7 @@ public class TicketFlightDetail implements java.io.Serializable {
 		this.id = id;
 	}
 	
-	@ManyToOne(targetEntity = Customer.class, cascade=CascadeType.ALL)
+	@ManyToOne(targetEntity = Ticket.class)
 	@JoinColumn(name = "ticket_id", referencedColumnName = "id")
 	public Ticket getTicket() {
 		return ticket;

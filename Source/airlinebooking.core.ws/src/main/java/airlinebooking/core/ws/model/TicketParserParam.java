@@ -16,7 +16,7 @@ import airlinebooking.core.ws.enumtype.AirlineType;
 import airlinebooking.core.ws.enumtype.YesNoType;
 
 @Entity
-@Table(name = "ticket_parser_param", catalog = "airlinebooking")
+@Table(name = "ticket_parser_param")
 public class TicketParserParam implements java.io.Serializable{
 
 	/**

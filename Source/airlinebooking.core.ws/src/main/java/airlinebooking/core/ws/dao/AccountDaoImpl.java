@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class AccountDaoImpl extends HibernateDaoSupport implements AccountDao {
 	@Autowired
-	QueryRepo repository;
+	QueryRepo queryRepo;
 	
 	@Override
 	public Account findByUsername(String userName) {
@@ -25,12 +25,12 @@ public class AccountDaoImpl extends HibernateDaoSupport implements AccountDao {
 
 	@Override
 	public Account getAccountById(int id) throws DataAccessException {
-		return repository.getEntityById(Account.class, id);
+		return queryRepo.getEntityById(Account.class, id);
 	}
 
 	@Override
 	public void updateAccount(Account acc) throws DataAccessException {
-		repository.update(acc);
+		queryRepo.update(acc);
 	}
 
 }
