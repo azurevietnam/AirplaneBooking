@@ -33,6 +33,7 @@ public class CrawlerVNAImpl extends Crawler {
 			if (!objectHashMap.isEmpty()) {
 				
 				final String formatTime = "HH:mm";
+				final String partternTicketPrice = "[0-9,]+";
 				
 				Elements flightCodeElements = (Elements) objectHashMap.get(FLIGHT_CODE);
 				Elements fromTimeElements = (Elements) objectHashMap.get(FROM_TIME);
@@ -74,7 +75,7 @@ public class CrawlerVNAImpl extends Crawler {
 						Elements priceElements = ticketPriceElement.getValue();
 						
 						ticketPriceDetail.setTicketTypeCode(ticketPriceElement.getKey());
-						ticketPriceDetail.setTicketPrice(convertToTicketPrice(priceElements.get(index).text(), "[0-9,]+"));
+						ticketPriceDetail.setTicketPrice(convertToTicketPrice(priceElements.get(index).text(), partternTicketPrice));
 						ticketPriceDetail.setTotal(ticketPriceDetail.getTicketPrice());
 						ticketPriceDetailList.add(ticketPriceDetail);
 					}

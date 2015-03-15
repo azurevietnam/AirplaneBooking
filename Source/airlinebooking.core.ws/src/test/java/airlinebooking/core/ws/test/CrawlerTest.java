@@ -44,7 +44,7 @@ public class CrawlerTest {
 			List<TicketParserParam> parserPathList = ticketParserParamDao.getParserPathByAirlineType(AirlineType.JETSTAR);
 			
 			WebBot wbJet = new WebBotJetImpl();
-			String htmlResultMH = wbJet.getHTML(oriCode, desCode, pickedDate, 1, 0, 0);
+			String htmlResultMH = wbJet.getHtmlResult(oriCode, desCode, pickedDate, 1, 0, 0);
 			Crawler crJet = new CrawlerJetImpl();
 			
 			@SuppressWarnings("unused")

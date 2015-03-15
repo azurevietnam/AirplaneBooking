@@ -16,7 +16,7 @@ import airlinebooking.core.ws.helper.DateHelper;
 public class WebBotVNAImpl implements WebBot {
 
 	@Override
-	public String getHTML(String oriCode, String desCode,
+	public String getHtmlResult(String oriCode, String desCode,
 			Date pickedDate, int adultNumber, int childrenNumber,
 			int infantNumber) throws Exception {
 		String htmlResult = "";

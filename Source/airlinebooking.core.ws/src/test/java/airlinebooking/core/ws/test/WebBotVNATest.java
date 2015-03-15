@@ -29,7 +29,7 @@ public class WebBotVNATest {
 		cal.set(Calendar.DAY_OF_MONTH, 27);
 		Date pickedDate = cal.getTime();
 		
-		String htmlResult = vn.getHTML("SGN", "DAD", pickedDate, 1, 0, 0);
+		String htmlResult = vn.getHtmlResult("SGN", "DAD", pickedDate, 1, 0, 0);
 		Document doc = Jsoup.parse(htmlResult);
 		Elements content = doc.select("tr.yui-dt-even > td:nth-child(5), tr.yui-dt-odd > td:nth-child(5)");
  

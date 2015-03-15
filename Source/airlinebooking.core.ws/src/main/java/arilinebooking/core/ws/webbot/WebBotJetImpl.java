@@ -41,7 +41,7 @@ public class WebBotJetImpl implements WebBot {
 	}
 	
 	@Override
-	public String getHTML(String oriCode, String desCode, Date pickedDate, int adultNumber, int childrenNumber,
+	public String getHtmlResult(String oriCode, String desCode, Date pickedDate, int adultNumber, int childrenNumber,
 			int infantNumber) throws Exception {
 		String htmlResult = "";
 		
