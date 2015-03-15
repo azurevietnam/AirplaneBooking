@@ -2,8 +2,6 @@ package arilinebooking.core.ws.webbot;
 
 import java.util.Date;
 
-import airlinebooking.core.ws.model.helper.HtmlResultMH;
-
 /**
  * WebBot interface
  * @author ledona
@@ -21,5 +19,5 @@ public interface WebBot {
 	 * @param infantNumber infant number
 	 * @return HtmlResultMH object
 	 */
-	public HtmlResultMH getHTML(String oriCode, String desCode, Date pickedDate, int adultNumber, int childrenNumber, int infantNumber) throws Exception;
+	public String getHTML(String oriCode, String desCode, Date pickedDate, int adultNumber, int childrenNumber, int infantNumber) throws Exception;
 }

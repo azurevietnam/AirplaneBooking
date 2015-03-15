@@ -16,7 +16,6 @@ import org.jsoup.select.Elements;
 import airlinebooking.core.ws.enumtype.AirlineType;
 import airlinebooking.core.ws.enumtype.YesNoType;
 import airlinebooking.core.ws.model.TicketParserParam;
-import airlinebooking.core.ws.model.helper.HtmlResultMH;
 import airlinebooking.core.ws.model.helper.TicketInforMH;
 
 public abstract class Crawler {
@@ -27,7 +26,7 @@ public abstract class Crawler {
 	public static final String BREAKPOINT_NUMBER = "breakpoint_number";
 	public static final String TICKET_PRICE = "ticket_price";
 	
-	public abstract List<TicketInforMH> getTicketInfor(HtmlResultMH htmlResultMH, List<TicketParserParam> parserPathList,
+	public abstract List<TicketInforMH> getTicketInfor(String htmlResultString, List<TicketParserParam> parserPathList,
 			String oriCode, String desCode, Date pickedDate, AirlineType airlineType) throws ParseException;
 	
 	public  Date convertToTime(Date pickedDate, String time, String formatTime){

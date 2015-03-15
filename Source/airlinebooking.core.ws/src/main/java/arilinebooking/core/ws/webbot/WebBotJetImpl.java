@@ -17,9 +17,7 @@ import java.util.zip.GZIPInputStream;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import airlinebooking.core.ws.enumtype.AirlineType;
 import airlinebooking.core.ws.helper.DateHelper;
-import airlinebooking.core.ws.model.helper.HtmlResultMH;
 
 public class WebBotJetImpl implements WebBot {
 	final String urlHeader = "http://booknow.jetstar.com";
@@ -43,10 +41,9 @@ public class WebBotJetImpl implements WebBot {
 	}
 	
 	@Override
-	public HtmlResultMH getHTML(String oriCode, String desCode, Date pickedDate, int adultNumber, int childrenNumber,
+	public String getHTML(String oriCode, String desCode, Date pickedDate, int adultNumber, int childrenNumber,
 			int infantNumber) throws Exception {
-		HtmlResultMH htmlResultMH = new HtmlResultMH();
-		htmlResultMH.setAirlineType(AirlineType.JETSTAR);
+		String htmlResult = "";
 		
 		String pickedDateDay = DateHelper.convertDateToString(pickedDate, "dd");
 		String pickedDateMonth = DateHelper.convertDateToString(pickedDate, "yyyy-MM");
@@ -152,17 +149,17 @@ public class WebBotJetImpl implements WebBot {
 			
 			Document doc = Jsoup.parse(html.toString());
 			
-			htmlResultMH.setHtmlResult(doc.toString());
+			htmlResult = doc.toString();
 		 
 //			System.out.println("URL Content... \n" + html.toString());
 //			System.out.println("Done");
 		 
-		    } 
+		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
 		 
-	return htmlResultMH;
+	return htmlResult;
 	}
 
 }

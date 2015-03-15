@@ -14,9 +14,8 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import airlinebooking.core.ws.model.helper.HtmlResultMH;
-import arilinebooking.core.ws.webbot.WebBotVNAImpl;
 import arilinebooking.core.ws.webbot.WebBot;
+import arilinebooking.core.ws.webbot.WebBotVNAImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring/applicationContext.xml" })
@@ -30,8 +29,8 @@ public class WebBotVNATest {
 		cal.set(Calendar.DAY_OF_MONTH, 27);
 		Date pickedDate = cal.getTime();
 		
-		HtmlResultMH htmlResult = vn.getHTML("SGN", "DAD", pickedDate, 1, 0, 0);
-		Document doc = Jsoup.parse(htmlResult.getHtmlResult());
+		String htmlResult = vn.getHTML("SGN", "DAD", pickedDate, 1, 0, 0);
+		Document doc = Jsoup.parse(htmlResult);
 		Elements content = doc.select("tr.yui-dt-even > td:nth-child(5), tr.yui-dt-odd > td:nth-child(5)");
  
 		System.out.println(content.text());

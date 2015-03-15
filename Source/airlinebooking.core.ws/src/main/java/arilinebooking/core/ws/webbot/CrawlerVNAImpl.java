@@ -16,19 +16,18 @@ import airlinebooking.core.ws.model.Ticket;
 import airlinebooking.core.ws.model.TicketFlightDetail;
 import airlinebooking.core.ws.model.TicketParserParam;
 import airlinebooking.core.ws.model.TicketPriceDetail;
-import airlinebooking.core.ws.model.helper.HtmlResultMH;
 import airlinebooking.core.ws.model.helper.TicketInforMH;
 
 public class CrawlerVNAImpl extends Crawler {
 
 	@Override
-	public List<TicketInforMH> getTicketInfor(HtmlResultMH htmlResultMH, List<TicketParserParam> parserPathList, String oriCode,
+	public List<TicketInforMH> getTicketInfor(String htmlResultString, List<TicketParserParam> parserPathList, String oriCode,
 			String desCode, Date pickedDate, AirlineType airlineType) throws ParseException {
 
 		List<TicketInforMH> ticketInforMHList = new ArrayList<TicketInforMH>();
 
-		if (!htmlResultMH.getHtmlResult().isEmpty()) {
-			Document contentDocument = Jsoup.parse(htmlResultMH.getHtmlResult());
+		if (!htmlResultString.isEmpty()) {
+			Document contentDocument = Jsoup.parse(htmlResultString);
 			HashMap<String, Object> objectHashMap = getHashMapListFromHtmlResult(contentDocument, parserPathList);
 			
 			if (!objectHashMap.isEmpty()) {

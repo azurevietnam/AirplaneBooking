@@ -16,7 +16,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import airlinebooking.core.ws.dao.TicketParserParamDao;
 import airlinebooking.core.ws.enumtype.AirlineType;
 import airlinebooking.core.ws.model.TicketParserParam;
-import airlinebooking.core.ws.model.helper.HtmlResultMH;
 import airlinebooking.core.ws.model.helper.TicketInforMH;
 import arilinebooking.core.ws.webbot.Crawler;
 import arilinebooking.core.ws.webbot.CrawlerJetImpl;
@@ -45,7 +44,7 @@ public class CrawlerTest {
 			List<TicketParserParam> parserPathList = ticketParserParamDao.getParserPathByAirlineType(AirlineType.JETSTAR);
 			
 			WebBot wbJet = new WebBotJetImpl();
-			HtmlResultMH htmlResultMH = wbJet.getHTML(oriCode, desCode, pickedDate, 1, 0, 0);
+			String htmlResultMH = wbJet.getHTML(oriCode, desCode, pickedDate, 1, 0, 0);
 			Crawler crJet = new CrawlerJetImpl();
 			
 			@SuppressWarnings("unused")
@@ -72,13 +71,11 @@ public class CrawlerTest {
 			List<TicketParserParam> parserPathList = ticketParserParamDao.getParserPathByAirlineType(airlineType);
 			File input = new File("/Users/Dona/Desktop/untitled2.html");
 			Document doc = Jsoup.parse(input, "UTF-8");
-			HtmlResultMH htmlResultMH = new HtmlResultMH();
-			htmlResultMH.setAirlineType(airlineType);
-			htmlResultMH.setHtmlResult(doc.toString());
+			String htmlResultString = doc.toString();
 			Crawler crVietJet = new CrawlerVietJetImpl();
 			
 			@SuppressWarnings("unused")
-			List<TicketInforMH> ticketInforMHList = crVietJet.getTicketInfor(htmlResultMH, parserPathList, oriCode, desCode, pickedDate, airlineType);
+			List<TicketInforMH> ticketInforMHList = crVietJet.getTicketInfor(htmlResultString, parserPathList, oriCode, desCode, pickedDate, airlineType);
 
 			System.out.println("Done");
 		} catch (Exception e) {

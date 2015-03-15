@@ -15,7 +15,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import airlinebooking.core.ws.helper.DateHelper;
-import airlinebooking.core.ws.model.helper.HtmlResultMH;
 import arilinebooking.core.ws.webbot.WebBot;
 import arilinebooking.core.ws.webbot.WebBotJetImpl;
 
@@ -31,8 +30,8 @@ public class WebBotJetTest {
 		cal.set(Calendar.DAY_OF_MONTH, 29);
 		Date pickedDate = cal.getTime();
 		
-		HtmlResultMH htmlResult = vn.getHTML("SGN", "HAN", pickedDate, 1, 0, 0);
-		Document doc = Jsoup.parse(htmlResult.getHtmlResult());
+		String htmlResult = vn.getHTML("SGN", "HAN", pickedDate, 1, 0, 0);
+		Document doc = Jsoup.parse(htmlResult);
 		Elements elements = doc.select("div.fares > table.domestic tr:not(tr.starter-options.alt tr.business-options) > td:nth-child(2) > strong");
 		for (Element element : elements){
 			System.out.println(element.text());

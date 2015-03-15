@@ -6,9 +6,7 @@ import java.util.Date;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import airlinebooking.core.ws.enumtype.AirlineType;
 import airlinebooking.core.ws.helper.DateHelper;
-import airlinebooking.core.ws.model.helper.HtmlResultMH;
 
 /**
  * Implement WebBot and run for Vietnam Airline
@@ -18,11 +16,10 @@ import airlinebooking.core.ws.model.helper.HtmlResultMH;
 public class WebBotVNAImpl implements WebBot {
 
 	@Override
-	public HtmlResultMH getHTML(String oriCode, String desCode,
+	public String getHTML(String oriCode, String desCode,
 			Date pickedDate, int adultNumber, int childrenNumber,
 			int infantNumber) throws Exception {
-		HtmlResultMH htmlResultMH = new HtmlResultMH();
-		htmlResultMH.setAirlineType(AirlineType.VNAIRLINE);
+		String htmlResult = "";
 		
 		int timeOut = 10 * 1000; // set timeout jsoup connection to get data is 10s
 		String userAgent = "Mozilla";
@@ -39,12 +36,11 @@ public class WebBotVNAImpl implements WebBot {
 				+ "&numInfants=" + infantNumber
 				+ "&alternativeLandingPage=true&promoCode=&lang=vi_VN";
 		try {
-			Document doc = Jsoup.connect(url).userAgent(userAgent)
-					.timeout(timeOut).get();
-			htmlResultMH.setHtmlResult(doc.toString());
+			Document doc = Jsoup.connect(url).userAgent(userAgent).timeout(timeOut).get();
+			 htmlResult = doc.toString();
 		} catch (IOException e) {
 			System.out.println(e.toString());
 		}
-		return htmlResultMH;
+		return htmlResult;
 	}
 }
