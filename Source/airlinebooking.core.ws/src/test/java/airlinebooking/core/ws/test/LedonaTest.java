@@ -11,16 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class LedonaTest {
 	@Test
 	public void convertString(){
-		String bigNumber = "";
-//		NumberFormat format = NumberFormat.getInstance(Locale.US);
-//	        Number number = 0;
-//		try {
-//			number = format.parse(bigNumber);
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
-//		int result = number.intValue();
-		
-		System.out.println(bigNumber.isEmpty());
+		String bigNumber = "0:40 (+1)";
+		System.out.println(bigNumber.substring(0, bigNumber.indexOf(":") + 3));
 	}
 }

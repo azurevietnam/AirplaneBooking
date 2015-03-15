@@ -66,8 +66,8 @@ public class CrawlerJetImpl extends Crawler {
 					ticket.setPickedDate(pickedDate);
 					ticket.setOriginationCode(oriCode);
 					ticket.setDestinationCode(desCode);
-					ticket.setFromTime(converToTime(pickedDate, fromTimeElements.get(index).text(), formatTime));
-					ticket.setToTime(converToTime(pickedDate, toTimeElements.get(index).text(), formatTime));
+					ticket.setFromTime(convertToTime(pickedDate, fromTimeElements.get(index).text(), formatTime));
+					ticket.setToTime(convertToTime(pickedDate, getTimeFormatHHmm(toTimeElements.get(index).text()), formatTime));
 					ticket.setDurationTime(getDurationTimeInMinute(ticket.getFromTime(), ticket.getToTime()));
 					
 					// New instance TicketPriceDetail then add to List<TicketPriceDetail>
@@ -118,5 +118,11 @@ public class CrawlerJetImpl extends Crawler {
 		}
 		
 		return ticketInforMHList;
+	}
+	
+	private String getTimeFormatHHmm(String timeString){
+		// Example: convert "0:40 (+1)" to "0:40"
+		timeString = timeString.substring(0, timeString.indexOf(":") + 3);
+		return timeString;
 	}
 }

@@ -43,7 +43,7 @@ public abstract class Crawler {
 		return resultElements;
 	}
 	
-	public  Date converToTime(Date pickedDate, String time, String formatTime){
+	public  Date convertToTime(Date pickedDate, String time, String formatTime){
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		String inputDateStr = dateFormat.format(pickedDate);
 		

@@ -32,7 +32,7 @@ public class CrawlerTest {
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.YEAR, 2015);
 			cal.set(Calendar.MONTH, Calendar.MARCH);
-			cal.set(Calendar.DAY_OF_MONTH, 26);
+			cal.set(Calendar.DAY_OF_MONTH, 29);
 			Date pickedDate = cal.getTime();
 			String oriCode = "SGN";
 			String desCode = "HAN";
@@ -41,7 +41,7 @@ public class CrawlerTest {
 			List<TicketParserParam> parserPathList = ticketParserParamDao.getParserPathByAirlineType(AirlineType.JETSTAR);
 			
 			WebBot wbJet = new WebBotJetImpl();
-			HtmlResultMH htmlResultMH = wbJet.getHTML("SGN", "HAN", pickedDate, 1, 0, 0);
+			HtmlResultMH htmlResultMH = wbJet.getHTML(oriCode, desCode, pickedDate, 1, 0, 0);
 			Crawler crJet = new CrawlerJetImpl();
 			
 			@SuppressWarnings("unused")

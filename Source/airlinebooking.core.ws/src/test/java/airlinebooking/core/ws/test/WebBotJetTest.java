@@ -28,12 +28,12 @@ public class WebBotJetTest {
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.YEAR, 2015);
 		cal.set(Calendar.MONTH, Calendar.MARCH);
-		cal.set(Calendar.DAY_OF_MONTH, 26);
+		cal.set(Calendar.DAY_OF_MONTH, 29);
 		Date pickedDate = cal.getTime();
 		
 		HtmlResultMH htmlResult = vn.getHTML("SGN", "HAN", pickedDate, 1, 0, 0);
 		Document doc = Jsoup.parse(htmlResult.getHtmlResult());
-		Elements elements = doc.select("div.fares > table.domestic tr:not(tr.starter-options.alt tr.business-options) > td:nth-child(1) > strong");
+		Elements elements = doc.select("div.fares > table.domestic tr:not(tr.starter-options.alt tr.business-options) > td:nth-child(2) > strong");
 		for (Element element : elements){
 			System.out.println(element.text());
 		}

@@ -55,8 +55,8 @@ public class CrawlerVNAImpl extends Crawler {
 					ticket.setOriginationCode(oriCode);
 					ticket.setDestinationCode(desCode);
 					ticket.setBreakpointNumber(getBreakpointNumber(breakpointElements, index));
-					ticket.setFromTime(converToTime(pickedDate, fromTimeElements.get(index).text(), formatTime));
-					ticket.setToTime(converToTime(pickedDate, toTimeElements.get(index).text(), formatTime));
+					ticket.setFromTime(convertToTime(pickedDate, fromTimeElements.get(index).text(), formatTime));
+					ticket.setToTime(convertToTime(pickedDate, toTimeElements.get(index).text(), formatTime));
 					ticket.setDurationTime(getDurationTimeInMinute(ticket.getFromTime(), ticket.getToTime()));
 					
 					TicketFlightDetail ticketFlightDetail = new TicketFlightDetail();
