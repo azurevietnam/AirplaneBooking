@@ -73,7 +73,7 @@ public class CrawlerJetImpl extends Crawler {
 					
 					// New instance TicketPriceDetail then add to List<TicketPriceDetail>
 					TicketPriceDetail ticketPriceDetail = new TicketPriceDetail();
-					ticketPriceDetail.setTicketPrice(convertToTicketPrice(ticketPriceElements.get(index).text().replaceAll("[a-zA-Z\\s]", ""), "[0-9,]+"));
+					ticketPriceDetail.setTicketPrice(convertToMoneyFormatUS(ticketPriceElements.get(index).text().replaceAll("[a-zA-Z\\s]", ""), "[0-9,]+"));
 					ticketPriceDetail.setTotal(ticketPriceDetail.getTicketPrice());
 					ticketPriceDetail.setTicket(ticket);
 					List<TicketPriceDetail> ticketPriceDetails = new ArrayList<TicketPriceDetail>();

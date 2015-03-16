@@ -74,7 +74,7 @@ public class CrawlerVietJetImpl extends Crawler {
 						Elements priceElements = ticketPriceElement.getValue();
 						
 						ticketPriceDetail.setTicketTypeCode(ticketPriceElement.getKey());
-						ticketPriceDetail.setTicketPrice(convertToTicketPrice(priceElements.get(index).text(), partternTicketPrice));
+						ticketPriceDetail.setTicketPrice(convertToMoneyFormatUS(priceElements.get(index).text(), partternTicketPrice));
 						ticketPriceDetail.setTotal(ticketPriceDetail.getTicketPrice());
 						ticketPriceDetails.add(ticketPriceDetail);
 					}

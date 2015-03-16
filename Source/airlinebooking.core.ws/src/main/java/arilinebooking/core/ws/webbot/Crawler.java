@@ -48,7 +48,7 @@ public abstract class Crawler {
         }
 	}
 	
-	public int convertToTicketPrice(String ticketPriceStr, String pattern) throws ParseException {
+	public int convertToMoneyFormatUS(String ticketPriceStr, String pattern) throws ParseException {
 		int result = -1;
 		if(Pattern.matches(pattern, ticketPriceStr)){
 			NumberFormat format = NumberFormat.getInstance(Locale.US);
