@@ -17,7 +17,6 @@ import airlinebooking.core.ws.exception.DataAccessException;
 import airlinebooking.core.ws.model.Ticket;
 import airlinebooking.core.ws.model.TicketFlightDetail;
 import airlinebooking.core.ws.model.TicketPriceDetail;
-import airlinebooking.core.ws.model.helper.TicketInforMH;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring/applicationContext.xml" })
@@ -25,7 +24,7 @@ public class TicketTest {
 	@Autowired
 	TicketDao ticketDao;
 	@Test
-	public void saveListTicketInforMH() throws DataAccessException{
+	public void saveListTicket() throws DataAccessException{
 		Calendar cal = Calendar.getInstance();
 		cal.set(Calendar.YEAR, 2015);
 		cal.set(Calendar.MONTH, Calendar.MARCH);
@@ -64,12 +63,10 @@ public class TicketTest {
 		ticket.setTicketFlightDetails(ticketFlightDetails);
 		ticket.setTicketPriceDetails(ticketPriceDetails);
 		
-		TicketInforMH ticketInforMH = new TicketInforMH();
-		ticketInforMH.setTicket(ticket);
-		List<TicketInforMH> ticketInforMHList = new ArrayList<TicketInforMH>();
-		ticketInforMHList.add(ticketInforMH);
+		List<Ticket> tickets = new ArrayList<Ticket>();
+		tickets.add(ticket);
 		
-		ticketDao.saveListTickets(ticketInforMHList);
+		ticketDao.saveListTickets(tickets);
 		
 		System.out.println(ticket.getId());
 	}

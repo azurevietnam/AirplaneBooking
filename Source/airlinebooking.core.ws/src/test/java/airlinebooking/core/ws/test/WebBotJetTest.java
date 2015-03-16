@@ -31,11 +31,11 @@ public class WebBotJetTest {
 		Date pickedDate = cal.getTime();
 		
 		String htmlResult = vn.getHtmlResult("SGN", "HAN", pickedDate, 1, 0, 0);
-		Document doc = Jsoup.parse(htmlResult);
-		Elements elements = doc.select("div.fares > table.domestic tr:not(tr.starter-options.alt tr.business-options) > td:nth-child(2) > strong");
-		for (Element element : elements){
-			System.out.println(element.text());
-		}
+//		Document doc = Jsoup.parse(htmlResult);
+//		Elements elements = doc.select("div.fares > table.domestic tr:not(tr.starter-options.alt tr.business-options) > td:nth-child(2) > strong");
+//		for (Element element : elements){
+//			System.out.println(element.text());
+//		}
 		System.out.println("Done");
 	}
 	
