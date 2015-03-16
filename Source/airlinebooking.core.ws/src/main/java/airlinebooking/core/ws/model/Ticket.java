@@ -1,13 +1,17 @@
 package airlinebooking.core.ws.model;
-import java.util.Date;
+import static javax.persistence.GenerationType.IDENTITY;
 
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-
-import static javax.persistence.GenerationType.IDENTITY;
-
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -41,9 +45,11 @@ public class Ticket implements java.io.Serializable {
 	private Date createDate;
 	private String updateUser;
 	private Date updateDate;
+	
+	private Set<TicketFlightDetail> ticketFlightDetails = new HashSet<TicketFlightDetail>();
+	private Set<TicketPriceDetail> ticketPriceDetails = new HashSet<TicketPriceDetail>();
 
-	public Ticket() {
-	}
+	public Ticket() {}
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -171,6 +177,26 @@ public class Ticket implements java.io.Serializable {
 
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
+	}
+
+	@OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="ticket_id")
+	public Set<TicketFlightDetail> getTicketFlightDetails() {
+		return ticketFlightDetails;
+	}
+
+	public void setTicketFlightDetails(Set<TicketFlightDetail> ticketFlightDetails) {
+		this.ticketFlightDetails = ticketFlightDetails;
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name="ticket_id")
+	public Set<TicketPriceDetail> getTicketPriceDetails() {
+		return ticketPriceDetails;
+	}
+
+	public void setTicketPriceDetails(Set<TicketPriceDetail> ticketPriceDetails) {
+		this.ticketPriceDetails = ticketPriceDetails;
 	}
 
 }

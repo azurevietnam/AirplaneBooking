@@ -4,7 +4,9 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -73,11 +75,11 @@ public class CrawlerJetImpl extends Crawler {
 					TicketPriceDetail ticketPriceDetail = new TicketPriceDetail();
 					ticketPriceDetail.setTicketPrice(convertToTicketPrice(ticketPriceElements.get(index).text().replaceAll("[a-zA-Z\\s]", ""), "[0-9,]+"));
 					ticketPriceDetail.setTotal(ticketPriceDetail.getTicketPrice());
-					List<TicketPriceDetail> ticketPriceDetailList = new ArrayList<TicketPriceDetail>();
+					Set<TicketPriceDetail> ticketPriceDetailList = new HashSet<TicketPriceDetail>();
 					ticketPriceDetailList.add(ticketPriceDetail);
 					
 					// List<TicketFlightDetail>
-					List<TicketFlightDetail> ticketFlightDetailList = new ArrayList<TicketFlightDetail>();
+					Set<TicketFlightDetail> ticketFlightDetailList = new HashSet<TicketFlightDetail>();
 					Elements flightCodeElements = getElementsFromParserPathParameter(contentDocument, flightCodeTicketParserParam, index + 1);
 					ticket.setBreakpointNumber(flightCodeElements.size() - 1);
 					if(ticket.getBreakpointNumber() <= 0){

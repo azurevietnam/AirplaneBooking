@@ -4,8 +4,10 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -66,10 +68,10 @@ public class CrawlerVietJetImpl extends Crawler {
 					ticketFlightDetail.setToTime(ticket.getToTime());
 					ticketFlightDetail.setDurationTime(ticket.getDurationTime());
 					
-					List<TicketFlightDetail> ticketFlightDetailList = new ArrayList<TicketFlightDetail>();
+					Set<TicketFlightDetail> ticketFlightDetailList = new HashSet<TicketFlightDetail>();
 					ticketFlightDetailList.add(ticketFlightDetail);
 					
-					List<TicketPriceDetail> ticketPriceDetailList = new ArrayList<TicketPriceDetail>();
+					Set<TicketPriceDetail> ticketPriceDetailList = new HashSet<TicketPriceDetail>();
 					for(Entry<String, Elements> ticketPriceElement : ticketPriceElements.entrySet()){
 						TicketPriceDetail ticketPriceDetail = new TicketPriceDetail();
 						Elements priceElements = ticketPriceElement.getValue();

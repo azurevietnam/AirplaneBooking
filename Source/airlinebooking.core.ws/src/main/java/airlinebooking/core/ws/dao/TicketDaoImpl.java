@@ -7,8 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import airlinebooking.core.ws.exception.DataAccessException;
 import airlinebooking.core.ws.model.Ticket;
-import airlinebooking.core.ws.model.TicketFlightDetail;
-import airlinebooking.core.ws.model.TicketPriceDetail;
 import airlinebooking.core.ws.model.helper.TicketInforMH;
 import airlinebooking.core.ws.repo.QueryRepo;
 
@@ -46,18 +44,21 @@ public class TicketDaoImpl implements TicketDao {
 	@Override
 	public void saveListTicketInforMH(List<TicketInforMH> ticketInforMHList) throws DataAccessException {
 		for (TicketInforMH ticketInforMH : ticketInforMHList) {
-			Ticket newTicket = createTicket(ticketInforMH.getTicket());
+//			Ticket ticketTmp = ticketInforMH.getTicket();
+//			ticketTmp.setTicketFlightDetails(ticketInforMH.getTicketFlightDetailList());
+//			ticketTmp.setTicketPriceDetails(ticketInforMH.getTicketPriceDetailList());
+			createTicket(ticketInforMH.getTicket());
 			
-			for (TicketPriceDetail ticketPriceDetail : ticketInforMH.getTicketPriceDetailList()) {
-				ticketPriceDetail.setTicket(newTicket);
-				ticketPriceDetailDao.createTicketPriceDetail(ticketPriceDetail);
-			}
-			
-			for(TicketFlightDetail ticketFlightDetail : ticketInforMH.getTicketFlightDetailList())
-			{
-				ticketFlightDetail.setTicket(newTicket);
-				ticketFlightDetailDao.createTicketFlightDetail(ticketFlightDetail);
-			}
+//			for (TicketPriceDetail ticketPriceDetail : ticketInforMH.getTicketPriceDetailList()) {
+//				ticketPriceDetail.setTicket(ticketTmp);
+//				ticketPriceDetailDao.createTicketPriceDetail(ticketPriceDetail);
+//			}
+//			
+//			for(TicketFlightDetail ticketFlightDetail : ticketInforMH.getTicketFlightDetailList())
+//			{
+//				ticketFlightDetail.setTicket(ticketTmp);
+//				ticketFlightDetailDao.createTicketFlightDetail(ticketFlightDetail);
+//			}
 		}
 	}
 }

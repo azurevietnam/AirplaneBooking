@@ -1,7 +1,7 @@
 package airlinebooking.core.ws.model.helper;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import airlinebooking.core.ws.model.Ticket;
 import airlinebooking.core.ws.model.TicketFlightDetail;
@@ -9,8 +9,8 @@ import airlinebooking.core.ws.model.TicketPriceDetail;
 
 public class TicketInforMH {
 	private Ticket ticket = new Ticket();
-	private List<TicketPriceDetail> ticketPriceDetailList = new ArrayList<TicketPriceDetail>();
-	private List<TicketFlightDetail> ticketFlightDetailList = new ArrayList<TicketFlightDetail>();
+	private Set<TicketPriceDetail> ticketPriceDetailList = new HashSet<TicketPriceDetail>();
+	private Set<TicketFlightDetail> ticketFlightDetailList = new HashSet<TicketFlightDetail>();
 	
 	public TicketInforMH(){
 		
@@ -24,20 +24,20 @@ public class TicketInforMH {
 		this.ticket = ticket;
 	}
 
-	public List<TicketPriceDetail> getTicketPriceDetailList() {
+	public Set<TicketPriceDetail> getTicketPriceDetailList() {
 		return ticketPriceDetailList;
 	}
 
-	public void setTicketPriceDetailList(List<TicketPriceDetail> ticketPriceDetailList) {
+	public void setTicketPriceDetailList(Set<TicketPriceDetail> ticketPriceDetailList) {
 		this.ticketPriceDetailList = ticketPriceDetailList;
 	}
 
-	public List<TicketFlightDetail> getTicketFlightDetailList() {
+	public Set<TicketFlightDetail> getTicketFlightDetailList() {
 		return ticketFlightDetailList;
 	}
 
 	public void setTicketFlightDetailList(
-			List<TicketFlightDetail> ticketFlightDetailList) {
+			Set<TicketFlightDetail> ticketFlightDetailList) {
 		this.ticketFlightDetailList = ticketFlightDetailList;
 	}
 	
