@@ -25,9 +25,9 @@ public class CrawlerJetImpl extends Crawler {
 	private static final String STOP_FLIGHT_DES = "stop_flight_des";
 	
 	@Override
-	public List<TicketInforMH> getTicketInfor(String htmlResultString, List<TicketParserParam> parserPathList, String oriCode,
+	public List<Ticket> getTicketInfor(String htmlResultString, List<TicketParserParam> parserPathList, String oriCode,
 			String desCode, Date pickedDate, AirlineType airlineType) throws ParseException {
-		List<TicketInforMH> ticketInforMHList = new ArrayList<TicketInforMH>();
+		List<Ticket> tickets = new ArrayList<Ticket>();
 		
 		if (!htmlResultString.isEmpty()) {
 			Document contentDocument = Jsoup.parse(htmlResultString);
@@ -75,11 +75,12 @@ public class CrawlerJetImpl extends Crawler {
 					TicketPriceDetail ticketPriceDetail = new TicketPriceDetail();
 					ticketPriceDetail.setTicketPrice(convertToTicketPrice(ticketPriceElements.get(index).text().replaceAll("[a-zA-Z\\s]", ""), "[0-9,]+"));
 					ticketPriceDetail.setTotal(ticketPriceDetail.getTicketPrice());
-					Set<TicketPriceDetail> ticketPriceDetailList = new HashSet<TicketPriceDetail>();
-					ticketPriceDetailList.add(ticketPriceDetail);
+					ticketPriceDetail.setTicket(ticket);
+					List<TicketPriceDetail> ticketPriceDetails = new ArrayList<TicketPriceDetail>();
+					ticketPriceDetails.add(ticketPriceDetail);
 					
 					// List<TicketFlightDetail>
-					Set<TicketFlightDetail> ticketFlightDetailList = new HashSet<TicketFlightDetail>();
+					List<TicketFlightDetail> ticketFlightDetails = new ArrayList<TicketFlightDetail>();
 					Elements flightCodeElements = getElementsFromParserPathParameter(contentDocument, flightCodeTicketParserParam, index + 1);
 					ticket.setBreakpointNumber(flightCodeElements.size() - 1);
 					if(ticket.getBreakpointNumber() <= 0){
@@ -91,8 +92,9 @@ public class CrawlerJetImpl extends Crawler {
 						ticketFlightDetail.setFromTime(ticket.getFromTime());
 						ticketFlightDetail.setToTime(ticket.getToTime());
 						ticketFlightDetail.setFlightCode(flightCodeElements.first().text());
+						ticketFlightDetail.setTicket(ticket);
 						
-						ticketFlightDetailList.add(ticketFlightDetail);
+						ticketFlightDetails.add(ticketFlightDetail);
 					}
 					else{
 						// Have breakpoint
@@ -104,21 +106,21 @@ public class CrawlerJetImpl extends Crawler {
 							ticketFlightDetail.setFromTime(ticket.getFromTime());
 							ticketFlightDetail.setToTime(ticket.getToTime());
 							ticketFlightDetail.setFlightCode(flightCodeElement.text());
+							ticketFlightDetail.setTicket(ticket);
 							
-							ticketFlightDetailList.add(ticketFlightDetail);
+							ticketFlightDetails.add(ticketFlightDetail);
 						}
 					}
-					TicketInforMH ticketInforMH = new TicketInforMH();
-					ticketInforMH.setTicket(ticket);
-					ticketInforMH.setTicketPriceDetailList(ticketPriceDetailList);
-					ticketInforMH.setTicketFlightDetailList(ticketFlightDetailList);
+					ticket.setTicketFlightDetails(ticketFlightDetails);
+					ticket.setTicketPriceDetails(ticketPriceDetails);
 					
-					ticketInforMHList.add(ticketInforMH);
+					tickets.add(ticket);
+					
 				}
 			}
 		}
 		
-		return ticketInforMHList;
+		return tickets;
 	}
 	
 	private String getTimeFormatHHmm(String timeString){

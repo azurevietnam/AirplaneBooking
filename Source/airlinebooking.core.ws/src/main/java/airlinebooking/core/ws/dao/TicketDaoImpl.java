@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import airlinebooking.core.ws.exception.DataAccessException;
 import airlinebooking.core.ws.model.Ticket;
-import airlinebooking.core.ws.model.helper.TicketInforMH;
 import airlinebooking.core.ws.repo.QueryRepo;
 
 @Repository
@@ -42,23 +41,17 @@ public class TicketDaoImpl implements TicketDao {
 	}
 
 	@Override
-	public void saveListTicketInforMH(List<TicketInforMH> ticketInforMHList) throws DataAccessException {
-		for (TicketInforMH ticketInforMH : ticketInforMHList) {
-//			Ticket ticketTmp = ticketInforMH.getTicket();
-//			ticketTmp.setTicketFlightDetails(ticketInforMH.getTicketFlightDetailList());
-//			ticketTmp.setTicketPriceDetails(ticketInforMH.getTicketPriceDetailList());
-			createTicket(ticketInforMH.getTicket());
-			
-//			for (TicketPriceDetail ticketPriceDetail : ticketInforMH.getTicketPriceDetailList()) {
-//				ticketPriceDetail.setTicket(ticketTmp);
-//				ticketPriceDetailDao.createTicketPriceDetail(ticketPriceDetail);
-//			}
-//			
-//			for(TicketFlightDetail ticketFlightDetail : ticketInforMH.getTicketFlightDetailList())
-//			{
-//				ticketFlightDetail.setTicket(ticketTmp);
-//				ticketFlightDetailDao.createTicketFlightDetail(ticketFlightDetail);
-//			}
+	public void saveListTickets(List<Ticket> tickets) throws DataAccessException {
+		for (Ticket ticket : tickets) {
+			createTicket(ticket);
 		}
+	}
+
+	@Override
+	public void deleteTicket(Ticket ticket) throws DataAccessException {
+		if (ticket == null) {
+			throw new IllegalArgumentException("ticket");
+		}
+		queryRepo.delete(ticket);
 	}
 }

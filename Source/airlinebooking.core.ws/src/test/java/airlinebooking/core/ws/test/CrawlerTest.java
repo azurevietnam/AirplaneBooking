@@ -53,7 +53,7 @@ public class CrawlerTest {
 			
 			List<TicketInforMH> ticketInforMHList = crJet.getTicketInfor(htmlResultMH, parserPathList, oriCode, desCode, pickedDate, airlineType);
 			
-			ticketDao.saveListTicketInforMH(ticketInforMHList);
+			ticketDao.saveListTickets(ticketInforMHList);
 			
 			System.out.println("Done");
 		} catch (Exception e) {

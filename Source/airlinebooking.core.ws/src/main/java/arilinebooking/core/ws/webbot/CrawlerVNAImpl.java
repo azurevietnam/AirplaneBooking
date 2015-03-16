@@ -4,10 +4,8 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -18,15 +16,14 @@ import airlinebooking.core.ws.model.Ticket;
 import airlinebooking.core.ws.model.TicketFlightDetail;
 import airlinebooking.core.ws.model.TicketParserParam;
 import airlinebooking.core.ws.model.TicketPriceDetail;
-import airlinebooking.core.ws.model.helper.TicketInforMH;
 
 public class CrawlerVNAImpl extends Crawler {
 
 	@Override
-	public List<TicketInforMH> getTicketInfor(String htmlResultString, List<TicketParserParam> parserPathList, String oriCode,
+	public List<Ticket> getTicketInfor(String htmlResultString, List<TicketParserParam> parserPathList, String oriCode,
 			String desCode, Date pickedDate, AirlineType airlineType) throws ParseException {
 
-		List<TicketInforMH> ticketInforMHList = new ArrayList<TicketInforMH>();
+		List<Ticket> tickets = new ArrayList<Ticket>();
 
 		if (!htmlResultString.isEmpty()) {
 			Document contentDocument = Jsoup.parse(htmlResultString);
@@ -68,10 +65,10 @@ public class CrawlerVNAImpl extends Crawler {
 					ticketFlightDetail.setToTime(ticket.getToTime());
 					ticketFlightDetail.setDurationTime(ticket.getDurationTime());
 					
-					Set<TicketFlightDetail> ticketFlightDetailList = new HashSet<TicketFlightDetail>();
-					ticketFlightDetailList.add(ticketFlightDetail);
+					List<TicketFlightDetail> ticketFlightDetails = new ArrayList<TicketFlightDetail>();
+					ticketFlightDetails.add(ticketFlightDetail);
 					
-					Set<TicketPriceDetail> ticketPriceDetailList = new HashSet<TicketPriceDetail>();
+					List<TicketPriceDetail> ticketPriceDetails = new ArrayList<TicketPriceDetail>();
 					for(Entry<String, Elements> ticketPriceElement : ticketPriceElements.entrySet()){
 						TicketPriceDetail ticketPriceDetail = new TicketPriceDetail();
 						Elements priceElements = ticketPriceElement.getValue();
@@ -79,20 +76,18 @@ public class CrawlerVNAImpl extends Crawler {
 						ticketPriceDetail.setTicketTypeCode(ticketPriceElement.getKey());
 						ticketPriceDetail.setTicketPrice(convertToTicketPrice(priceElements.get(index).text(), partternTicketPrice));
 						ticketPriceDetail.setTotal(ticketPriceDetail.getTicketPrice());
-						ticketPriceDetailList.add(ticketPriceDetail);
+						ticketPriceDetails.add(ticketPriceDetail);
 					}
 					
-					TicketInforMH ticketInforMH = new TicketInforMH();
-					ticketInforMH.setTicket(ticket);
-					ticketInforMH.setTicketPriceDetailList(ticketPriceDetailList);
-					ticketInforMH.setTicketFlightDetailList(ticketFlightDetailList);
+					ticket.setTicketFlightDetails(ticketFlightDetails);
+					ticket.setTicketPriceDetails(ticketPriceDetails);
 					
-					ticketInforMHList.add(ticketInforMH);
+					tickets.add(ticket);
 				}
 			}
 		}
 
-		return ticketInforMHList;
+		return tickets;
 	}
 
 }
