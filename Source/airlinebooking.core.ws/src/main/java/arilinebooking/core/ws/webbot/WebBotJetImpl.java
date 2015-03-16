@@ -50,7 +50,7 @@ public class WebBotJetImpl implements WebBot {
 		
 		try {
 			Map<String, String> requestParams = initRequestParams();
-			String postBodyParameters = "ControlGroupSearchView%24AvailabilitySearchInputSearchView%24DropDownListCurrency=VND&ControlGroupSearchView%24AvailabilitySearchInputSearchView%24DropDownListFareTypes=I&ControlGroupSearchView%24AvailabilitySearchInputSearchView%24"
+			String postParameters = "ControlGroupSearchView%24AvailabilitySearchInputSearchView%24DropDownListCurrency=VND&ControlGroupSearchView%24AvailabilitySearchInputSearchView%24DropDownListFareTypes=I&ControlGroupSearchView%24AvailabilitySearchInputSearchView%24"
 					+ "DropDownListMarketDay1=" + pickedDateDay
 					+ "&ControlGroupSearchView%24AvailabilitySearchInputSearchView%24DropDownListMarketDay2=1&ControlGroupSearchView%24AvailabilitySearchInputSearchView%24DropDownListMarketDay3=&ControlGroupSearchView%24AvailabilitySearchInputSearchView%24"
 					+ "DropDownListMarketMonth1=" + pickedDateMonth
@@ -84,7 +84,7 @@ public class WebBotJetImpl implements WebBot {
 			// Send post request
 			conn.setDoOutput(true);
 			DataOutputStream wr = new DataOutputStream(conn.getOutputStream());
-			wr.writeBytes(postBodyParameters);
+			wr.writeBytes(postParameters);
 			wr.flush();
 			wr.close();
 			
@@ -110,6 +110,7 @@ public class WebBotJetImpl implements WebBot {
 		 
 				// get the cookie if need, for login
 				String cookies = conn.getHeaderField("Set-Cookie");
+				System.out.println("Cookies : " + cookies);
 		 
 				// open the new connnection again
 				conn = (HttpURLConnection) new URL(urlHeader + urlTailAfterRedirect).openConnection();
@@ -123,7 +124,7 @@ public class WebBotJetImpl implements WebBot {
 				
 				conn.setDoOutput(true);
 				wr = new DataOutputStream(conn.getOutputStream());
-				wr.writeBytes(postBodyParameters);
+				wr.writeBytes(postParameters);
 				wr.flush();
 				wr.close();
 				
