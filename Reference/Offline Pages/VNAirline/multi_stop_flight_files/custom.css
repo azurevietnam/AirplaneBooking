@@ -1,0 +1,45 @@
+/*
+@import url("https://dl.dropbox.com/u/33810444/css/vna.css");
+*/
+/*
+@import url("https://ibev2.vietnamairlines.com/DOCUMENT/ssw/css/vna.css");
+*/
+@import url("https://ibev2.vietnamairlines.com/DOCUMENT/ssw/css/b3qe_130611.css");
+/*
+@import url("./vna.css");
+*/
+
+/*for customizing images for Smartlink */
+#payment .card-vn { background-position: 0 -120px; }
+#payment .card-sml_pay_later { background-position: 0 -180px; }
+
+/* for JCB image */
+#payment .card-jcb { background-position: 0 -300px; }
+
+.flight-list td.cell-negofare-indicator {background-image: url("") !important;} 
+.negofare-indicator {display: none !important;}
+
+.flight-list td.cell-discount-negofare-indicator {background-image: url("../images/star.png") !important; background-repeat: no-repeat !important;} 
+.flight-list td.cell-discount-indicator {background:url(../images/star.png) !important; background-repeat: no-repeat !important;}
+
+#loginComponentLoyaltyDiv {display:none}
+
+#customhtmlthirdparties2 {display:none}
+.login-component a.forgot-password-no-popup:link,.login-component a.forgot-password-no-popup:active,.login-component a.forgot-password-no-popup:visited{
+                margin:7px 0 0 0;
+                clear:both;
+                font-size:11px;
+                text-decoration:none;
+                color:#006c99;
+}
+.login-component a.forgot-password-no-popup:hover{text-decoration: underline;color:#d09b2c;}
+
+/* ---- SSW R7.7.0 fix  ----*/
+
+.itinerary-content .flight-summary-1 {
+    display: none;
+}
+
+.flight-summary-2 {
+    padding: 10px 0;
+}
