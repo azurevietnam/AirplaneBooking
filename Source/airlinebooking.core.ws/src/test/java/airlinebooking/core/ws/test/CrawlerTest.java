@@ -16,8 +16,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import airlinebooking.core.ws.dao.TicketDao;
 import airlinebooking.core.ws.dao.TicketParserParamDao;
 import airlinebooking.core.ws.enumtype.AirlineType;
+import airlinebooking.core.ws.model.Ticket;
 import airlinebooking.core.ws.model.TicketParserParam;
-import airlinebooking.core.ws.model.helper.TicketInforMH;
 import arilinebooking.core.ws.webbot.Crawler;
 import arilinebooking.core.ws.webbot.CrawlerJetImpl;
 import arilinebooking.core.ws.webbot.CrawlerVietJetImpl;
@@ -39,21 +39,21 @@ public class CrawlerTest {
 			Calendar cal = Calendar.getInstance();
 			cal.set(Calendar.YEAR, 2015);
 			cal.set(Calendar.MONTH, Calendar.MARCH);
-			cal.set(Calendar.DAY_OF_MONTH, 28);
+			cal.set(Calendar.DAY_OF_MONTH, 30);
 			Date pickedDate = cal.getTime();
 			String oriCode = "SGN";
 			String desCode = "HAN";
 			AirlineType airlineType = AirlineType.JETSTAR;
 			
-			List<TicketParserParam> parserPathList = ticketParserParamDao.getParserPathByAirlineType(AirlineType.JETSTAR);
+			List<TicketParserParam> parserPathList = ticketParserParamDao.getParserPathByAirlineType(airlineType);
 			
 			WebBot wbJet = new WebBotJetImpl();
 			String htmlResultMH = wbJet.getHtmlResult(oriCode, desCode, pickedDate, 1, 0, 0);
 			Crawler crJet = new CrawlerJetImpl();
 			
-			List<TicketInforMH> ticketInforMHList = crJet.getTicketInfor(htmlResultMH, parserPathList, oriCode, desCode, pickedDate, airlineType);
+			List<Ticket> tickets = crJet.getTicketInfor(htmlResultMH, parserPathList, oriCode, desCode, pickedDate, airlineType);
 			
-			ticketDao.saveListTickets(ticketInforMHList);
+			ticketDao.saveListTickets(tickets);
 			
 			System.out.println("Done");
 		} catch (Exception e) {
@@ -80,7 +80,7 @@ public class CrawlerTest {
 			Crawler crVietJet = new CrawlerVietJetImpl();
 			
 			@SuppressWarnings("unused")
-			List<TicketInforMH> ticketInforMHList = crVietJet.getTicketInfor(htmlResultString, parserPathList, oriCode, desCode, pickedDate, airlineType);
+			List<Ticket> tickets = crVietJet.getTicketInfor(htmlResultString, parserPathList, oriCode, desCode, pickedDate, airlineType);
 
 			System.out.println("Done");
 		} catch (Exception e) {
