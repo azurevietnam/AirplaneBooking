@@ -62,6 +62,7 @@ public class CrawlerTest {
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	@Test
 	public void crawlerJetstar() {
 		try {
@@ -70,8 +71,8 @@ public class CrawlerTest {
 			cal.set(Calendar.MONTH, Calendar.MARCH);
 			cal.set(Calendar.DAY_OF_MONTH, 30);
 			Date pickedDate = cal.getTime();
-			String oriCode = "SGN";
-			String desCode = "HAN";
+			String oriCode = "HNL";
+			String desCode = "AVV";
 			AirlineType airlineType = AirlineType.JETSTAR;
 			
 			List<TicketParserParam> parserPathList = ticketParserParamDao.getParserPathByAirlineType(airlineType);
@@ -82,7 +83,7 @@ public class CrawlerTest {
 			
 			List<Ticket> tickets = crJet.getTicketInfor(htmlResultMH, parserPathList, oriCode, desCode, pickedDate, airlineType);
 			
-			ticketDao.saveListTickets(tickets);
+//			ticketDao.saveListTickets(tickets);
 			
 			System.out.println("Done");
 		} catch (Exception e) {

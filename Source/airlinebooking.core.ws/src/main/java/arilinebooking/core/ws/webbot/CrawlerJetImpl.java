@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Map.Entry;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -24,6 +25,7 @@ public class CrawlerJetImpl extends Crawler {
 	private static final String STOP_FLIGHT_ORI = "stop_flight_ori";
 	private static final String STOP_FLIGHT_DES = "stop_flight_des";
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Ticket> getTicketInfor(String htmlResultString, List<TicketParserParam> parserPathList, String oriCode,
 			String desCode, Date pickedDate, AirlineType airlineType) throws ParseException {
@@ -35,10 +37,19 @@ public class CrawlerJetImpl extends Crawler {
 			
 			if (!objectHashMap.isEmpty()) {
 				final String formatTime = "HH:mm";
+				final String partternTicketPrice = "[0-9,]+";
 				
-				Elements fromTimeElements = (Elements) objectHashMap.get(FROM_TIME);
-				Elements toTimeElements = (Elements) objectHashMap.get(TO_TIME);
-				Elements ticketPriceElements = (Elements) objectHashMap.get(TICKET_PRICE);
+				Elements fromTimeElements = new Elements();
+				Elements toTimeElements = new Elements();
+				if (objectHashMap.get(FROM_TIME) != null)
+					fromTimeElements = (Elements) objectHashMap.get(FROM_TIME);
+				if (objectHashMap.get(TO_TIME) != null)
+					toTimeElements = (Elements) objectHashMap.get(TO_TIME);
+				
+				HashMap<String, Elements> ticketPriceElements = new HashMap<String, Elements>();
+				if (objectHashMap.get(TICKET_PRICE) != null){
+					ticketPriceElements = (HashMap<String, Elements>) objectHashMap.get(TICKET_PRICE);
+				}
 				
 				int numberObject = 0;
 				TicketParserParam flightCodeTicketParserParam = new TicketParserParam();
@@ -72,12 +83,23 @@ public class CrawlerJetImpl extends Crawler {
 					ticket.setDurationTime(getDurationTimeInMinute(ticket.getFromTime(), ticket.getToTime()));
 					
 					// New instance TicketPriceDetail then add to List<TicketPriceDetail>
-					TicketPriceDetail ticketPriceDetail = new TicketPriceDetail();
-					ticketPriceDetail.setTicketPrice(convertToMoneyFormatUS(ticketPriceElements.get(index).text().replaceAll("[a-zA-Z\\s]", ""), "[0-9,]+"));
-					ticketPriceDetail.setTotal(ticketPriceDetail.getTicketPrice());
-					ticketPriceDetail.setTicket(ticket);
+//					TicketPriceDetail ticketPriceDetail = new TicketPriceDetail();
+//					ticketPriceDetail.setTicketPrice(convertToMoneyFormatUS(ticketPriceElements.get(index).text().replaceAll("[a-zA-Z\\s]", ""), "[0-9,]+"));
+//					ticketPriceDetail.setTotal(ticketPriceDetail.getTicketPrice());
+//					ticketPriceDetail.setTicket(ticket);
+//					List<TicketPriceDetail> ticketPriceDetails = new ArrayList<TicketPriceDetail>();
+//					ticketPriceDetails.add(ticketPriceDetail);
+					
 					List<TicketPriceDetail> ticketPriceDetails = new ArrayList<TicketPriceDetail>();
-					ticketPriceDetails.add(ticketPriceDetail);
+					for(Entry<String, Elements> ticketPriceElement : ticketPriceElements.entrySet()){
+						TicketPriceDetail ticketPriceDetail = new TicketPriceDetail();
+						Elements priceElements = ticketPriceElement.getValue();
+						
+						ticketPriceDetail.setTicketTypeCode(ticketPriceElement.getKey());
+						ticketPriceDetail.setTicketPrice(convertToMoneyFormatUS(priceElements.get(index).text().replaceAll("[a-zA-Z\\s$]", ""), partternTicketPrice));
+						ticketPriceDetail.setTotal(ticketPriceDetail.getTicketPrice());
+						ticketPriceDetails.add(ticketPriceDetail);
+					}
 					
 					// List<TicketFlightDetail>
 					List<TicketFlightDetail> ticketFlightDetails = new ArrayList<TicketFlightDetail>();

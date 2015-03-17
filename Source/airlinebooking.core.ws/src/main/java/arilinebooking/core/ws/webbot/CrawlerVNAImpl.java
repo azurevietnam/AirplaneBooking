@@ -20,6 +20,8 @@ import airlinebooking.common.model.TicketPriceDetail;
 
 public class CrawlerVNAImpl extends Crawler {
 
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Ticket> getTicketInfor(String htmlResultString, List<TicketParserParam> parserPathList, String oriCode,
 			String desCode, Date pickedDate, AirlineType airlineType) throws ParseException {
@@ -47,8 +49,10 @@ public class CrawlerVNAImpl extends Crawler {
 				if (objectHashMap.get(BREAKPOINT_NUMBER) != null)
 					breakpointElements = (Elements) objectHashMap.get(BREAKPOINT_NUMBER);
 				
-				@SuppressWarnings("unchecked")
-				HashMap<String, Elements> ticketPriceElements = (HashMap<String, Elements>) objectHashMap.get(TICKET_PRICE);
+				HashMap<String, Elements> ticketPriceElements = new HashMap<String, Elements>();
+				if (objectHashMap.get(TICKET_PRICE) != null){
+					ticketPriceElements = (HashMap<String, Elements>) objectHashMap.get(TICKET_PRICE);
+				}
 				
 				int numberObject = 0;
 				TicketParserParam flightCodeTicketParserParam = new TicketParserParam();

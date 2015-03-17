@@ -164,7 +164,7 @@ values('VNA_TYPE_TICKET', 'VNA_TKDB', 'Tiết kiệm đặc biệt', 1);
 
 ---- VNAirline Parser path
 insert into ticket_parser_param set airline_type = 1, code_type = 'flight_code', description = 'Mã chuyến bay', have_parameter = 1, status = 1
-	, selector_path = 'a.translate[title="Xem chi tiết chuyến bay"]';
+	, selector_path = 'div.flight-list-section.flight-list tr:nth-child(?) > td:nth-child(1) a[title="Xem chi tiết chuyến bay"]';
 insert into ticket_parser_param(airline_type, code_type, description, selector_path, status)
 values (1, 'from_time', 'Giờ đi', 'tr.yui-dt-even > td:nth-child(3) > span.translate.wasTranslated, tr.yui-dt-odd > td:nth-child(3) > span.translate.wasTranslated', 1);
 insert into ticket_parser_param(airline_type, code_type, description, selector_path, status)
@@ -187,6 +187,8 @@ values (1, 'ticket_price', 'VNA_TKDB', 1, 'Giá vé dành cho loại vé Tiết 
 ---- Jetstar Type ticket
 insert into app_param(code_type, value, description, status)
 values('JET_TYPE_TICKET', 'JET_STARTER', 'STARTER', 1);
+insert into app_param(code_type, value, description, status)
+values('JET_TYPE_TICKET', 'JET_BUSINESS', 'BUSINESS', 1);
 
 ---- Jetstar Parser Path
 insert into ticket_parser_param(airline_type, code_type, description, have_parameter, selector_path, status)
@@ -200,7 +202,9 @@ values (2, 'from_time', 'Giờ đi', 'div.fares > table.domestic tr:not(tr.start
 insert into ticket_parser_param(airline_type, code_type, description, selector_path, status)
 values (2, 'to_time', 'Giờ đến', 'div.fares > table.domestic tr:not(tr.starter-options.alt tr.business-options) > td:nth-child(2) > strong', 1);
 insert into ticket_parser_param(airline_type, code_type, ticket_type_code, description, selector_path, status)
-values (2, 'ticket_price', 'JET_STARTER', 'Vé loại STARTER', 'div.fares > table.domestic tr:not(tr.starter-options.alt tr.business-options) > td:nth-child(4) label', 1);
+values (2, 'ticket_price', 'JET_STARTER', 'Vé loại STARTER', 'div.fares > table tr:not(tr.starter-options.alt tr.business-options) > td:nth-child(4) label', 1);
+insert into ticket_parser_param(airline_type, code_type, ticket_type_code, description, selector_path, status)
+values (2, 'ticket_price', 'JET_BUSINESS', 'Vé loại BUSINESS', 'div.fares > table tr:not(tr.starter-options.alt tr.business-options) > td:nth-child(5) label', 1);
 
 ---- Vietjet Type ticket
 insert into app_param set code_type = 'VIETJET_TYPE_TICKET', value = 'VIETJET_PROMO', description = 'Loại vé Promo', status = 1;
