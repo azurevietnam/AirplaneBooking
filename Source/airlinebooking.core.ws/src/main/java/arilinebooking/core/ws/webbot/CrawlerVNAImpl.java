@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import airlinebooking.common.enumtype.AirlineType;
@@ -34,17 +35,33 @@ public class CrawlerVNAImpl extends Crawler {
 				final String formatTime = "HH:mm";
 				final String partternTicketPrice = "[0-9,]+";
 				
-				Elements flightCodeElements = (Elements) objectHashMap.get(FLIGHT_CODE);
-				Elements fromTimeElements = (Elements) objectHashMap.get(FROM_TIME);
-				Elements toTimeElements = (Elements) objectHashMap.get(TO_TIME);
-				Elements breakpointElements = (Elements) objectHashMap.get(BREAKPOINT_NUMBER);
+//				Elements flightCodeElements = (Elements) objectHashMap.get(FLIGHT_CODE);
+				Elements fromTimeElements = new Elements();
+				Elements toTimeElements = new Elements();
+				Elements breakpointElements = new Elements();
+				
+				if (objectHashMap.get(FROM_TIME) != null)
+					fromTimeElements = (Elements) objectHashMap.get(FROM_TIME);
+				if (objectHashMap.get(TO_TIME) != null)
+					toTimeElements = (Elements) objectHashMap.get(TO_TIME);
+				if (objectHashMap.get(BREAKPOINT_NUMBER) != null)
+					breakpointElements = (Elements) objectHashMap.get(BREAKPOINT_NUMBER);
+				
 				@SuppressWarnings("unchecked")
 				HashMap<String, Elements> ticketPriceElements = (HashMap<String, Elements>) objectHashMap.get(TICKET_PRICE);
 				
 				int numberObject = 0;
+				TicketParserParam flightCodeTicketParserParam = new TicketParserParam();
+				for (TicketParserParam ticketParserParamElement : parserPathList) {
+					String ticketCodeType = ticketParserParamElement.getCodeType();
+					if (ticketCodeType.equals(FLIGHT_CODE)){
+						flightCodeTicketParserParam = ticketParserParamElement;
+						break;
+					}
+				}
 				
-				if (!flightCodeElements.isEmpty() && flightCodeElements != null)
-					numberObject = flightCodeElements.size();
+				if (!fromTimeElements.isEmpty() && fromTimeElements != null)
+					numberObject = fromTimeElements.size();
 				
 				for (int index = 0; index < numberObject; index++) {
 					Ticket ticket = new Ticket();
@@ -57,16 +74,38 @@ public class CrawlerVNAImpl extends Crawler {
 					ticket.setToTime(convertToTime(pickedDate, toTimeElements.get(index).text(), formatTime));
 					ticket.setDurationTime(getDurationTimeInMinute(ticket.getFromTime(), ticket.getToTime()));
 					
-					TicketFlightDetail ticketFlightDetail = new TicketFlightDetail();
-					ticketFlightDetail.setFlightCode(flightCodeElements.get(index).text());
-					ticketFlightDetail.setOriginationCode(ticket.getOriginationCode());
-					ticketFlightDetail.setDestinationCode(ticket.getDestinationCode());
-					ticketFlightDetail.setFromTime(ticket.getToTime());
-					ticketFlightDetail.setToTime(ticket.getToTime());
-					ticketFlightDetail.setDurationTime(ticket.getDurationTime());
-					
+					// List<TicketFlightDetail>
 					List<TicketFlightDetail> ticketFlightDetails = new ArrayList<TicketFlightDetail>();
-					ticketFlightDetails.add(ticketFlightDetail);
+					Elements flightCodeElements = getElementsFromParserPathParameter(contentDocument, flightCodeTicketParserParam, index + 1);
+//					ticket.setBreakpointNumber(flightCodeElements.size() - 1);
+					if(ticket.getBreakpointNumber() <= 0){
+						// Don't have breakpoint
+						TicketFlightDetail ticketFlightDetail = new TicketFlightDetail();
+						ticketFlightDetail.setDestinationCode(ticket.getDestinationCode());
+						ticketFlightDetail.setOriginationCode(ticket.getOriginationCode());
+						ticketFlightDetail.setDurationTime(ticket.getDurationTime());
+						ticketFlightDetail.setFromTime(ticket.getFromTime());
+						ticketFlightDetail.setToTime(ticket.getToTime());
+						ticketFlightDetail.setFlightCode(flightCodeElements.first().text());
+						ticketFlightDetail.setTicket(ticket);
+						
+						ticketFlightDetails.add(ticketFlightDetail);
+					}
+					else{
+						// Have breakpoint
+						for (Element flightCodeElement : flightCodeElements) {
+							TicketFlightDetail ticketFlightDetail = new TicketFlightDetail();
+							ticketFlightDetail.setDestinationCode(ticket.getDestinationCode());
+							ticketFlightDetail.setOriginationCode(ticket.getOriginationCode());
+							ticketFlightDetail.setDurationTime(ticket.getDurationTime());
+							ticketFlightDetail.setFromTime(ticket.getFromTime());
+							ticketFlightDetail.setToTime(ticket.getToTime());
+							ticketFlightDetail.setFlightCode(flightCodeElement.text());
+							ticketFlightDetail.setTicket(ticket);
+							
+							ticketFlightDetails.add(ticketFlightDetail);
+						}
+					}
 					
 					List<TicketPriceDetail> ticketPriceDetails = new ArrayList<TicketPriceDetail>();
 					for(Entry<String, Elements> ticketPriceElement : ticketPriceElements.entrySet()){
@@ -88,6 +127,13 @@ public class CrawlerVNAImpl extends Crawler {
 		}
 
 		return tickets;
+	}
+	
+	private int getBreakpointNumber(Elements elements, int index){
+		int result = -1;
+		String breakPointString = elements.get(index).text().replaceAll("[a-zA-Z\\s,()]", "");
+		result = Integer.parseInt(breakPointString);
+		return result;
 	}
 
 }

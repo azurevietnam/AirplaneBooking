@@ -20,9 +20,11 @@ import airlinebooking.core.ws.dao.TicketDao;
 import airlinebooking.core.ws.dao.TicketParserParamDao;
 import arilinebooking.core.ws.webbot.Crawler;
 import arilinebooking.core.ws.webbot.CrawlerJetImpl;
+import arilinebooking.core.ws.webbot.CrawlerVNAImpl;
 import arilinebooking.core.ws.webbot.CrawlerVietJetImpl;
 import arilinebooking.core.ws.webbot.WebBot;
 import arilinebooking.core.ws.webbot.WebBotJetImpl;
+import arilinebooking.core.ws.webbot.WebBotVNAImpl;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring/applicationContext.xml" })
@@ -32,6 +34,33 @@ public class CrawlerTest {
 	
 	@Autowired
 	TicketDao ticketDao;
+	@Test
+	public void crawlerVNA() {
+		try {
+			Calendar cal = Calendar.getInstance();
+			cal.set(Calendar.YEAR, 2015);
+			cal.set(Calendar.MONTH, Calendar.MARCH);
+			cal.set(Calendar.DAY_OF_MONTH, 30);
+			Date pickedDate = cal.getTime();
+			String oriCode = "BOS";
+			String desCode = "SGN";
+			AirlineType airlineType = AirlineType.VNAIRLINE;
+			
+			List<TicketParserParam> parserPathList = ticketParserParamDao.getParserPathByAirlineType(airlineType);
+			
+			WebBot wbJet = new WebBotVNAImpl();
+			String htmlResultMH = wbJet.getHtmlResult(oriCode, desCode, pickedDate, 1, 0, 0);
+			Crawler crJet = new CrawlerVNAImpl();
+			
+			List<Ticket> tickets = crJet.getTicketInfor(htmlResultMH, parserPathList, oriCode, desCode, pickedDate, airlineType);
+			
+			ticketDao.saveListTickets(tickets);
+			
+			System.out.println("Done");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	@Test
 	public void crawlerJetstar() {

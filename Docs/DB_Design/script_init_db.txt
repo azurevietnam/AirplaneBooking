@@ -163,8 +163,8 @@ insert into app_param(code_type, value, description, status)
 values('VNA_TYPE_TICKET', 'VNA_TKDB', 'Tiết kiệm đặc biệt', 1);
 
 ---- VNAirline Parser path
-insert into ticket_parser_param(airline_type, code_type, description, selector_path, status)
-values (1, 'flight_code', 'Mã chuyến bay', 'a.translate[title="Xem chi tiết chuyến bay"]', 1);
+insert into ticket_parser_param set airline_type = 1, code_type = 'flight_code', description = 'Mã chuyến bay', have_parameter = 1, status = 1
+	, selector_path = 'a.translate[title="Xem chi tiết chuyến bay"]';
 insert into ticket_parser_param(airline_type, code_type, description, selector_path, status)
 values (1, 'from_time', 'Giờ đi', 'tr.yui-dt-even > td:nth-child(3) > span.translate.wasTranslated, tr.yui-dt-odd > td:nth-child(3) > span.translate.wasTranslated', 1);
 insert into ticket_parser_param(airline_type, code_type, description, selector_path, status)

@@ -63,14 +63,6 @@ public abstract class Crawler {
 		return 0;
 	}
 	
-	public int getBreakpointNumber(Elements elements, int index){
-		int result = -1;
-		if(Pattern.matches("[0-9,]+", elements.get(index).text())){
-			result = Integer.parseInt(elements.get(index).text());
-		}
-		return result;
-	}
-	
 	public HashMap<String, Object> getHashMapListFromHtmlResult(Document contentDocument, List<TicketParserParam> parserPathList) {
 		HashMap<String, Object> resultHashMap = new HashMap<String, Object>();
 		
