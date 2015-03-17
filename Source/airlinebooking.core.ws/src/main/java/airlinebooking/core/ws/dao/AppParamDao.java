@@ -1,8 +1,8 @@
 package airlinebooking.core.ws.dao;
 
 
-import airlinebooking.core.ws.exception.DataAccessException;
-import airlinebooking.core.ws.model.AppParam;
+import airlinebooking.common.exception.DataAccessException;
+import airlinebooking.common.model.AppParam;
 
 public interface AppParamDao {
 	public AppParam getAccountById(int id) throws DataAccessException;

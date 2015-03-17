@@ -1,7 +1,7 @@
 package airlinebooking.core.ws.dao;
 
-import airlinebooking.core.ws.exception.DataAccessException;
-import airlinebooking.core.ws.model.TicketFlightDetail;
+import airlinebooking.common.exception.DataAccessException;
+import airlinebooking.common.model.TicketFlightDetail;
 
 
 public interface TicketFlightDetailDao {

@@ -1,8 +1,8 @@
-package airlinebooking.core.ws.bo;
+package airlinebooking.common.bo;
 
 
-import airlinebooking.core.ws.exception.BusinessException;
-import airlinebooking.core.ws.model.AppParam;
+import airlinebooking.common.exception.BusinessException;
+import airlinebooking.common.model.AppParam;
 
 public interface AppParamBo {
 	public AppParam getAccountById(int id) throws BusinessException;

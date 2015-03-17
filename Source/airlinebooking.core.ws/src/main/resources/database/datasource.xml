@@ -32,7 +32,7 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 		</property>
 		<property name="packagesToScan">
 			<list>
-				<value>airlinebooking.core.ws.model</value>
+				<value>airlinebooking.common.model</value>
 			</list>
 		</property>
 	</bean>

@@ -1,4 +1,4 @@
-package airlinebooking.core.ws.exception;
+package airlinebooking.common.exception;
 
 public class BusinessException extends Exception{
 

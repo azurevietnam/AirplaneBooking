@@ -3,10 +3,11 @@ package airlinebooking.core.ws.bo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import airlinebooking.common.bo.AccountBo;
+import airlinebooking.common.exception.BusinessException;
+import airlinebooking.common.exception.DataAccessException;
+import airlinebooking.common.model.Account;
 import airlinebooking.core.ws.dao.AccountDao;
-import airlinebooking.core.ws.exception.BusinessException;
-import airlinebooking.core.ws.exception.DataAccessException;
-import airlinebooking.core.ws.model.Account;
 
 @Service
 public class AccountBoImpl implements AccountBo {

@@ -2,8 +2,8 @@ package airlinebooking.core.ws.dao;
 
 import java.util.List;
 
-import airlinebooking.core.ws.exception.DataAccessException;
-import airlinebooking.core.ws.model.Ticket;
+import airlinebooking.common.exception.DataAccessException;
+import airlinebooking.common.model.Ticket;
 
 public interface TicketDao {
 	public Ticket createTicket(Ticket ticket);

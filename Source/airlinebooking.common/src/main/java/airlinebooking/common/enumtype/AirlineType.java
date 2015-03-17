@@ -1,4 +1,4 @@
-package airlinebooking.core.ws.enumtype;
+package airlinebooking.common.enumtype;
 
 import java.util.HashMap;
 import java.util.Map;

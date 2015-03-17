@@ -1,7 +1,7 @@
-package airlinebooking.core.ws.bo;
+package airlinebooking.common.bo;
 
-import airlinebooking.core.ws.exception.BusinessException;
-import airlinebooking.core.ws.model.Ticket;
+import airlinebooking.common.exception.BusinessException;
+import airlinebooking.common.model.Ticket;
 
 public interface TicketStorageBo {
 	public Ticket getAccountById(int id) throws BusinessException;

@@ -3,7 +3,7 @@ package airlinebooking.core.ws.repo;
 import java.io.Serializable;
 import java.util.List;
 
-import airlinebooking.core.ws.exception.DataAccessException;
+import airlinebooking.common.exception.DataAccessException;
 
 public interface SelectRepo {
 	<T> T loadEntityById(Class<T> clazz, Serializable id)  throws DataAccessException;

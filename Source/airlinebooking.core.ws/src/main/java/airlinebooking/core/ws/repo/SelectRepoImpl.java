@@ -10,7 +10,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import airlinebooking.core.ws.exception.DataAccessException;
+import airlinebooking.common.exception.DataAccessException;
 
 @Repository
 public class SelectRepoImpl extends AbstractQueryRepo implements SelectRepo {

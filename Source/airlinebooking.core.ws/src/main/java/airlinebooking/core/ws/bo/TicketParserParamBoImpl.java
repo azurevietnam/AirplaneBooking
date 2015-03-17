@@ -5,11 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import airlinebooking.common.bo.TicketParserParamBo;
+import airlinebooking.common.enumtype.AirlineType;
+import airlinebooking.common.exception.BusinessException;
+import airlinebooking.common.exception.DataAccessException;
+import airlinebooking.common.model.TicketParserParam;
 import airlinebooking.core.ws.dao.TicketParserParamDao;
-import airlinebooking.core.ws.enumtype.AirlineType;
-import airlinebooking.core.ws.exception.BusinessException;
-import airlinebooking.core.ws.exception.DataAccessException;
-import airlinebooking.core.ws.model.TicketParserParam;
 @Service
 public class TicketParserParamBoImpl implements TicketParserParamBo {
 	@Autowired

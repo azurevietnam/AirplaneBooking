@@ -1,4 +1,4 @@
-package airlinebooking.core.ws.model;
+package airlinebooking.common.model;
 import java.util.Date;
 
 import javax.persistence.Column;

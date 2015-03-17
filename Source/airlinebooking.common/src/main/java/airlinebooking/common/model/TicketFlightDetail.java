@@ -1,4 +1,4 @@
-package airlinebooking.core.ws.model;
+package airlinebooking.common.model;
 
 import static javax.persistence.GenerationType.IDENTITY;
 

@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import airlinebooking.core.ws.bo.AccountBo;
-import airlinebooking.core.ws.enumtype.ActiveType;
-import airlinebooking.core.ws.model.Account;
+import airlinebooking.common.bo.AccountBo;
+import airlinebooking.common.enumtype.ActiveType;
+import airlinebooking.common.model.Account;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring/applicationContext.xml" })

@@ -1,4 +1,4 @@
-package airlinebooking.core.ws.enumtype;
+package airlinebooking.common.enumtype;
 
 import java.io.Serializable;
 import java.sql.PreparedStatement;

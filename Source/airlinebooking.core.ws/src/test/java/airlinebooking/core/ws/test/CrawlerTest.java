@@ -13,11 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import airlinebooking.common.enumtype.AirlineType;
+import airlinebooking.common.model.Ticket;
+import airlinebooking.common.model.TicketParserParam;
 import airlinebooking.core.ws.dao.TicketDao;
 import airlinebooking.core.ws.dao.TicketParserParamDao;
-import airlinebooking.core.ws.enumtype.AirlineType;
-import airlinebooking.core.ws.model.Ticket;
-import airlinebooking.core.ws.model.TicketParserParam;
 import arilinebooking.core.ws.webbot.Crawler;
 import arilinebooking.core.ws.webbot.CrawlerJetImpl;
 import arilinebooking.core.ws.webbot.CrawlerVietJetImpl;

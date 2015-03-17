@@ -2,8 +2,8 @@ package airlinebooking.core.ws.dao;
 
 import java.util.List;
 
-import airlinebooking.core.ws.exception.DataAccessException;
-import airlinebooking.core.ws.model.Account;
+import airlinebooking.common.exception.DataAccessException;
+import airlinebooking.common.model.Account;
 import airlinebooking.core.ws.repo.QueryRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;

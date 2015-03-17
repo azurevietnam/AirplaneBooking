@@ -1,11 +1,11 @@
-package airlinebooking.core.ws.model.helper;
+package airlinebooking.common.model.helper;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import airlinebooking.core.ws.model.Ticket;
-import airlinebooking.core.ws.model.TicketFlightDetail;
-import airlinebooking.core.ws.model.TicketPriceDetail;
+import airlinebooking.common.model.Ticket;
+import airlinebooking.common.model.TicketFlightDetail;
+import airlinebooking.common.model.TicketPriceDetail;
 
 public class TicketInforMH {
 	private Ticket ticket = new Ticket();

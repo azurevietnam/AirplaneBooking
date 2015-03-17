@@ -1,7 +1,7 @@
 package airlinebooking.core.ws.dao;
 
-import airlinebooking.core.ws.exception.DataAccessException;
-import airlinebooking.core.ws.model.Account;
+import airlinebooking.common.exception.DataAccessException;
+import airlinebooking.common.model.Account;
 
 public interface AccountDao {
 	Account findByUsername(String userName);

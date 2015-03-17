@@ -39,4 +39,11 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>common</name>
+			<type>2</type>
+			<location>/Users/Dona/Documents/AirplaneBooking/Source/airlinebooking.common/src/main/java</location>
+		</link>
+	</linkedResources>
 </projectDescription>

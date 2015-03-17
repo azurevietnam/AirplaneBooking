@@ -1,19 +1,22 @@
-package airlinebooking.core.ws.enumtype;
+package airlinebooking.common.enumtype;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public enum YesNoType {
-	YES(1),
+public enum ActiveType {
+    
+	DELETED(-1),
 	
-    NO (0);
+    INACTIVE (0),
+
+    ACTIVE (1);
     
     
     /** The value. */
     private Integer value;
     
     /** The values. */
-    private static Map<Integer, YesNoType> values = null;
+    private static Map<Integer, ActiveType> values = null;
     
     /**
      * Gets the value.
@@ -30,7 +33,7 @@ public enum YesNoType {
      * @param value
      *            the value
      */
-    YesNoType(Integer value) {
+    ActiveType(Integer value) {
         this.value = value;
     }
     
@@ -41,14 +44,14 @@ public enum YesNoType {
      *            the value
      * @return the gender type
      */
-    public static YesNoType parseValue(Integer value) {
+    public static ActiveType parseValue(Integer value) {
     	if (value != null && value == -1){
     		value = -2;
     	}    		
         if (values == null) {
-            values = new HashMap<Integer, YesNoType>(
-                    YesNoType.values().length);
-            for (YesNoType e : YesNoType.values())
+            values = new HashMap<Integer, ActiveType>(
+                    ActiveType.values().length);
+            for (ActiveType e : ActiveType.values())
                 values.put(e.getValue(), e);
         }
         return values.get(value);

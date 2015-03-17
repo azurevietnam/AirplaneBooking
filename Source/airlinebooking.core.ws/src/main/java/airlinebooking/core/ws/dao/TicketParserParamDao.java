@@ -2,9 +2,9 @@ package airlinebooking.core.ws.dao;
 
 import java.util.List;
 
-import airlinebooking.core.ws.enumtype.AirlineType;
-import airlinebooking.core.ws.exception.DataAccessException;
-import airlinebooking.core.ws.model.TicketParserParam;
+import airlinebooking.common.enumtype.AirlineType;
+import airlinebooking.common.exception.DataAccessException;
+import airlinebooking.common.model.TicketParserParam;
 
 public interface TicketParserParamDao {
 	/**

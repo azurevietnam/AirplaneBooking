@@ -13,12 +13,12 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import airlinebooking.core.ws.enumtype.AirlineType;
-import airlinebooking.core.ws.model.Ticket;
-import airlinebooking.core.ws.model.TicketFlightDetail;
-import airlinebooking.core.ws.model.TicketParserParam;
-import airlinebooking.core.ws.model.TicketPriceDetail;
-import airlinebooking.core.ws.model.helper.TicketInforMH;
+import airlinebooking.common.enumtype.AirlineType;
+import airlinebooking.common.model.Ticket;
+import airlinebooking.common.model.TicketFlightDetail;
+import airlinebooking.common.model.TicketParserParam;
+import airlinebooking.common.model.TicketPriceDetail;
+import airlinebooking.common.model.helper.TicketInforMH;
 
 public class CrawlerJetImpl extends Crawler {
 	private static final String STOP_FLIGHT_ORI = "stop_flight_ori";

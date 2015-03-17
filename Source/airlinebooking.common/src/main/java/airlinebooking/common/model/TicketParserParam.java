@@ -1,4 +1,4 @@
-package airlinebooking.core.ws.model;
+package airlinebooking.common.model;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -11,9 +11,9 @@ import javax.persistence.Table;
 import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 
-import airlinebooking.core.ws.enumtype.ActiveType;
-import airlinebooking.core.ws.enumtype.AirlineType;
-import airlinebooking.core.ws.enumtype.YesNoType;
+import airlinebooking.common.enumtype.ActiveType;
+import airlinebooking.common.enumtype.AirlineType;
+import airlinebooking.common.enumtype.YesNoType;
 
 @Entity
 @Table(name = "ticket_parser_param")
@@ -79,8 +79,8 @@ public class TicketParserParam implements java.io.Serializable{
 	}
 	
 	@Column(name = "status")
-	@Type(type = "airlinebooking.core.ws.enumtype.GenericEnumUserType", parameters = {
-			@Parameter(name = "enumClass", value = "airlinebooking.core.ws.enumtype.ActiveType"),
+	@Type(type = "airlinebooking.common.enumtype.GenericEnumUserType", parameters = {
+			@Parameter(name = "enumClass", value = "airlinebooking.common.enumtype.ActiveType"),
 			@Parameter(name = "identifierMethod", value = "getValue"),
 			@Parameter(name = "valueOfMethod", value = "parseValue") })
 	public ActiveType getStatus() {
@@ -91,8 +91,8 @@ public class TicketParserParam implements java.io.Serializable{
 	}
 
 	@Column(name = "airline_type")
-	@Type(type = "airlinebooking.core.ws.enumtype.GenericEnumUserType", parameters = {
-			@Parameter(name = "enumClass", value = "airlinebooking.core.ws.enumtype.AirlineType"),
+	@Type(type = "airlinebooking.common.enumtype.GenericEnumUserType", parameters = {
+			@Parameter(name = "enumClass", value = "airlinebooking.common.enumtype.AirlineType"),
 			@Parameter(name = "identifierMethod", value = "getValue"),
 			@Parameter(name = "valueOfMethod", value = "parseValue") })
 	public AirlineType getAirlineType() {
@@ -104,8 +104,8 @@ public class TicketParserParam implements java.io.Serializable{
 	}
 	
 	@Column(name = "have_parameter")
-	@Type(type = "airlinebooking.core.ws.enumtype.GenericEnumUserType", parameters = {
-			@Parameter(name = "enumClass", value = "airlinebooking.core.ws.enumtype.YesNoType"),
+	@Type(type = "airlinebooking.common.enumtype.GenericEnumUserType", parameters = {
+			@Parameter(name = "enumClass", value = "airlinebooking.common.enumtype.YesNoType"),
 			@Parameter(name = "identifierMethod", value = "getValue"),
 			@Parameter(name = "valueOfMethod", value = "parseValue") })
 	public YesNoType getHaveParameter() {
@@ -117,8 +117,8 @@ public class TicketParserParam implements java.io.Serializable{
 	}
 
 	@Column(name = "have_multi_value")
-	@Type(type = "airlinebooking.core.ws.enumtype.GenericEnumUserType", parameters = {
-			@Parameter(name = "enumClass", value = "airlinebooking.core.ws.enumtype.YesNoType"),
+	@Type(type = "airlinebooking.common.enumtype.GenericEnumUserType", parameters = {
+			@Parameter(name = "enumClass", value = "airlinebooking.common.enumtype.YesNoType"),
 			@Parameter(name = "identifierMethod", value = "getValue"),
 			@Parameter(name = "valueOfMethod", value = "parseValue") })
 	public YesNoType getHaveMultiValue() {

@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import airlinebooking.common.enumtype.AirlineType;
+import airlinebooking.common.model.TicketParserParam;
 import airlinebooking.core.ws.dao.TicketParserParamDao;
-import airlinebooking.core.ws.enumtype.AirlineType;
-import airlinebooking.core.ws.model.TicketParserParam;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring/applicationContext.xml" })

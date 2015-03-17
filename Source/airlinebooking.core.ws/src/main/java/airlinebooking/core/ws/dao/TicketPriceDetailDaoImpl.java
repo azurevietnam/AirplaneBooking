@@ -3,8 +3,8 @@ package airlinebooking.core.ws.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import airlinebooking.core.ws.exception.DataAccessException;
-import airlinebooking.core.ws.model.TicketPriceDetail;
+import airlinebooking.common.exception.DataAccessException;
+import airlinebooking.common.model.TicketPriceDetail;
 import airlinebooking.core.ws.repo.QueryRepo;
 
 @Repository

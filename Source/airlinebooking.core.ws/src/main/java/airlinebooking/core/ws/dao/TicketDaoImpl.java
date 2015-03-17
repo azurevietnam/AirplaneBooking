@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import airlinebooking.core.ws.exception.DataAccessException;
-import airlinebooking.core.ws.model.Ticket;
+import airlinebooking.common.exception.DataAccessException;
+import airlinebooking.common.model.Ticket;
 import airlinebooking.core.ws.repo.QueryRepo;
 
 @Repository

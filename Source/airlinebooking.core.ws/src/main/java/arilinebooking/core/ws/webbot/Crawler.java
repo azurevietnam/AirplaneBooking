@@ -13,10 +13,10 @@ import java.util.regex.Pattern;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-import airlinebooking.core.ws.enumtype.AirlineType;
-import airlinebooking.core.ws.enumtype.YesNoType;
-import airlinebooking.core.ws.model.Ticket;
-import airlinebooking.core.ws.model.TicketParserParam;
+import airlinebooking.common.enumtype.AirlineType;
+import airlinebooking.common.enumtype.YesNoType;
+import airlinebooking.common.model.Ticket;
+import airlinebooking.common.model.TicketParserParam;
 
 public abstract class Crawler {
 	

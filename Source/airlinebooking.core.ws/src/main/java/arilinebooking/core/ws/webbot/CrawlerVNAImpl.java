@@ -11,11 +11,11 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-import airlinebooking.core.ws.enumtype.AirlineType;
-import airlinebooking.core.ws.model.Ticket;
-import airlinebooking.core.ws.model.TicketFlightDetail;
-import airlinebooking.core.ws.model.TicketParserParam;
-import airlinebooking.core.ws.model.TicketPriceDetail;
+import airlinebooking.common.enumtype.AirlineType;
+import airlinebooking.common.model.Ticket;
+import airlinebooking.common.model.TicketFlightDetail;
+import airlinebooking.common.model.TicketParserParam;
+import airlinebooking.common.model.TicketPriceDetail;
 
 public class CrawlerVNAImpl extends Crawler {
 

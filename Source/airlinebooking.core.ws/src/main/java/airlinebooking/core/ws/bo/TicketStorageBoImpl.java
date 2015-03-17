@@ -1,7 +1,8 @@
 package airlinebooking.core.ws.bo;
 
-import airlinebooking.core.ws.exception.BusinessException;
-import airlinebooking.core.ws.model.Ticket;
+import airlinebooking.common.bo.TicketStorageBo;
+import airlinebooking.common.exception.BusinessException;
+import airlinebooking.common.model.Ticket;
 
 public class TicketStorageBoImpl implements TicketStorageBo {
 

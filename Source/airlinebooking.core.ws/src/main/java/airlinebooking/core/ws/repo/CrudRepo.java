@@ -1,6 +1,6 @@
 package airlinebooking.core.ws.repo;
 
-import airlinebooking.core.ws.exception.DataAccessException;
+import airlinebooking.common.exception.DataAccessException;
 
 public interface CrudRepo {
 	<T> T create(T object) throws DataAccessException;

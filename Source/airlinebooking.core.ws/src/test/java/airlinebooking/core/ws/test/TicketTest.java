@@ -11,12 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import airlinebooking.common.enumtype.AirlineType;
+import airlinebooking.common.exception.DataAccessException;
+import airlinebooking.common.model.Ticket;
+import airlinebooking.common.model.TicketFlightDetail;
+import airlinebooking.common.model.TicketPriceDetail;
 import airlinebooking.core.ws.dao.TicketDao;
-import airlinebooking.core.ws.enumtype.AirlineType;
-import airlinebooking.core.ws.exception.DataAccessException;
-import airlinebooking.core.ws.model.Ticket;
-import airlinebooking.core.ws.model.TicketFlightDetail;
-import airlinebooking.core.ws.model.TicketPriceDetail;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring/applicationContext.xml" })

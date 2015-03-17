@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import airlinebooking.core.ws.enumtype.AirlineType;
-import airlinebooking.core.ws.exception.DataAccessException;
-import airlinebooking.core.ws.model.TicketParserParam;
+import airlinebooking.common.enumtype.AirlineType;
+import airlinebooking.common.exception.DataAccessException;
+import airlinebooking.common.model.TicketParserParam;
 import airlinebooking.core.ws.repo.QueryRepo;
 
 @Repository

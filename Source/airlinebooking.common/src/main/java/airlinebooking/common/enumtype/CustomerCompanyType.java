@@ -1,21 +1,21 @@
-package airlinebooking.core.ws.enumtype;
+package airlinebooking.common.enumtype;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public enum CustomerBookingStatusType {
-	DELETED(-1),
+public enum CustomerCompanyType {
+	ADULT(1),
 	
-    INACTIVE (0),
+    CHILDREN (2),
 
-    ACTIVE (1);
+    INFANT (3);
     
     
     /** The value. */
     private Integer value;
     
     /** The values. */
-    private static Map<Integer, CustomerBookingStatusType> values = null;
+    private static Map<Integer, CustomerCompanyType> values = null;
     
     /**
      * Gets the value.
@@ -32,7 +32,7 @@ public enum CustomerBookingStatusType {
      * @param value
      *            the value
      */
-    CustomerBookingStatusType(Integer value) {
+    CustomerCompanyType(Integer value) {
         this.value = value;
     }
     
@@ -43,16 +43,17 @@ public enum CustomerBookingStatusType {
      *            the value
      * @return the gender type
      */
-    public static CustomerBookingStatusType parseValue(Integer value) {
+    public static CustomerCompanyType parseValue(Integer value) {
     	if (value != null && value == -1){
     		value = -2;
     	}    		
         if (values == null) {
-            values = new HashMap<Integer, CustomerBookingStatusType>(
-                    CustomerBookingStatusType.values().length);
-            for (CustomerBookingStatusType e : CustomerBookingStatusType.values())
+            values = new HashMap<Integer, CustomerCompanyType>(
+                    CustomerCompanyType.values().length);
+            for (CustomerCompanyType e : CustomerCompanyType.values())
                 values.put(e.getValue(), e);
         }
         return values.get(value);
     }
+
 }
