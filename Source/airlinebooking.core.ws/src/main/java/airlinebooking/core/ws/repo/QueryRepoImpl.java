@@ -68,5 +68,10 @@ public class QueryRepoImpl implements QueryRepo {
 			Integer maxResult) throws DataAccessException {
 		return selectRepo.getListBySQL(clazz, sql, params, synchronizedClass, maxResult);
 	}
-
+	
+	@Override
+	@Transactional
+	public <T> T loadEntityById(Class<T> clazz, Serializable id)  throws DataAccessException {
+		return selectRepo.loadEntityById(clazz, id);
+	}
 }

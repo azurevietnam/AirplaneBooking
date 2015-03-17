@@ -19,8 +19,7 @@ public class SelectRepoImpl extends AbstractQueryRepo implements SelectRepo {
 	private SessionFactory sessionFactory;
 
 	@Override
-	public <T> T getEntityById(Class<T> clazz, Serializable id)
-			throws DataAccessException {
+	public <T> T getEntityById(Class<T> clazz, Serializable id) throws DataAccessException {
 		try {
 			Session session = sessionFactory.getCurrentSession();
 			return clazz.cast(session.get(clazz, id));
@@ -31,10 +30,8 @@ public class SelectRepoImpl extends AbstractQueryRepo implements SelectRepo {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public <T> T getEntityByHQL(String hql, List<Object> params)
-			throws DataAccessException {
+	public <T> T getEntityByHQL(String hql, List<Object> params) throws DataAccessException {
 		try {
-
 			Session session = sessionFactory.getCurrentSession();
 			Query query = session.createQuery(hql);
 			addParameters(query, params);
@@ -85,6 +82,16 @@ public class SelectRepoImpl extends AbstractQueryRepo implements SelectRepo {
 			}
 
 			return query.list();
+		} catch (Exception e) {
+			throw new DataAccessException(e);
+		}
+	}
+
+	@Override
+	public <T> T loadEntityById(Class<T> clazz, Serializable id)  throws DataAccessException{
+		try {
+			Session session = sessionFactory.getCurrentSession();
+			return clazz.cast(session.load(clazz, id));
 		} catch (Exception e) {
 			throw new DataAccessException(e);
 		}

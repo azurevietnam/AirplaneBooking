@@ -6,6 +6,8 @@ import java.util.List;
 import airlinebooking.core.ws.exception.DataAccessException;
 
 public interface SelectRepo {
+	<T> T loadEntityById(Class<T> clazz, Serializable id)  throws DataAccessException;
+	
 	<T> T getEntityById(Class<T> clazz, Serializable id)
 			throws DataAccessException;
 
